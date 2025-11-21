@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>The Deadly Script – Mahanthi Kannapalli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<div id="loader">
+    <div class="star-core"></div>
+
+    <!-- Shockwaves -->
+    <div class="star-wave wave-1"></div>
+    <div class="star-wave wave-2"></div>
+
+    <!-- Many particles -->
+    <div class="star-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
+<body class="project-page" style="--project-bg: url('images/text-based-game.png');">
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO WITH FIXED BACKGROUND -->
+<header class="project-hero">
+    <div class="project-hero-overlay">
+        <h1>THE DEADLY SCRIPT</h1>
+        <p>Branching text-based mystery built in Unity with a focus on systems-driven narrative.</p>
+
+        <div class="project-hero-tags">
+            <span>Unity</span>
+            <span>C#</span>
+            <span>Narrative Systems</span>
+            <span>UI / UX</span>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="project-content">
+    <section>
+        <h2>Overview</h2>
+        <p>
+            The Deadly Script is a 2D text-driven mystery game where the story branches
+            based on player choices, timing, and hidden state variables. The focus was on
+            building a flexible system for dialogue, choices, and conditional outcomes rather
+            than scripting every path manually.
+        </p>
+    </section>
+
+    <section>
+        <h2>My Role</h2>
+        <ul>
+            <li>Implemented the entire gameplay and narrative logic in Unity using C#.</li>
+            <li>Built the dialogue system, choice handling, and state tracking backend.</li>
+            <li>Designed and coded the typewriter text effect and responsive UI transitions.</li>
+            <li>Collaborated on pacing and narrative beats to match the underlying systems.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Key Systems</h2>
+        <ul>
+            <li>
+                <strong>Dialogue Engine:</strong> Data-driven system to define lines, speakers,
+                branches, and conditions in a structured format.
+            </li>
+            <li>
+                <strong>Choice &amp; State Tracking:</strong> Player decisions update internal
+                variables that influence later scenes, outcomes, and available options.
+            </li>
+            <li>
+                <strong>Typewriter &amp; UI Feedback:</strong> Timed text reveal, emphasis effects,
+                and subtle animations to keep a text-heavy experience engaging.
+            </li>
+            <li>
+                <strong>Tools Mindset:</strong> Organized code so new scenes and branches can be
+                added quickly without rewriting core logic.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tech &amp; Tools</h2>
+        <p>
+            Unity, C#, ScriptableObjects or custom data structures for dialogue, UI Toolkit / Canvas,
+            coroutine-based timing, and event-driven architecture for game state changes.
+        </p>
+    </section>
+
+    <a class="back-link" href="index.html#projects">← Back to MY-GAMES</a>
+</main>
+
+<script>
+    window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        if (!loader) {
+            document.body.classList.add("page-ready");
+            return;
+        }
+
+        // Explosion duration before fade-out starts (in ms)
+        setTimeout(() => {
+            loader.classList.add("fade-out");
+
+            // 🔹 Start navbar + text-box animations at the same time
+            document.body.classList.add("page-ready");
+        }, 3000);
+    });
+</script>
+</body>
+</html>
