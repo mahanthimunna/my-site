@@ -11,19 +11,37 @@
 </head>
 <body>
 
+<!-- ⭐ FULL SCREEN STAR EXPLOSION LOADER -->
+<div id="loader">
+    <div class="star-core"></div>
+
+    <!-- Shockwaves -->
+    <div class="star-wave wave-1"></div>
+    <div class="star-wave wave-2"></div>
+
+    <!-- Many particles -->
+    <div class="star-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
+
+<!-- NAVBAR -->
 <nav class="navbar">
     <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li> <!-- contact placeholder -->
     </ul>
 </nav>
 
+<!-- HERO / ABOUT SECTION -->
 <section class="home">
 
-    <!-- animated bars background -->
+    <!-- optional bars background (if you want to use later) -->
     <div class="bars-animation">
         <div class="bar" style="--i:1"></div>
         <div class="bar" style="--i:2"></div>
@@ -39,10 +57,11 @@
 
     <div class="center-container">
 
-        <!-- FULL-SCREEN CENTERED IMAGE -->
+        <!-- IMAGE -->
         <div class="home-img">
             <div class="img-box">
                 <div class="img-item">
+                    <!-- make sure this path is correct on GitHub -->
                     <img src="images/munna.png" alt="Mahanthi Kannapalli">
                 </div>
             </div>
@@ -50,43 +69,82 @@
 
         <!-- TEXT BELOW IMAGE -->
         <div class="text-box">
-        <div class="home-content">
-            <h1>AKA MUNNA</h1>
-            <h2>GAMEPLAY PROGRAMMER | TECHNICAL GAME DESIGNER | SOFTWARE ENGINEER</h2>
-            <p>
-                Ever since I wrote my first line of code, I’ve been 
-                fascinated by how simple logic can create worlds, 
-                emotions, and possibilities. That curiosity eventually 
-                led me into gameplay programming, where creativity 
-                and engineering meet in the most unexpected ways.
-            </p>
-            <p>
-                I’m Mahanthi Kannapalli — a Gameplay Programmer 
-                and Technical Systems Designer who loves building 
-                interactions that feel alive. I enjoy that moment 
-                when an idea turns into a mechanic, a behavior, 
-                or a system that surprises the player and—even 
-                better—surprises me during development.
-            </p>
-            <p>
-                With a foundation in computer science and 
-                advanced game development studies at SCAD, 
-                I approach every problem with both imagination 
-                and structure. I love translating abstract 
-                concepts into clean systems, and I’m always 
-                chasing that feeling of “flow” where design, code, 
-                and player experience all click together.
-            </p>
-            <p>
-                I’m constantly learning, experimenting, and 
-                growing—driven by the belief that great games 
-                aren’t just played, they’re felt.
-            </p>
+            <div class="home-content">
+
+                <!-- anchor target for ABOUT -->
+                <h1 id="about">AKA MUNNA</h1>
+
+                <h2>GAMEPLAY PROGRAMMER | TECHNICAL GAME DESIGNER | SOFTWARE ENGINEER</h2>
+
+                <p>
+                    Ever since I wrote my first line of code, I’ve been
+                    fascinated by how simple logic can create worlds,
+                    emotions, and possibilities. That curiosity eventually
+                    led me into gameplay programming, where creativity
+                    and engineering meet in the most unexpected ways.
+                </p>
+
+                <p>
+                    I’m Mahanthi Kannapalli — a Gameplay Programmer
+                    and Technical Systems Designer who loves building
+                    interactions that feel alive. I enjoy that moment
+                    when an idea turns into a mechanic, a behavior,
+                    or a system that surprises the player and—even
+                    better—surprises me during development.
+                </p>
+
+                <p>
+                    With a foundation in computer science and
+                    advanced game development studies at SCAD,
+                    I approach every problem with both imagination
+                    and structure. I love translating abstract
+                    concepts into clean systems, and I’m always
+                    chasing that feeling of “flow” where design, code,
+                    and player experience all click together.
+                </p>
+
+                <p>
+                    I’m constantly learning, experimenting, and
+                    growing—driven by the belief that great games
+                    aren’t just played, they’re felt.
+                </p>
+            </div>
         </div>
-        </div>
+
     </div>
 
 </section>
 
+<!-- MY-GAMES SECTION (PROJECTS) -->
+<section class="games-section">
+    <h1 class="games-title" id="projects">MY-GAMES</h1>
+</section>
+
+<!-- EMPTY SECTION WITH SAME BACKGROUND -->
+<section class="home-empty"></section>
+
+<!-- CONTACT PLACEHOLDER (OPTIONAL) -->
+<section id="contact" class="contact-section">
+    <!-- You can fill this later -->
+</section>
+
+<!-- Loader fade-out script -->
+<script>
+    window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        if (!loader) {
+            document.body.classList.add("page-ready");
+            return;
+        }
+
+        // Explosion duration before fade-out starts (in ms)
+        setTimeout(() => {
+            loader.classList.add("fade-out");
+
+            // 🔹 Start navbar + text-box animations at the same time
+            document.body.classList.add("page-ready");
+        }, 3000);
+    });
+</script>
 </body>
 </html>
