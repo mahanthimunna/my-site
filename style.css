@@ -74,11 +74,12 @@ body {
 /* MAIN SECTION */
 .home {
     position: relative;
-    min-height: 100vh;
     padding-top: 70px;
+    padding-bottom: 10px; /* small bottom space so content doesn’t touch edge */
     display: flex;
+    flex-direction: column;  /* IMPORTANT: stack image + text properly */
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* push content upward */
     overflow: hidden;
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
 }
@@ -224,13 +225,19 @@ body {
     scroll-margin-top: 90px;
 }
 
-/* MY-GAMES SECTION */
 .games-section {
-    min-height: 15vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 40px 8% 110px;  /* you can tweak later */
+    margin-top: clamp(-450px, -20vw, -400px);       /* 🔹 pulls MY-GAMES up closer to ABOUT */
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.games-inner {
+    width: 100%;
+    max-width: 1200px;
 }
 
 .games-title {
@@ -239,13 +246,141 @@ body {
     letter-spacing: 8px;
     color: #ffffff;
     text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.games-subtitle {
+    text-align: center;
+    color: #a9b3d4;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.projects-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Card shell */
+.project-card {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, #22263a, #050711);
+    box-shadow:
+            0 0 0 1px rgba(90, 120, 200, 0.4),
+            0 18px 40px rgba(0, 0, 0, 0.7);
+    transform: translateY(0);
+    transition:
+            transform 0.25s ease-out,
+            box-shadow 0.25s ease-out,
+            background 0.25s ease-out;
+}
+
+/* subtle glowing frame */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #3434c3, #14c3ff, #7b5cff);
+    opacity: 0;
+    mix-blend-mode: screen;
+    transition: opacity 0.25s ease-out;
+    pointer-events: none;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+            0 0 0 1px rgba(140, 210, 255, 0.7),
+            0 26px 60px rgba(0, 0, 0, 0.9);
+    background: radial-gradient(circle at top, #2c3655, #050711);
+}
+
+.project-card:hover::before {
+    opacity: 0.7;
+}
+
+/* Image */
+.project-thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.4s ease-out;
+}
+
+.project-card:hover .project-thumb img {
+    transform: scale(1.08);
+}
+
+/* Body */
+.project-body {
+    padding: 1.4rem 1.6rem 1.6rem;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+
+/* Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.project-tags span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(20, 35, 70, 0.9);
+    border: 1px solid rgba(120, 170, 255, 0.6);
+}
+
+/* Description + bullets */
+.project-desc {
+    font-size: 0.9rem;
+    color: #c3c8e5;
+    margin-bottom: 0.9rem;
+}
+
+.project-list {
+    list-style: none;
+    padding-left: 0;
     margin: 0;
 }
 
-/* EMPTY SECTION BELOW */
-.home-empty {
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
+.project-list li {
+    font-size: 0.85rem;
+    color: #a9b3d4;
+    margin-bottom: 0.35rem;
+    position: relative;
+    padding-left: 1.3rem;
+}
+
+.project-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.8rem;
+    color: #7df0ff;
 }
 
 /* (optional) contact section placeholder */
@@ -391,3 +526,154 @@ body.page-ready .navbar,
 body.page-ready .text-box {
     animation-play-state: running;
 }
+
+/* ===== PROJECT DETAIL PAGES ONLY ===== */
+
+body.project-page {
+    background: none;
+    background-image: var(--project-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.project-hero {
+    position: relative;
+    height: 100vh;
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-image: var(--project-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* dark glass overlay for text */
+.project-hero-overlay {
+    background: radial-gradient(circle at center,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.85));
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
+    max-width: 900px;
+    width: 90%;
+}
+
+.project-hero-overlay h1 {
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    letter-spacing: 6px;
+    margin-bottom: 0.6rem;
+}
+
+.project-hero-overlay p {
+    color: #c3c8e5;
+    margin-bottom: 1.2rem;
+}
+
+.project-hero-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.project-hero-tags span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(10, 26, 60, 0.9);
+    border: 1px solid rgba(140, 210, 255, 0.9);
+}
+
+/* Scrollable content below the hero */
+.project-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+}
+
+.project-content section {
+    margin-bottom: 2rem;
+}
+
+.project-content h2 {
+    margin-bottom: 0.4rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #7df0ff;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+
+/* ======================
+   PROJECT PAGE VIDEO
+====================== */
+
+.project-video-section {
+    margin-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+}
+
+.project-video-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+}
+
+.video-wrapper {
+    background:
+            radial-gradient(circle at center,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.85)),
+            url("images/echos-of-lie.png");   /* 👈 use your image here */
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 12px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+
+    aspect-ratio: 16 / 9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.video-wrapper video {
+    width: 80%;         /* smaller than container */
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    background: transparent;
+}
+
+
+
+
