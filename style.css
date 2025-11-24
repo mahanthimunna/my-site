@@ -5,6 +5,7 @@
     --accent: #3434c3;
 }
 
+/* GLOBAL RESET */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +16,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* BODY BASE */
 body {
     min-height: 100vh;
     font-family: system-ui, sans-serif;
@@ -71,20 +73,21 @@ body {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* MAIN SECTION */
+/* ========== HOME PAGE (INDEX) ========== */
+
 .home {
     position: relative;
     padding-top: 70px;
-    padding-bottom: 10px; /* small bottom space so content doesn’t touch edge */
+    padding-bottom: 10px;
     display: flex;
-    flex-direction: column;  /* IMPORTANT: stack image + text properly */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* push content upward */
+    justify-content: flex-start;
     overflow: hidden;
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
 }
 
-/* OPTIONAL bars animation (currently not styled, you can add later) */
+/* BARS ANIMATION */
 .bars-animation {
     position: absolute;
     inset: 0;
@@ -92,7 +95,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     gap: 12px;
-    opacity: 0.05; /* very subtle */
+    opacity: 0.05;
     padding-bottom: 40px;
     pointer-events: none;
     z-index: 0;
@@ -112,7 +115,7 @@ body {
     50% { transform: translateY(-50px) scaleY(1); }
 }
 
-/* CENTER CONTAINER */
+/* CENTER CONTAINER ON HOME */
 .center-container {
     z-index: 2;
     display: flex;
@@ -122,7 +125,7 @@ body {
     gap: 2rem;
 }
 
-/* IMAGE BOX */
+/* HOME IMAGE BOX */
 .home-img .img-box {
     width: min(70vw, 850px);
     aspect-ratio: 1 / 1;
@@ -165,7 +168,7 @@ body {
     }
 }
 
-/* TEXT BOX BELOW IMAGE */
+/* HOME TEXT BOX BELOW IMAGE */
 .text-box {
     background: rgba(10, 20, 32, 0.85);
     backdrop-filter: blur(4px);
@@ -191,7 +194,7 @@ body {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* TEXT STYLES */
+/* HOME TEXT STYLES */
 .home-content h1 {
     font-size: 4rem;
     letter-spacing: 10px;
@@ -217,7 +220,7 @@ body {
     line-height: 1.25;
 }
 
-/* scroll offset so headings aren't hidden behind navbar */
+/* SCROLL OFFSET FOR ANCHORS */
 #about {
     scroll-margin-top: 70px;
 }
@@ -225,15 +228,15 @@ body {
     scroll-margin-top: 90px;
 }
 
+/* MY-GAMES SECTION */
 .games-section {
-    padding: 40px 8% 110px;  /* you can tweak later */
-    margin-top: clamp(-450px, -20vw, -400px);       /* 🔹 pulls MY-GAMES up closer to ABOUT */
+    padding: 40px 8% 110px;
+    margin-top: clamp(-450px, -20vw, -400px);
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .games-inner {
     width: 100%;
@@ -257,6 +260,7 @@ body {
     text-transform: uppercase;
 }
 
+/* PROJECT CARDS GRID */
 .projects-grid {
     margin-top: 3rem;
     display: grid;
@@ -264,7 +268,7 @@ body {
     gap: 2.5rem;
 }
 
-/* Card shell */
+/* Project card */
 .project-card {
     position: relative;
     border-radius: 22px;
@@ -305,7 +309,7 @@ body {
     opacity: 0.7;
 }
 
-/* Image */
+/* Card thumbnail */
 .project-thumb {
     position: relative;
     aspect-ratio: 4 / 3;
@@ -325,7 +329,7 @@ body {
     transform: scale(1.08);
 }
 
-/* Body */
+/* Card body */
 .project-body {
     padding: 1.4rem 1.6rem 1.6rem;
 }
@@ -335,7 +339,7 @@ body {
     margin-bottom: 0.6rem;
 }
 
-/* Tags */
+/* Tags on cards */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -353,7 +357,7 @@ body {
     border: 1px solid rgba(120, 170, 255, 0.6);
 }
 
-/* Description + bullets */
+/* Card description & bullets */
 .project-desc {
     font-size: 0.9rem;
     color: #c3c8e5;
@@ -383,14 +387,13 @@ body {
     color: #7df0ff;
 }
 
-/* (optional) contact section placeholder */
+/* Contact section placeholder */
 .contact-section {
     min-height: 40vh;
     background: #0b1017;
 }
 
-
-/* ================= FULL SCREEN STAR EXPLOSION LOADER ================= */
+/* ========== FULL SCREEN STAR EXPLOSION LOADER ========== */
 
 #loader {
     position: fixed;
@@ -456,7 +459,7 @@ body {
     animation: particleScatter 2s ease-out infinite;
 }
 
-/* base keyframes */
+/* particle scatter */
 @keyframes particleScatter {
     0% {
         opacity: 1;
@@ -499,7 +502,7 @@ body {
     }
 }
 
-/* DIRECTIONS FOR EACH STAR (SCATTER ACROSS SCREEN) */
+/* DIRECTIONS FOR EACH STAR */
 .star-particles span:nth-child(1)  { --x: 350px;  --y: 0; }
 .star-particles span:nth-child(2)  { --x: -350px; --y: 0; }
 .star-particles span:nth-child(3)  { --x: 0;      --y: 350px; }
@@ -521,27 +524,29 @@ body {
 .star-particles span:nth-child(19) { --x: 350px;  --y: -450px; }
 .star-particles span:nth-child(20) { --x: -350px; --y: 450px; }
 
-
+/* When loader finishes, play navbar + text box animations */
 body.page-ready .navbar,
 body.page-ready .text-box {
     animation-play-state: running;
 }
 
-/* ===== PROJECT DETAIL PAGES ONLY ===== */
+/* ========== PROJECT DETAIL PAGES (ECHOS OF LIE) ========== */
 
+/* Expect: <body class="project-page" style="--project-bg: url('images/echos-of-lie.png');"> */
 body.project-page {
-    background: none;
-    background-image: var(--project-bg);
+    background-color: #050711;            /* fallback so it's never white */
+    background-image: var(--project-bg);  /* page-specific image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
+/* Hero with fixed background image */
 .project-hero {
     position: relative;
-    height: 100vh;
-    padding-top: 70px;
+    height: clamp(260px, 35vh, 500px);  /* smaller + consistent across screens */
+    padding-top: 25px; /* ensures hero starts BELOW navbar */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,12 +558,13 @@ body.project-page {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 /* dark glass overlay for text */
 .project-hero-overlay {
     background: radial-gradient(circle at center,
     rgba(0, 0, 0, 0.25),
     rgba(0, 0, 0, 0.85));
-    padding: 3rem 1.5rem;
+    padding: 0.5rem 1rem 0.2rem;
     border-radius: 24px;
     max-width: 900px;
     width: 90%;
@@ -579,13 +585,14 @@ body.project-page {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.5rem;
+    margin-bottom: 20px;
 }
 
 .project-hero-tags span {
     font-size: 0.75rem;
     text-transform: uppercase;
-    padding: 0.25rem 0.7rem;
+    padding: 0.25rem 1.5rem;
     border-radius: 999px;
     background: rgba(10, 26, 60, 0.9);
     border: 1px solid rgba(140, 210, 255, 0.9);
@@ -593,19 +600,23 @@ body.project-page {
 
 /* Scrollable content below the hero */
 .project-content {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px 80px;
+    padding: 20px 20px 80px;
 }
 
 .project-content section {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .project-content h2 {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    text-align: center;
 }
 
+/* Back link */
 .back-link {
     display: inline-block;
     margin-top: 1rem;
@@ -617,63 +628,120 @@ body.project-page {
     text-decoration: underline;
 }
 
-
+/* clickable project cards */
 .project-link {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-
-/* ======================
-   PROJECT PAGE VIDEO
-====================== */
+/* ===== PROJECT PAGE: VIDEO SECTION ===== */
 
 .project-video-section {
-    margin-bottom: 3rem;
+    margin: -10px auto 2rem;   /* pulls “Gameplay Video” + video upward */
     text-align: center;
     width: 100%;
-}
-
-.project-video-section h2 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    letter-spacing: 3px;
-}
-
-.video-wrapper {
-    background:
-            radial-gradient(circle at center,
-            rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.85)),
-            url("images/echos-of-lie.png");   /* 👈 use your image here */
-
-    background-size: cover;
-    background-position: center;
-
-    border-radius: 12px;
     max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px;
+    padding: 0 20px;
+}
 
+/* wrapper – just a simple centered frame */
+.video-wrapper {
+    /* remove heavy overlay + extra background */
+    background: none;
+
+    border-radius: 0;
+    margin: 1rem auto 0;
+
+    /* control overall size */
+    max-width: 900px;
+    width: 100%;
     aspect-ratio: 16 / 9;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0);
 }
 
+/* the actual video */
 .video-wrapper video {
-    width: 80%;         /* smaller than container */
-    height: auto;
-    border-radius: 12px;
+    width: 100%;       /* fill the wrapper */
+    height: 100%;
+    display: block;
+    border-radius: 0;
     object-fit: cover;
     background: transparent;
 }
 
+/* ========== RESPONSIVE TWEAKS ========== */
 
+@media (max-width: 900px) {
+    .home-content h1 {
+        font-size: 2.8rem;
+        letter-spacing: 6px;
+    }
 
+    .home-content h2 {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+    }
 
+    .text-box {
+        padding: 0 20px;
+        margin-top: -80px;
+    }
+
+    .games-section {
+        margin-top: -250px;
+        padding-bottom: 80px;
+    }
+
+    .project-hero-overlay {
+        padding: 2rem 1.25rem;
+    }
+
+    .video-wrapper {
+        padding: 20px;
+    }
+
+    .video-wrapper video {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-content h1 {
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+    }
+
+    .games-title {
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+    }
+
+    .games-section {
+        margin-top: -180px;
+    }
+}
+
+.project-glass {
+    position: relative;
+    z-index: 1;
+
+    /* outer padding from screen edges */
+    width: min(1200px, calc(100% - 40px)); /* 20px gap on each side */
+    margin: 90px auto 40px;                /* below navbar, some bottom space */
+
+    /* inner padding around all content */
+    padding: 24px 24px 40px;
+
+    background: rgba(1, 0, 0, 0.8);
+    /*backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    */
+    border-radius: 24px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
