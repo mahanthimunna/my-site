@@ -1,33 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Echos of Lie – Mahanthi Kannapalli</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Main styles -->
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="project-page" style="--project-bg: url('images/echos-of-lie.png');">
 
+<!-- ================== LOADER ================== -->
 <div id="loader">
     <div class="star-core"></div>
 
-    <!-- Shockwaves -->
     <div class="star-wave wave-1"></div>
     <div class="star-wave wave-2"></div>
 
-    <!-- Many particles -->
     <div class="star-particles">
         <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
     </div>
 </div>
 
-<body class="project-page" style="--project-bg: url('images/echos-of-lie.png');">  <!-- 🔹 special class ONLY on project pages -->
-
+<!-- ================== NAVBAR ================== -->
 <nav class="navbar">
-    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <a href="index.html#home" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#projects">Projects</a></li>
@@ -35,72 +38,74 @@
     </ul>
 </nav>
 
-<!-- FIXED BACKGROUND HERO JUST FOR THIS PAGE -->
-<header class="project-hero">
-    <div class="project-hero-overlay">
-        <h1>Echos of Lie</h1>
-        <p>First-Person Horror Game – Unreal Engine 5</p>
+<!-- ================== GLASS WRAPPER (ALL CONTENT) ================== -->
+<div class="project-glass">
 
-        <div class="project-hero-tags">
-            <span>Unreal 5</span>
-            <span>Blueprints</span>
-            <span>Horror</span>
+    <!-- ================== HERO (GAME TITLE + TAGS) ================== -->
+    <header class="project-hero">
+        <div class="project-hero-overlay">
+            <h1>Echos of Lie</h1>
+            <p>First-Person Horror Game – Unreal Engine 5</p>
+
+            <div class="project-hero-tags">
+                <span>Unreal 5</span>
+                <span>Blueprints</span>
+                <span>Horror</span>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
+    <!-- ================== MAIN CONTENT ================== -->
+    <main class="project-content">
 
-<main class="project-content">
+        <!-- 🎥 GAMEPLAY VIDEO SECTION -->
+        <section class="project-video-section">
+            <h2>GAMEPLAY VIDEO</h2>
+            <div class="video-wrapper">
+                <video
+                        id="gameplayVideo"
+                        muted
+                        controls
+                        playsinline
+                        preload="metadata"
+                >
+                    <source src="videos/echos-gameplay.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
 
-    <!-- 🎥 GAMEPLAY VIDEO SECTION -->
-    <section class="project-video-section">
-        <h2>Gameplay Video</h2>
+        <!-- Back to main page -->
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+    </main>
 
-        <div class="video-wrapper">
-            <!-- If the video is in your project folder -->
-            <video
-                    id="gameplayVideo"
-                    muted
-                    controls          
-            playsinline
-            preload="metadata"
-            >
-            <source src="videos/echos-gameplay.mp4" type="video/mp4">
-            </video>
+</div> <!-- /project-glass -->
 
-
-        </div>
-    </section>
-
-
-    <a class="back-link" href="index.html#projects">← Back to My-Games</a>
-</main>
-
-
+<!-- ================== SCRIPTS ================== -->
 <script>
-    window.addEventListener("load", () => {
+    document.addEventListener("DOMContentLoaded", function () {
         const loader = document.getElementById("loader");
-        if (!loader) {
-            document.body.classList.add("page-ready");
-        } else {
-            setTimeout(() => {
-                loader.classList.add("fade-out");
-                document.body.classList.add("page-ready");
-            }, 3000);
-        }
 
-        // 🎥 Hover-to-play for gameplay video
+        // When everything is loaded, fade out loader and start navbar animation
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                if (loader) {
+                    loader.classList.add("fade-out");
+                }
+                document.body.classList.add("page-ready");
+            }, 1500); // loader display time
+        });
+
+        // 🎥 Hover-to-play for gameplay video (keeps playing after hover)
         const gameplayVideo = document.getElementById("gameplayVideo");
         if (gameplayVideo) {
-            // Start playing on hover
             gameplayVideo.addEventListener("mouseenter", () => {
                 gameplayVideo.play().catch(() => {});
             });
-
-            // ❌ DO NOT pause on mouseleave anymore
-            // (we remove pause + reset so it keeps playing)
+            // No mouseleave pause – it continues playing
         }
     });
 </script>
+
 </body>
 </html>
