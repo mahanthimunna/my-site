@@ -75,6 +75,220 @@
             </div>
         </section>
 
+        <!-- 🔽 DROPDOWN TABS / ACCORDION SECTION -->
+        <section class="project-accordion-section">
+            <h2>SYSTEMS & RESPONSIBILITIES</h2>
+
+            <div class="accordion">
+
+                <!-- ITEM 1 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-chip"></i>
+                            <span class="accordion-title">
+                                LEVEL SWITCHING
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Sanity amount is checked every second, 
+                            based on the player Sanity level, Levels 
+                            will be streamed Dynamically during Gameplay.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <!--
+                        <img src="images/fsm-diagram.png" alt="FSM Blueprint" class="accordion-image">
+                        -->
+                    </div>
+                </div>
+
+                <!-- ITEM 2 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-target-lock"></i>
+                            <span class="accordion-title">
+                                SANITY EFFECT
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Increase in Sanity will cause player to feel hallucinating 
+                            with slowing down all the player actions.
+                        </p>
+                        <p>
+                            To show screen effects I’ve changed the post-process 
+                            settings of FPS camera in First Person Blueprint for 
+                            few seconds and made it back to normal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-user-voice"></i>
+                            <span class="accordion-title">
+                                LISTEN MODE
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Enemies can be seen through walls
+                        </p>
+                        <p>
+                            Created a Post-Process Material and added in Material 
+                            Asset for Post-Process Volume, changed the value with 
+                            RMB clicked during gameplay.
+                        </p>
+                        <p>
+                            This material when activated changed the whole into 
+                            the b/w effect and shows the actors that has Stencil 
+                            Value more than 1 in red colored even through the walls.
+                        </p>
+                        <p>
+                            I only want to see enemies through the walls, 
+                            so I changed the custom Stencil Depth value of 
+                            Enemy actors to 2.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEM 4 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-code-curly"></i>
+                            <span class="accordion-title">
+                                CLOAK MODE
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Player can be able to hide in the locker, 
+                            will make enemy to forget about the player 
+                            and behaves normal until sees again.
+                        </p>
+                    </div>
+                </div>
+                <!-- ITEM 5 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-code-curly"></i>
+                            <span class="accordion-title">
+                                LOCK TARGET AND ATTACK MECHANICS
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Used an Actor Component Blueprint to write down 
+                            Target Lock system, attack mechanics including 
+                            Combo attacks where player can be able to lock the 
+                            camera to the specific enemy the player targeting 
+                            to and attack.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEM 6 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-code-curly"></i>
+                            <span class="accordion-title">
+                                DYNAMIC FOOTSTEP SOUND
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Used an Anim Notifier Blueprint to play sound 
+                            at each step and created physics materials for the 
+                            specific type of the floor to adjust sound dynamically.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEM 7 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-code-curly"></i>
+                            <span class="accordion-title">
+                                QUICK TIME EVENT (QTE) SYSTEM SETUP
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            I designed the Quick Time Event (QTE) system using a 
+                            combination of structures, enums, and macros for better 
+                            organization and modularity.
+                        </p>
+                        <p>
+                            I created an ENUM_EventState to define different 
+                            event states such as Waiting, Success, TimeUp, and 
+                            IncorrectKey. Then, I built multiple structures like 
+                            S_EventData (for key input, screen position, and time 
+                            tracking), S_CameraTransition (for smooth camera changes 
+                            during QTEs), and S_EventWidget (for UI anchor, alignment, 
+                            and offset details).
+                        </p>
+                        <p>
+                            All these elements connect through the StartQuickTimeEvent 
+                            Macro, which manages event flow—starting from player input 
+                            detection, triggering UI feedback, checking success or 
+                            failure conditions, and finally transitioning cameras 
+                            smoothly based on results.
+                        </p>
+                        <p>
+                            This setup allows each QTE to have its own customizable 
+                            parameters like duration, screen position, and camera 
+                            blend time while keeping the system reusable and easy 
+                            to update.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEM 8 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-code-curly"></i>
+                            <span class="accordion-title">
+                                ANIMATED POP-UP NOTIFICATION
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Created animated pop-up text for objectives, 
+                            controls, and player instructions during gameplay. 
+                            The text smoothly appears from the top-right corner 
+                            of the screen with a sound effect.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Back to main page -->
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
     </main>
@@ -104,6 +318,45 @@
             });
             // No mouseleave pause – it continues playing
         }
+
+        // 🔽 Accordion interaction
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach((header) => {
+            header.addEventListener("click", () => {
+                const item = header.parentElement;
+                const content = item.querySelector(".accordion-content");
+                const isOpen = item.classList.contains("open");
+
+                // close all others
+                document.querySelectorAll(".accordion-item.open").forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove("open");
+                        const openContent = openItem.querySelector(".accordion-content");
+                        if (openContent) {
+                            openContent.style.maxHeight = 0;
+                        }
+                    }
+                });
+
+                // toggle current
+                if (!isOpen) {
+                    item.classList.add("open");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    item.classList.remove("open");
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+
+        // ensure initial open item is sized correctly on load
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".accordion-item.open .accordion-content")
+                .forEach((content) => {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                });
+        });
     });
 </script>
 
