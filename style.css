@@ -231,7 +231,7 @@ body {
 /* MY-GAMES SECTION */
 .games-section {
     padding: 40px 8% 110px;
-    margin-top: clamp(-450px, -20vw, -400px);
+    margin-top: 20px !important;
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
     display: flex;
     justify-content: center;
@@ -808,7 +808,6 @@ body.project-page {
     }
 
     .games-section {
-        margin-top: -250px;
         padding-bottom: 80px;
     }
 
@@ -834,10 +833,6 @@ body.project-page {
     .games-title {
         font-size: 2.2rem;
         letter-spacing: 4px;
-    }
-
-    .games-section {
-        margin-top: -180px;
     }
 }
 
@@ -981,3 +976,4 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
