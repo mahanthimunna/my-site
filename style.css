@@ -231,7 +231,7 @@ body {
 /* MY-GAMES SECTION */
 .games-section {
     padding: 40px 8% 110px;
-    margin-top: 10px !important;
+    margin-top: 0px !important;
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
     display: flex;
     justify-content: center;
@@ -976,5 +976,6 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
