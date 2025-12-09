@@ -82,21 +82,24 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                LEVEL SWITCHING
+                                Player Attack Rate Function — Blueprint Implementation
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                            Sanity amount is checked every second,
-                            based on the player Sanity level, Levels
-                            will be streamed Dynamically during Gameplay.
+                            This Blueprint function calculates the player’s Dynamic Attack Rate 
+                            by iterating through stored combat data for each enemy. It performs 
+                            multiple summations — including weighted attack impact (WiHi), penalty 
+                            modifiers (PjMj), and temporal decay factors (T and G) — to produce 
+                            a balanced metric that reflects real-time combat performance. 
+                            The system integrates time-based decay using exponential functions 
+                            and aggregates results to determine the final Attack Rate Output, 
+                            influencing player abilities and special attack activation during gameplay.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/LevelSwitch_00.png" alt="FSM Blueprint" class="accordion-image">
-                        <img src="images/LevelSwitch_01.png" alt="FSM Blueprint" class="accordion-image">
-                        <img src="images/LevelSwitch_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DARBPImplementation.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -171,3 +174,4 @@
 
 </body>
 </html>
+
