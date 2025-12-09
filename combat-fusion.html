@@ -52,31 +52,122 @@
 </header>
 
 <main class="project-content">
-    <!-- your sections here -->
-    <section>
-        <h2>Overview</h2>
-        <p>...</p>
-    </section>
+
+        <!-- 🎥 GAMEPLAY VIDEO SECTION -->
+        <section class="project-video-section">
+            <h2>GAMEPLAY VIDEO</h2>
+            <div class="video-wrapper">
+                <video
+                        id="gameplayVideo"
+                        muted
+                        controls
+                        playsinline
+                        preload="metadata"
+                >
+                    <source src="videos/echos-gameplay.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+    <!-- 🔽 DROPDOWN TABS / ACCORDION SECTION -->
+        <section class="project-accordion-section">
+            <h2>SYSTEMS & RESPONSIBILITIES</h2>
+
+            <div class="accordion">
+
+                <!-- ITEM 1 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                LEVEL SWITCHING
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Sanity amount is checked every second,
+                            based on the player Sanity level, Levels
+                            will be streamed Dynamically during Gameplay.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/LevelSwitch_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LevelSwitch_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LevelSwitch_02.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
 
     <a class="back-link" href="index.html#projects">← Back to My-Games</a>
 </main>
-  </div> <!-- /project-glass -->
-  <script>
-      window.addEventListener("load", () => {
-          const loader = document.getElementById("loader");
-          if (!loader) {
-              document.body.classList.add("page-ready");
-              return;
-          }
+</div> <!-- /project-glass -->
 
-          // Explosion duration before fade-out starts (in ms)
-          setTimeout(() => {
-              loader.classList.add("fade-out");
+<!-- ================== SCRIPTS ================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loader = document.getElementById("loader");
 
-              // 🔹 Start navbar + text-box animations at the same time
-              document.body.classList.add("page-ready");
-          }, 3000);
-      });
-  </script>
+        // When everything is loaded, fade out loader and start navbar animation
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                if (loader) {
+                    loader.classList.add("fade-out");
+                }
+                document.body.classList.add("page-ready");
+            }, 1500); // loader display time
+        });
+
+        // 🎥 Hover-to-play for gameplay video (keeps playing after hover)
+        const gameplayVideo = document.getElementById("gameplayVideo");
+        if (gameplayVideo) {
+            gameplayVideo.addEventListener("mouseenter", () => {
+                gameplayVideo.play().catch(() => {});
+            });
+            // No mouseleave pause – it continues playing
+        }
+
+        // 🔽 Accordion interaction
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach((header) => {
+            header.addEventListener("click", () => {
+                const item = header.parentElement;
+                const content = item.querySelector(".accordion-content");
+                const isOpen = item.classList.contains("open");
+
+                // close all others
+                document.querySelectorAll(".accordion-item.open").forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove("open");
+                        const openContent = openItem.querySelector(".accordion-content");
+                        if (openContent) {
+                            openContent.style.maxHeight = 0;
+                        }
+                    }
+                });
+
+                // toggle current
+                if (!isOpen) {
+                    item.classList.add("open");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    item.classList.remove("open");
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+
+        // ensure initial open item is sized correctly on load
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".accordion-item.open .accordion-content")
+                .forEach((content) => {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                });
+        });
+    });
+</script>
+
 </body>
 </html>
