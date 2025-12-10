@@ -770,13 +770,17 @@ body.project-page {
 
 /* ===== PROJECT PAGE: VIDEO SECTION ===== */
 
-.project-video-section {
-    margin: -10px auto 2rem;   /* pulls “Gameplay Video” + video upward */
-    text-align: center;
+/* Make gameplay video large again */
+.project-video-section iframe,
+.project-video-section video {
     width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
+    max-width: 900px;   /* 🔥 Adjust size here */
+    aspect-ratio: 16 / 9;
+    display: block;
+    margin: 0 auto;
+    border-radius: 16px;
 }
+
 
 /* ========== RESPONSIVE TWEAKS ========== */
 
@@ -967,6 +971,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
