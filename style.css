@@ -749,6 +749,25 @@ body.project-page {
     display: block;
 }
 
+/* ===========================
+   EXPRESSION IMAGE BLOCK
+   =========================== */
+.expression-image-block {
+    width: 100%;
+    margin: 1rem 0 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.expression-image-block img {
+    width: 100%;
+    max-width: 450px;  /* 🔹 FINAL SIZE (small & centered) */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
 /* ===== PROJECT PAGE: VIDEO SECTION ===== */
 
 .project-video-section {
@@ -967,4 +986,5 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
