@@ -761,7 +761,7 @@ body.project-page {
 
 .expression-image-block img {
     width: 100%;
-    max-width: 1200px;  /* 🔹 FINAL SIZE (small & centered) */
+    max-width: 1600px;  /* 🔹 FINAL SIZE (small & centered) */
     height: auto;
     border-radius: 0px;
     display: block;
@@ -971,6 +971,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
