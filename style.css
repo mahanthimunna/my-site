@@ -774,7 +774,7 @@ body.project-page {
 .project-video-section iframe,
 .project-video-section video {
     width: 100%;
-    max-width: 900px;   /* 🔥 Adjust size here */
+    max-width: 1200px;   /* 🔥 Adjust size here */
     aspect-ratio: 16 / 9;
     display: block;
     margin: 0 auto;
@@ -971,6 +971,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
