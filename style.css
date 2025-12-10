@@ -761,9 +761,9 @@ body.project-page {
 
 .expression-image-block img {
     width: 100%;
-    max-width: 450px;  /* 🔹 FINAL SIZE (small & centered) */
+    max-width: 1200px;  /* 🔹 FINAL SIZE (small & centered) */
     height: auto;
-    border-radius: 10px;
+    border-radius: 0px;
     display: block;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
@@ -778,25 +778,6 @@ body.project-page {
     padding: 0 20px;
 }
 
-/* wrapper – just a simple centered frame */
-.video-wrapper {
-    background: rgba(0, 0, 0, 0.75);   /* glassy dark bg like the screenshot */
-    border-radius: 16px;
-    padding: 16px;
-    max-width: 1200px;
-    margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    display: block;
-}
 /* ========== RESPONSIVE TWEAKS ========== */
 
 @media (max-width: 900px) {
@@ -986,5 +967,6 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
