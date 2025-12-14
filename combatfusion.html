@@ -1,1 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Combat Fusion – Mahanthi Kannapalli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<div id="loader">
+    <div class="star-core"></div>
+
+    <!-- Shockwaves -->
+    <div class="star-wave wave-1"></div>
+    <div class="star-wave wave-2"></div>
+
+    <!-- Many particles -->
+    <div class="star-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
+
+<body class="project-page" style="--project-bg: url('images/combat-fusion.png');">
+  <!-- 🔹 special class ONLY on project pages -->
+
+<nav class="navbar">
+    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+  
+  <div class="project-glass">
+<!-- FIXED BACKGROUND HERO JUST FOR THIS PAGE -->
+<header class="project-hero">
+    <div class="project-hero-overlay">
+        <h1>Combat Fusion</h1>
+        <p>Combat Fusion – Unreal Engine 5</p>
+
+        <div class="project-hero-tags">
+            <span>Unreal 5</span>
+            <span>Blueprints</span>
+            <span>Hand Combat</span>
+        </div>
+    </div>
+</header>
+
+<main class="project-content">
+
+        <!-- 🎥 GAMEPLAY VIDEO SECTION -->
+        <section class="project-video-section">
+            <!-- 🔹 EXPRESSION HEADING -->
+            <h2>EXPRESSION</h2>
+
+    <!-- 🔹 EXPRESSION IMAGE -->
+            <div class="expression-image-block">
+                <img src="images/combat-fusion.png" alt="Expression Image">
+            </div>
+            <h2>GAMEPLAY VIDEO</h2>
+                <iframe
+                  src="https://www.youtube.com/embed/IXkhcE3dNX0?si=AmenC_4S_tS9IC3n"
+                  title="Echos of Lie – Gameplay"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+        </section>
+
+    <!-- 🔽 DROPDOWN TABS / ACCORDION SECTION -->
+        <section class="project-accordion-section">
+            <h2>SYSTEMS & RESPONSIBILITIES</h2>
+
+            <div class="accordion">
+
+                <!-- ITEM 1 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Player Attack Rate Function — Blueprint Implementation
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            This Blueprint function calculates the player’s Dynamic Attack Rate 
+                            by iterating through stored combat data for each enemy. It performs 
+                            multiple summations — including weighted attack impact (WiHi), penalty 
+                            modifiers (PjMj), and temporal decay factors (T and G) — to produce 
+                            a balanced metric that reflects real-time combat performance. 
+                            The system integrates time-based decay using exponential functions 
+                            and aggregates results to determine the final Attack Rate Output, 
+                            influencing player abilities and special attack activation during gameplay.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/DARBPImplementation.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                 <!-- ITEM 2 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Summation of Wi (Weighted Hits)
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            This section focuses on calculating the summation of Wi, representing the total contribution 
+                            of each successful attack weighted by importance. It retrieves the enemy’s stored attack data, 
+                            loops through each event, and adds values adjusted by an exponential decay based on time, 
+                            ensuring older actions have less influence.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/SumofWi.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Summation of WiHi and PjMj
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            This part computes two core parameters:
+                            WiHi: The total weighted impact of all successful hits.
+                            PjMj: The accumulated penalty for missed or failed attacks.
+                            Both are processed with time-based decay and stored for the final calculation, ensuring the player’s consistency and precision directly affect the attack rate.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/SumofWiHiandPjMj.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                 <!-- ITEM 4 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Summation of T and G
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            This section handles temporal and gameplay gap adjustments. 
+                            The summation of T accounts for the average attack timing intervals, 
+                            while G integrates global gameplay modifiers such as overall combo flow or gap duration. 
+                            These values stabilize the formula to maintain fairness and responsiveness.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/SumofTandG.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 5 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Final Output (Attack Rate Calculation)
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           The last part of the Blueprint compiles all the computed summations — WiHi, PjMj, T, and G — 
+                            into the final Attack Rate formula. It divides the total weighted hit values by the combined penalties 
+                            and timing modifiers to generate a single normalized output. This output dynamically controls 
+                            combat performance metrics and unlocks special abilities when thresholds are met.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/FinalOutput.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 6 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Enemy Attack Data Structure and Map Setup
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           This setup defines and stores all combat-related information for each enemy. 
+                            The EnemyAttackData structure contains arrays for attacks, hits, penalties, 
+                            and hit checks, along with a combo boolean to track combo states. These values 
+                            are organized in an Enemy Data Map, allowing the system to record and update individual 
+                            enemy interactions dynamically. This structure ensures accurate calculation 
+                            of the player’s attack rate and performance per enemy during combat.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/DSandMapSetup_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DSandMapSetup_02.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                 <!-- ITEM 7 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Damage Calculation Blueprint
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           This blueprint visualizes the logic for handling enemy damage in the combat system. 
+                            When the player attacks, the system detects a hit using a sphere trace, identifies the enemy, 
+                            and applies calculated damage based on player stats and attack type. It updates multiple arrays 
+                            to track hit data, stores attack rate values for performance analysis, and triggers visual or 
+                            sound feedback for successful hits. The setup ensures accurate damage registration, organized 
+                            data management, and smooth interaction between player and enemy systems.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/DamageCalBP.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                 <!-- ITEM 8 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Finisher Attack Blueprint Implementation
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           This blueprint represents the Finisher Attack system created inside the 
+                            BP_ThirdPersonCharacter Event Graph. It combines animation, combat logic, and 
+                            data handling to execute a cinematic final attack when specific conditions are met. 
+                            The system first checks for the nearest enemy and confirms attack eligibility. 
+                            It then triggers root motion animations, launches the player toward the target, 
+                            and applies damage values. Simultaneously, it manages enemy data arrays, clearing 
+                            and updating them after execution to prevent repeated triggers. The blueprint also 
+                            handles player movement lock, animation synchronization, and resets attack-related 
+                            variables once the finisher completes. Overall, this system integrates player movement, 
+                            targeting, and combat states into a cohesive and responsive finishing move sequence.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/FinisherAttackBP.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 9 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Equip and Unequip Weapon System
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           A Blueprint setup that allows the player to seamlessly draw or sheathe their weapon 
+                            using the mouse wheel. It plays equip/unequip animations and attaches the 
+                            sword between the hand and sheath sockets dynamically.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/EquipandUnequip.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 10 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Target System Component Setup
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           The target system logic is written inside a custom component blueprint 
+                            (BP_TargetComponent) added to the BP_ThirdPersonCharacter.
+                           This setup keeps the targeting functions like LockTarget, UnlockTarget and 
+                            FlipFlopping Toggle modular, reusable, and separate from the main character 
+                            blueprint, ensuring a cleaner and scalable design.
+                           These functions handle the detection of nearby enemies, switching targets, 
+                            and maintaining camera focus on the locked target. This approach allows the 
+                            player to dynamically lock, unlock, and switch between targets smoothly during combat
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/TargetandCompSetup_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/TargetandCompSetup_02.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+                <!-- ITEM 11 -->
+                <div class="accordion-item open">
+                    <button class="accordion-header">
+                        <div class="accordion-left">
+                            <i class="bx bx-transfer-alt"></i>
+                            <span class="accordion-title">
+                                Attack Montage Setup and Animation Blueprint Integration
+                            </span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                           This setup shows the implementation of the attack montage and its integration 
+                            within the animation blueprint. In the attack montage, various animation notifies 
+                            such as AirPierce, TakeDamage, SaveSword, and ResetSword are precisely timed along 
+                            the sword swing to trigger gameplay actions like visual effects, damage calculation, 
+                            and weapon state updates. These notifies are then connected in the animation blueprint 
+                            event graph, where each event communicates with the player character to execute functions 
+                            such as saving and resetting attack states, checking for damage, managing combo transitions, 
+                            and activating finisher attacks. Together, this system ensures synchronized timing 
+                            between animation and gameplay, creating a smooth and responsive combat experience.
+                        </p>
+                        <!-- Example image (optional) -->
+                        <img src="images/ABP_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/ABP_02.png" alt="FSM Blueprint" class="accordion-image">
+                    </div>
+                </div>
+
+
+
+
+
+    <a class="back-link" href="index.html#projects">← Back to My-Games</a>
+</main>
+</div> <!-- /project-glass -->
+
+<!-- ================== SCRIPTS ================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loader = document.getElementById("loader");
+
+        // When everything is loaded, fade out loader and start navbar animation
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                if (loader) {
+                    loader.classList.add("fade-out");
+                }
+                document.body.classList.add("page-ready");
+            }, 1500); // loader display time
+        });
+
+        // 🎥 Hover-to-play for gameplay video (keeps playing after hover)
+        const gameplayVideo = document.getElementById("gameplayVideo");
+        if (gameplayVideo) {
+            gameplayVideo.addEventListener("mouseenter", () => {
+                gameplayVideo.play().catch(() => {});
+            });
+            // No mouseleave pause – it continues playing
+        }
+
+        // 🔽 Accordion interaction
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach((header) => {
+            header.addEventListener("click", () => {
+                const item = header.parentElement;
+                const content = item.querySelector(".accordion-content");
+                const isOpen = item.classList.contains("open");
+
+                // close all others
+                document.querySelectorAll(".accordion-item.open").forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove("open");
+                        const openContent = openItem.querySelector(".accordion-content");
+                        if (openContent) {
+                            openContent.style.maxHeight = 0;
+                        }
+                    }
+                });
+
+                // toggle current
+                if (!isOpen) {
+                    item.classList.add("open");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    item.classList.remove("open");
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+
+        // ensure initial open item is sized correctly on load
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".accordion-item.open .accordion-content")
+                .forEach((content) => {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                });
+        });
+    });
+</script>
+
+</body>
+</html>
