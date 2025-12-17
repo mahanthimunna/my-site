@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Private Room – Mahanthi Kannapalli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="star-core"></div>
+    <div class="star-wave wave-1"></div>
+    <div class="star-wave wave-2"></div>
+    <div class="star-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
+
+<body class="project-page" style="--project-bg: url('images/private-room.png');">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="project-glass">
+
+<!-- HERO -->
+<header class="project-hero">
+    <div class="project-hero-overlay">
+        <h1>Private Room</h1>
+        <p>3D Environment – Maya to Unreal Engine</p>
+
+        <div class="project-hero-tags">
+            <span>Maya</span>
+            <span>Unreal Engine</span>
+            <span>Environment Art</span>
+        </div>
+    </div>
+</header>
+
+<main class="project-content">
+
+<!-- VIDEO / RENDER -->
+<section class="project-video-section">
+    <h2>SCENE SHOWCASE</h2>
+    <iframe
+        src=""
+        title="Private Room Showcase"
+        frameborder="0"
+        allowfullscreen
+    ></iframe>
+</section>
+
+<!-- ACCORDION -->
+<section class="project-accordion-section">
+    <h2>SYSTEMS & RESPONSIBILITIES</h2>
+
+    <div class="accordion">
+
+        <!-- EMPTY ITEM -->
+        <div class="accordion-item open">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-cube"></i>
+                    <span class="accordion-title">
+                        ENVIRONMENT BREAKDOWN
+                    </span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <!-- ADD CONTENT LATER -->
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<a class="back-link" href="index.html#projects">← Back to Projects</a>
+
+</main>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    window.addEventListener("load", () => {
+        document.getElementById("loader")?.classList.add("fade-out");
+        document.body.classList.add("page-ready");
+    });
+
+    document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const item = header.parentElement;
+            const content = item.querySelector(".accordion-content");
+            const isOpen = item.classList.contains("open");
+
+            document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove("open");
+                    openItem.querySelector(".accordion-content").style.maxHeight = 0;
+                }
+            });
+
+            if (!isOpen) {
+                item.classList.add("open");
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                item.classList.remove("open");
+                content.style.maxHeight = 0;
+            }
+        });
+    });
+
+    document.querySelectorAll(".accordion-item.open .accordion-content")
+        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+
+});
+</script>
+
+</body>
+</html>
