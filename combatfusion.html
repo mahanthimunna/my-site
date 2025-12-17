@@ -58,7 +58,7 @@
             <h2>GAMEPLAY VIDEO</h2>
                 <iframe
                   src="https://www.youtube.com/embed/gTxc9A_458g"
-                  title="Echos of Lie – Gameplay"
+                  title="Combat Fusion – Gameplay"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen
@@ -77,24 +77,23 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Player Attack Rate Function — Blueprint Implementation
+                                CHARACTER SETUP
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                            This Blueprint function calculates the player’s Dynamic Attack Rate 
-                            by iterating through stored combat data for each enemy. It performs 
-                            multiple summations — including weighted attack impact (WiHi), penalty 
-                            modifiers (PjMj), and temporal decay factors (T and G) — to produce 
-                            a balanced metric that reflects real-time combat performance. 
-                            The system integrates time-based decay using exponential functions 
-                            and aggregates results to determine the final Attack Rate Output, 
-                            influencing player abilities and special attack activation during gameplay.
+                            Implementation of the player’s animation system in Unreal Engine — 
+                            combining locomotion, jumping, ledge climbing, and attack states through 
+                            layered state machines, blend poses, and animation notifies to manage 
+                            seamless transitions and combat logic.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/DARBPImplementation.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/CharSetup_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/CharSetup_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/CharSetup_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/CharSetup_03.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -104,20 +103,21 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Summation of Wi (Weighted Hits)
+                                TWO-PHASE ROTATING GATE
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                            This section focuses on calculating the summation of Wi, representing the total contribution 
-                            of each successful attack weighted by importance. It retrieves the enemy’s stored attack data, 
-                            loops through each event, and adds values adjusted by an exponential decay based on time, 
-                            ensuring older actions have less influence.
+                            This Blueprint setup enables a gate to rotate clockwise on the 
+                            first press and anticlockwise on the second press of the ‘R’ key. 
+                            It uses a FlipFlop node to alternate the rotation direction, a 
+                            Timeline to control smooth rotation, and Disable/Enable Input nodes 
+                            with a short delay to prevent repeated triggers during rotation.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/SumofWi.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/2-PRotGate.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -127,20 +127,23 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Summation of WiHi and PjMj
+                                LEVEL BLOCKOUTS
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>
+                        <!-- <p>
                             This part computes two core parameters:
                             WiHi: The total weighted impact of all successful hits.
                             PjMj: The accumulated penalty for missed or failed attacks.
                             Both are processed with time-based decay and stored for the final calculation, ensuring the player’s consistency and precision directly affect the attack rate.
-                        </p>
+                        </p> -->
                         <!-- Example image (optional) -->
-                        <img src="images/SumofWiHiandPjMj.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LBlockout_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LBlockout_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LBlockout_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LBlockout_03.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -150,20 +153,26 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Summation of T and G
+                                PLAYER ABILITIES
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>
+                        <!--<p>
                             This section handles temporal and gameplay gap adjustments. 
                             The summation of T accounts for the average attack timing intervals, 
                             while G integrates global gameplay modifiers such as overall combo flow or gap duration. 
                             These values stabilize the formula to maintain fairness and responsiveness.
-                        </p>
+                        </p> -->
                         <!-- Example image (optional) -->
-                        <img src="images/SumofTandG.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_03.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_04.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_05.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAbilities_06.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -173,20 +182,30 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Final Output (Attack Rate Calculation)
+                                LEDGE CLIMBING
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           The last part of the Blueprint compiles all the computed summations — WiHi, PjMj, T, and G — 
-                            into the final Attack Rate formula. It divides the total weighted hit values by the combined penalties 
-                            and timing modifiers to generate a single normalized output. This output dynamically controls 
-                            combat performance metrics and unlocks special abilities when thresholds are met.
+                           I implemented the ledge detection and movement system for the player. 
+                            The first blueprint setup handles the ledge movement mechanics, 
+                            allowing the character to move left and right along the ledge while 
+                            maintaining smooth transitions and correct positioning. Each direction 
+                            has its own logic flow that updates the player’s location and rotation 
+                            using interpolation for natural movement.
+                           I used multiple capsule and line traces to detect ledges in front 
+                            of the player and determine the exact height and position of the ledge. 
+                            Once detected, the system sets the proper ledge height location and 
+                            aligns the character’s hands and body to match the ledge surface using 
+                            Fix Char Location and Fix Char Rotation functions. This ensures the character 
+                            correctly snaps to the ledge and interacts with it realistically during gameplay.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/FinalOutput.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LClimb_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LClimb_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/LClimb_02.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -196,23 +215,29 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Enemy Attack Data Structure and Map Setup
+                                TELEPORT ABILITY SYSTEM
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           This setup defines and stores all combat-related information for each enemy. 
-                            The EnemyAttackData structure contains arrays for attacks, hits, penalties, 
-                            and hit checks, along with a combo boolean to track combo states. These values 
-                            are organized in an Enemy Data Map, allowing the system to record and update individual 
-                            enemy interactions dynamically. This structure ensures accurate calculation 
-                            of the player’s attack rate and performance per enemy during combat.
+                           I created a teleport system for the player using Blueprints. 
+                            When I press the right mouse button, a line trace checks for a 
+                            valid location in front of the player. If it hits a surface, the 
+                            player teleports to that point. Before teleporting, I made the mesh 
+                            invisible and spawned visual effects (Gideon and Meteor effects) 
+                            to enhance the teleport animation. The teleport movement is smoothly 
+                            handled using the Move Component To node. Once the teleport ends, 
+                            I made the mesh visible again, added a short delay, and destroyed the 
+                            spawned effects to clean up the scene. The system is fully controlled 
+                            with boolean checks to avoid repeated teleporting during execution.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/DSandMapSetup_01.png" alt="FSM Blueprint" class="accordion-image">
-                        <img src="images/DSandMapSetup_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/TAbility_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/TAbility_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/TAbility_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/TAbility_03.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -222,22 +247,28 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Damage Calculation Blueprint
+                                DOUBLE JUMP
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           This blueprint visualizes the logic for handling enemy damage in the combat system. 
-                            When the player attacks, the system detects a hit using a sphere trace, identifies the enemy, 
-                            and applies calculated damage based on player stats and attack type. It updates multiple arrays 
-                            to track hit data, stores attack rate values for performance analysis, and triggers visual or 
-                            sound feedback for successful hits. The setup ensures accurate damage registration, organized 
-                            data management, and smooth interaction between player and enemy systems.
+                           In this setup, I created a Jump and Bounce Jump system that handles 
+                            both normal and enhanced jumps. When the jump input is triggered, 
+                            it first checks if the player is attached to a ledge and detaches 
+                            if needed. Then, the player performs a jump, and a short delay 
+                            increases the Jump Count. When the player reaches the bounce jump 
+                            condition, a jump montage plays to visually enhance the motion before 
+                            applying the launch force. Using the Launch Character node adds extra 
+                            upward velocity, creating a smooth bounce effect. Finally, when the 
+                            player lands, the Jump Count resets to maintain consistent jump control.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/DamageCalBP.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DJump_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DJump_01.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DJump_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/DJump_03.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -247,26 +278,27 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Finisher Attack Blueprint Implementation
+                                PROJECTILE ATTACK
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           This blueprint represents the Finisher Attack system created inside the 
-                            BP_ThirdPersonCharacter Event Graph. It combines animation, combat logic, and 
-                            data handling to execute a cinematic final attack when specific conditions are met. 
-                            The system first checks for the nearest enemy and confirms attack eligibility. 
-                            It then triggers root motion animations, launches the player toward the target, 
-                            and applies damage values. Simultaneously, it manages enemy data arrays, clearing 
-                            and updating them after execution to prevent repeated triggers. The blueprint also 
-                            handles player movement lock, animation synchronization, and resets attack-related 
-                            variables once the finisher completes. Overall, this system integrates player movement, 
-                            targeting, and combat states into a cohesive and responsive finishing move sequence.
+                           I created the Projectile Attack system for the player character. 
+                            When the attack input is triggered, it checks if the projectile ability 
+                            is active and then spawns a projectile in the direction the camera is facing. 
+                            I used a Line Trace by Channel to get the hit location and calculate the 
+                            direction from the player’s weapon to the target point. The projectile is 
+                            spawned using a Transform location and rotation derived from the trace result 
+                            to ensure accurate aiming. When the projectile hits an actor, it applies 
+                            damage using the Apply Damage node, plays the impact effect, and triggers 
+                            a hit reaction on the target. This setup makes the attack feel responsive 
+                            and accurate, with proper collision and damage feedback on impact.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/FinisherAttackBP.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAttack_00.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/PAttack_01.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -276,19 +308,21 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Equip and Unequip Weapon System
+                                BASE BEHAVIOR TREE SETUP
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           A Blueprint setup that allows the player to seamlessly draw or sheathe their weapon 
-                            using the mouse wheel. It plays equip/unequip animations and attaches the 
-                            sword between the hand and sheath sockets dynamically.
+                           This is my base behavior tree which defines the core AI logic 
+                            shared by all enemy types. It uses blackboard-based conditions to 
+                            switch between Frozen, Combat, Investigating, and Patrol (Passive) states. 
+                            Each state runs its own subtree, allowing enemies to behave dynamically 
+                            depending on their current state.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/EquipandUnequip.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/BaseBT.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -298,25 +332,21 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Target System Component Setup
+                                MELEE ENEMY BEHAVIOR TREE
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           The target system logic is written inside a custom component blueprint 
-                            (BP_TargetComponent) added to the BP_ThirdPersonCharacter.
-                           This setup keeps the targeting functions like LockTarget, UnlockTarget and 
-                            FlipFlopping Toggle modular, reusable, and separate from the main character 
-                            blueprint, ensuring a cleaner and scalable design.
-                           These functions handle the detection of nearby enemies, switching targets, 
-                            and maintaining camera focus on the locked target. This approach allows the 
-                            player to dynamically lock, unlock, and switch between targets smoothly during combat
+                           The melee enemy’s behavior tree is also derived from the base tree but 
+                            focuses on close-range combat. In its Attack State, the enemy can equip 
+                            or unequip its sword, block player attacks, and strafe around the player 
+                            before attacking. It uses EQS for movement decisions and ensures the sword 
+                            is unsheathed only during active combat, giving a more realistic melee behavior.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/TargetandCompSetup_01.png" alt="FSM Blueprint" class="accordion-image">
-                        <img src="images/TargetandCompSetup_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/MeleeEnemyBT.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
@@ -326,26 +356,21 @@
                         <div class="accordion-left">
                             <i class="bx bx-transfer-alt"></i>
                             <span class="accordion-title">
-                                Attack Montage Setup and Animation Blueprint Integration
+                                RANGED ENEMY BEHAVOIR TREE
                             </span>
                         </div>
                         <span class="accordion-toggle-icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <p>
-                           This setup shows the implementation of the attack montage and its integration 
-                            within the animation blueprint. In the attack montage, various animation notifies 
-                            such as AirPierce, TakeDamage, SaveSword, and ResetSword are precisely timed along 
-                            the sword swing to trigger gameplay actions like visual effects, damage calculation, 
-                            and weapon state updates. These notifies are then connected in the animation blueprint 
-                            event graph, where each event communicates with the player character to execute functions 
-                            such as saving and resetting attack states, checking for damage, managing combo transitions, 
-                            and activating finisher attacks. Together, this system ensures synchronized timing 
-                            between animation and gameplay, creating a smooth and responsive combat experience.
+                           For the ranged enemy, I duplicated the base behavior tree and added more complex logic. 
+                            In the Attack State, the enemy uses a rifle to attack, can block player attacks, 
+                            and will run and hide to heal when its health is low. After healing, it returns 
+                            to combat. The system also includes movement to line of sight, strafing around 
+                            the player, and dynamic positioning using EQS queries for smarter cover and attack points.
                         </p>
                         <!-- Example image (optional) -->
-                        <img src="images/ABP_01.png" alt="FSM Blueprint" class="accordion-image">
-                        <img src="images/ABP_02.png" alt="FSM Blueprint" class="accordion-image">
+                        <img src="images/RangedEnemyBT.png" alt="FSM Blueprint" class="accordion-image">
                     </div>
                 </div>
 
