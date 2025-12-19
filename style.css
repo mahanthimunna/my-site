@@ -818,9 +818,10 @@ body.project-page {
     }
 
     .project-hero-overlay {
-        padding: 1rem 1rem 0.75rem;      /* 🔥 smaller, controlled */
-        width: min(92vw, 900px);
-        border-radius: 18px;
+        padding: 0.9rem 0.9rem 0.7rem;      /* 🔥 smaller, controlled */
+        width: min(78vw, 520px);
+        max-width: 520px;
+        border-radius: 22px;
     }
 
     .video-wrapper {
@@ -862,6 +863,16 @@ body.project-page {
     */
     border-radius: 5px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+    .project-hero-overlay {
+    width: min(82vw, 420px);
+    max-width: 420px;
+    padding: 0.8rem 0.8rem 0.65rem;
+}
+
+    .project-hero-overlay h1 {
+    letter-spacing: 4px; /* less spacing fits better */
 }
 }
 
@@ -993,6 +1004,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
