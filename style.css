@@ -885,11 +885,11 @@ body.project-page {
 
     /* IMPORTANT: overlay sizing only here (no duplicate global rules) */
     .project-hero-overlay {
-        padding: 0.9rem 0.9rem 0.7rem;
-        width: min(90vw, 900px);
-        max-width: 900px;
-        border-radius: 22px;
-    }
+    padding: 1rem 1.1rem 0.85rem;
+    width: calc(100% - 24px);   /* almost full width */
+    max-width: 900px;          /* don’t cap it smaller */
+    border-radius: 18px;
+  }
 
     .project-hero-overlay h1 {
         letter-spacing: 4px;
@@ -915,6 +915,12 @@ body.project-page {
         font-size: 2.2rem;
         letter-spacing: 4px;
     }
+
+   .project-hero-overlay {
+    width: calc(100% - 16px);  /* even closer to edges */
+    border-radius: 16px;
+    padding: 0.95rem 1rem 0.8rem;
+  }
 }
 
 
@@ -1047,4 +1053,5 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
