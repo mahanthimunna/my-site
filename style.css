@@ -866,7 +866,7 @@ body.project-page {
 }
 
     .project-hero-overlay {
-    width: min(62vw, 420px);
+    width: min(15vw, 420px);
     max-width: 420px;
     padding: 0.8rem 0.8rem 0.65rem;
 }
@@ -1000,6 +1000,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
