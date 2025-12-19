@@ -863,13 +863,6 @@ body.project-page {
     border-radius: 5px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
 }
-
-@media (max-width: 600px) {
-    .project-glass {
-        width: calc(100% - 24px);  /* tighter phone spacing */
-        margin: 86px auto 24px;    /* still below navbar */
-        padding: 18px 14px 28px;   /* smaller inner padding */
-    }
 }
 
 /* ================== PROJECT PAGE ACCORDION ================== */
@@ -1000,6 +993,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
