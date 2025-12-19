@@ -885,9 +885,9 @@ body.project-page {
 
     /* IMPORTANT: overlay sizing only here (no duplicate global rules) */
     .project-hero-overlay {
-        padding: 0.8rem 0.9rem 0.65rem;
-        width: min(82vw, 520px);
-        max-width: 520px;
+        padding: 0.9rem 0.9rem 0.7rem;
+        width: min(90vw, 900px);
+        max-width: 900px;
         border-radius: 22px;
     }
 
@@ -1047,3 +1047,4 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
