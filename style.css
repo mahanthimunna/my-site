@@ -1,10 +1,6 @@
-/* ============================
-   GLOBAL / RESET
-   ============================ */
-
-html, body {
-    overflow-x: hidden;
-}
+/* =========================================================
+   1) GLOBAL / RESET
+   ========================================================= */
 
 :root {
     --bg-color: #1f242d;
@@ -16,18 +12,20 @@ html, body {
     --nav-h: 70px;
 }
 
-/* GLOBAL RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
-/* BODY BASE */
 body {
     min-height: 100vh;
     font-family: system-ui, sans-serif;
@@ -47,10 +45,14 @@ img, video, iframe {
     outline-offset: 3px;
 }
 
+/* Scroll offset for anchors */
+#about { scroll-margin-top: var(--nav-h); }
+#projects { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
-/* ============================
-   NAVBAR
-   ============================ */
+
+/* =========================================================
+   2) NAVBAR
+   ========================================================= */
 
 .navbar {
     position: fixed;
@@ -62,14 +64,16 @@ img, video, iframe {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: rgba(11, 16, 23, 0.95);
     backdrop-filter: blur(10px);
+
     z-index: 10;
 
     transform: translateY(-100%);
     opacity: 0;
 
-    animation: navbarSlideDown 2.0s ease-out 1.2s forwards;
+    animation: navbarSlideDown 2s ease-out 1.2s forwards;
     animation-play-state: paused;
 }
 
@@ -96,14 +100,123 @@ img, video, iframe {
 }
 
 @keyframes navbarSlideDown {
-    0% { transform: translateY(-100%); opacity: 0; }
+    0%   { transform: translateY(-100%); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 
 
-/* ============================
-   HOME PAGE (INDEX)
-   ============================ */
+/* =========================================================
+   3) LOADER (STAR EXPLOSION)
+   ========================================================= */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #03040a 0%, #000 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 99999;
+    transition: opacity 0.9s ease-out, visibility 0.9s ease-out;
+}
+
+#loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Star Core */
+.star-core {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, #7df0ff, #3a7bff);
+    box-shadow: 0 0 50px #7df0ff, 0 0 120px #3a7bff;
+    animation: corePulse 2s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* Shockwaves */
+.star-wave {
+    position: absolute;
+    width: 120vmin;
+    height: 120vmin;
+    border-radius: 50%;
+    border: 2px solid rgba(140, 210, 255, 0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wave-1 { animation: waveExpand 2.5s ease-out infinite; }
+.wave-2 { animation: waveExpand 2.5s ease-out infinite; animation-delay: 1s; }
+
+/* Particles */
+.star-particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #bff8ff;
+    box-shadow: 0 0 12px #7df0ff, 0 0 24px rgba(80, 200, 255, 1);
+    opacity: 0;
+    animation: particleScatter 2s ease-out infinite;
+}
+
+@keyframes particleScatter {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0.4); }
+}
+
+@keyframes waveExpand {
+    0%   { transform: scale(0.2); opacity: 1; }
+    70%  { transform: scale(1); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes corePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px #7df0ff, 0 0 100px #3a7bff;
+    }
+    50% {
+        transform: scale(1.4);
+        box-shadow: 0 0 65px #a8f6ff, 0 0 150px #3a7bff;
+    }
+}
+
+/* Directions for each star */
+.star-particles span:nth-child(1)  { --x: 350px;  --y: 0; }
+.star-particles span:nth-child(2)  { --x: -350px; --y: 0; }
+.star-particles span:nth-child(3)  { --x: 0;      --y: 350px; }
+.star-particles span:nth-child(4)  { --x: 0;      --y: -350px; }
+.star-particles span:nth-child(5)  { --x: 260px;  --y: 260px; }
+.star-particles span:nth-child(6)  { --x: -260px; --y: 260px; }
+.star-particles span:nth-child(7)  { --x: 260px;  --y: -260px; }
+.star-particles span:nth-child(8)  { --x: -260px; --y: -260px; }
+.star-particles span:nth-child(9)  { --x: 500px;  --y: 120px; }
+.star-particles span:nth-child(10) { --x: -500px; --y: -150px; }
+.star-particles span:nth-child(11) { --x: 150px;  --y: 500px; }
+.star-particles span:nth-child(12) { --x: -150px; --y: -500px; }
+.star-particles span:nth-child(13) { --x: 420px;  --y: -220px; }
+.star-particles span:nth-child(14) { --x: -420px; --y: 200px; }
+.star-particles span:nth-child(15) { --x: 600px;  --y: 0; }
+.star-particles span:nth-child(16) { --x: -600px; --y: 0; }
+.star-particles span:nth-child(17) { --x: 80px;   --y: 600px; }
+.star-particles span:nth-child(18) { --x: -200px; --y: 600px; }
+.star-particles span:nth-child(19) { --x: 350px;  --y: -450px; }
+.star-particles span:nth-child(20) { --x: -350px; --y: 450px; }
+
+/* When loader finishes, play navbar + text box animations */
+body.page-ready .navbar,
+body.page-ready .text-box {
+    animation-play-state: running;
+}
+
+
+/* =========================================================
+   4) HOME PAGE (INDEX)
+   ========================================================= */
 
 .home {
     position: relative;
@@ -117,7 +230,7 @@ img, video, iframe {
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
 }
 
-/* BARS ANIMATION */
+/* Bars animation */
 .bars-animation {
     position: absolute;
     inset: 0;
@@ -142,10 +255,10 @@ img, video, iframe {
 
 @keyframes barMove {
     0%, 100% { transform: translateY(0) scaleY(0.3); }
-    50% { transform: translateY(-50px) scaleY(1); }
+    50%      { transform: translateY(-50px) scaleY(1); }
 }
 
-/* CENTER CONTAINER ON HOME */
+/* Center container */
 .center-container {
     z-index: 2;
     display: flex;
@@ -155,7 +268,7 @@ img, video, iframe {
     gap: 2rem;
 }
 
-/* HOME IMAGE BOX */
+/* Home image box */
 .home-img .img-box {
     width: min(70vw, 850px);
     aspect-ratio: 1 / 1;
@@ -173,9 +286,8 @@ img, video, iframe {
     background: #050711;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow:
-            0 0 0 1px rgba(100, 180, 255, 0.4),
-            0 0 28px rgba(52, 52, 195, 0.75);
+    box-shadow: 0 0 0 1px rgba(100, 180, 255, 0.4),
+                0 0 28px rgba(52, 52, 195, 0.75);
     animation: pulseGlow 3s ease-in-out infinite;
 }
 
@@ -187,30 +299,25 @@ img, video, iframe {
 
 @keyframes pulseGlow {
     0%, 100% {
-        box-shadow:
-                0 0 0 1px rgba(100, 180, 255, 0.4),
-                0 0 22px rgba(52, 52, 195, 0.65);
+        box-shadow: 0 0 0 1px rgba(100, 180, 255, 0.4),
+                    0 0 22px rgba(52, 52, 195, 0.65);
     }
     50% {
-        box-shadow:
-                0 0 0 1px rgba(140, 220, 255, 0.8),
-                0 0 40px rgba(100, 220, 255, 0.95);
+        box-shadow: 0 0 0 1px rgba(140, 220, 255, 0.8),
+                    0 0 40px rgba(100, 220, 255, 0.95);
     }
 }
 
-/* HOME TEXT BOX BELOW IMAGE */
+/* Home text box */
 .text-box {
     background: rgba(10, 20, 32, 0.85);
     backdrop-filter: blur(4px);
     border-radius: 0;
     padding: 0 50px;
-    margin-left: auto;
-    margin-right: auto;
     width: 100%;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
 
-    /* Keeping your original behavior (overlap look),
-       but this is the part that can be fragile on extreme screens. */
+    /* keeping your overlap design */
     margin-top: clamp(-325px, -20vw, -60px);
 
     position: relative;
@@ -218,16 +325,16 @@ img, video, iframe {
 
     transform: translateY(80px);
     opacity: 0;
-    animation: textBoxRise 2.0s ease-out 1.5s forwards;
+    animation: textBoxRise 2s ease-out 1.5s forwards;
     animation-play-state: paused;
 }
 
 @keyframes textBoxRise {
-    0% { transform: translateY(80px); opacity: 0; }
+    0%   { transform: translateY(80px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* HOME TEXT STYLES */
+/* Home text styles */
 .home-content h1 {
     font-size: 4rem;
     letter-spacing: 10px;
@@ -253,18 +360,14 @@ img, video, iframe {
     line-height: 1.25;
 }
 
-/* SCROLL OFFSET FOR ANCHORS */
-#about { scroll-margin-top: var(--nav-h); }
-#projects { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
-
-/* ============================
-   MY-GAMES SECTION
-   ============================ */
+/* =========================================================
+   5) MY-GAMES SECTION (PROJECT CARDS GRID)
+   ========================================================= */
 
 .games-section {
     padding: 40px 8% 110px;
-    margin-top: 0px !important;
+    margin-top: 0 !important;
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
     display: flex;
     justify-content: center;
@@ -293,7 +396,6 @@ img, video, iframe {
     text-transform: uppercase;
 }
 
-/* PROJECT CARDS GRID */
 .projects-grid {
     margin-top: 3rem;
     display: grid;
@@ -307,18 +409,14 @@ img, video, iframe {
     border-radius: 22px;
     overflow: hidden;
     background: radial-gradient(circle at top left, #22263a, #050711);
-    box-shadow:
-            0 0 0 1px rgba(90, 120, 200, 0.4),
-            0 18px 40px rgba(0, 0, 0, 0.7);
-    transform: translateY(0);
-    transition:
-            transform 0.25s ease-out,
-            box-shadow 0.25s ease-out,
-            background 0.25s ease-out;
+    box-shadow: 0 0 0 1px rgba(90, 120, 200, 0.4),
+                0 18px 40px rgba(0, 0, 0, 0.7);
+    transition: transform 0.25s ease-out,
+                box-shadow 0.25s ease-out,
+                background 0.25s ease-out;
     will-change: transform;
 }
 
-/* subtle glowing frame */
 .project-card::before {
     content: "";
     position: absolute;
@@ -333,17 +431,13 @@ img, video, iframe {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow:
-            0 0 0 1px rgba(140, 210, 255, 0.7),
-            0 26px 60px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 0 1px rgba(140, 210, 255, 0.7),
+                0 26px 60px rgba(0, 0, 0, 0.9);
     background: radial-gradient(circle at top, #2c3655, #050711);
 }
 
-.project-card:hover::before {
-    opacity: 0.7;
-}
+.project-card:hover::before { opacity: 0.7; }
 
-/* Card thumbnail */
 .project-thumb {
     position: relative;
     aspect-ratio: 4 / 3;
@@ -363,7 +457,6 @@ img, video, iframe {
     transform: scale(1.08);
 }
 
-/* Card body */
 .project-body {
     padding: 1.4rem 1.6rem 1.6rem;
 }
@@ -373,7 +466,6 @@ img, video, iframe {
     margin-bottom: 0.6rem;
 }
 
-/* Tags on cards */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -391,7 +483,6 @@ img, video, iframe {
     border: 1px solid rgba(120, 170, 255, 0.6);
 }
 
-/* Card description & bullets */
 .project-desc {
     font-size: 0.9rem;
     color: #c3c8e5;
@@ -400,8 +491,8 @@ img, video, iframe {
 
 .project-list {
     list-style: none;
-    padding-left: 0;
     margin: 0;
+    padding: 0;
 }
 
 .project-list li {
@@ -422,9 +513,9 @@ img, video, iframe {
 }
 
 
-/* ============================
-   CONTACT / FOOTER
-   ============================ */
+/* =========================================================
+   6) CONTACT / FOOTER
+   ========================================================= */
 
 .contact-section {
     padding: 60px 8% 35px;
@@ -474,7 +565,6 @@ img, video, iframe {
     box-shadow: 0 0 28px rgba(125, 240, 255, 0.5);
 }
 
-/* icon row */
 .contact-socials {
     display: flex;
     justify-content: center;
@@ -492,9 +582,8 @@ img, video, iframe {
     justify-content: center;
     background: radial-gradient(circle at 30% 30%, #1b2436, #050711);
     border: 1px solid rgba(120, 170, 255, 0.5);
-    box-shadow:
-            0 0 0 1px rgba(20, 30, 60, 0.9),
-            0 0 18px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 0 1px rgba(20, 30, 60, 0.9),
+                0 0 18px rgba(0, 0, 0, 0.85);
     text-decoration: none;
     transition: transform 0.18s ease-out,
                 box-shadow 0.18s ease-out,
@@ -509,9 +598,8 @@ img, video, iframe {
 .contact-socials a:hover {
     transform: translateY(-3px) scale(1.05);
     border-color: rgba(140, 210, 255, 1);
-    box-shadow:
-            0 0 0 1px rgba(140, 210, 255, 0.9),
-            0 0 26px rgba(90, 170, 255, 0.9);
+    box-shadow: 0 0 0 1px rgba(140, 210, 255, 0.9),
+                0 0 26px rgba(90, 170, 255, 0.9);
 }
 
 .contact-footer {
@@ -522,188 +610,37 @@ img, video, iframe {
     padding-top: 1rem;
 }
 
-/* small screens */
-@media (max-width: 600px) {
-    .contact-title {
-        font-size: 1.7rem;
-        letter-spacing: 4px;
-    }
 
-    .contact-email {
-        font-size: 0.9rem;
-        padding: 0.4rem 1.1rem;
-    }
-
-    .contact-socials a {
-        width: 42px;
-        height: 42px;
-    }
-
-    .contact-socials a i {
-        font-size: 1.2rem;
-    }
-}
-
-
-/* ============================
-   FULL SCREEN STAR EXPLOSION LOADER
-   ============================ */
-
-#loader {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at center, #03040a 0%, #000 80%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 99999;
-    transition: opacity 0.9s ease-out, visibility 0.9s ease-out;
-}
-
-#loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* STAR CORE */
-.star-core {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff, #7df0ff, #3a7bff);
-    box-shadow:
-            0 0 50px #7df0ff,
-            0 0 120px #3a7bff;
-    animation: corePulse 2s ease-in-out infinite;
-    z-index: 10;
-}
-
-/* SHOCKWAVES */
-.star-wave {
-    position: absolute;
-    width: 120vmin;
-    height: 120vmin;
-    border-radius: 50%;
-    border: 2px solid rgba(140, 210, 255, 0.6);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.wave-1 { animation: waveExpand 2.5s ease-out infinite; }
-.wave-2 { animation: waveExpand 2.5s ease-out infinite; animation-delay: 1s; }
-
-/* PARTICLES */
-.star-particles span {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #bff8ff;
-    box-shadow:
-            0 0 12px #7df0ff,
-            0 0 24px rgba(80, 200, 255, 1);
-    opacity: 0;
-    animation: particleScatter 2s ease-out infinite;
-}
-
-/* particle scatter */
-@keyframes particleScatter {
-    0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(var(--x), var(--y)) scale(0.4);
-    }
-}
-
-/* shockwave expansion */
-@keyframes waveExpand {
-    0% {
-        transform: scale(0.2);
-        opacity: 1;
-    }
-    70% {
-        transform: scale(1);
-        opacity: 0;
-    }
-    100% { opacity: 0; }
-}
-
-/* core pulse */
-@keyframes corePulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow:
-                0 0 40px #7df0ff,
-                0 0 100px #3a7bff;
-    }
-    50% {
-        transform: scale(1.4);
-        box-shadow:
-                0 0 65px #a8f6ff,
-                0 0 150px #3a7bff;
-    }
-}
-
-/* DIRECTIONS FOR EACH STAR */
-.star-particles span:nth-child(1)  { --x: 350px;  --y: 0; }
-.star-particles span:nth-child(2)  { --x: -350px; --y: 0; }
-.star-particles span:nth-child(3)  { --x: 0;      --y: 350px; }
-.star-particles span:nth-child(4)  { --x: 0;      --y: -350px; }
-.star-particles span:nth-child(5)  { --x: 260px;  --y: 260px; }
-.star-particles span:nth-child(6)  { --x: -260px; --y: 260px; }
-.star-particles span:nth-child(7)  { --x: 260px;  --y: -260px; }
-.star-particles span:nth-child(8)  { --x: -260px; --y: -260px; }
-.star-particles span:nth-child(9)  { --x: 500px;  --y: 120px; }
-.star-particles span:nth-child(10) { --x: -500px; --y: -150px; }
-.star-particles span:nth-child(11) { --x: 150px;  --y: 500px; }
-.star-particles span:nth-child(12) { --x: -150px; --y: -500px; }
-.star-particles span:nth-child(13) { --x: 420px;  --y: -220px; }
-.star-particles span:nth-child(14) { --x: -420px; --y: 200px; }
-.star-particles span:nth-child(15) { --x: 600px;  --y: 0; }
-.star-particles span:nth-child(16) { --x: -600px; --y: 0; }
-.star-particles span:nth-child(17) { --x: 80px;   --y: 600px; }
-.star-particles span:nth-child(18) { --x: -200px; --y: 600px; }
-.star-particles span:nth-child(19) { --x: 350px;  --y: -450px; }
-.star-particles span:nth-child(20) { --x: -350px; --y: 450px; }
-
-/* When loader finishes, play navbar + text box animations */
-body.page-ready .navbar,
-body.page-ready .text-box {
-    animation-play-state: running;
-}
-
-
-/* ============================
-   PROJECT DETAIL PAGES
-   ============================ */
+/* =========================================================
+   7) PROJECT DETAIL PAGES
+   ========================================================= */
 
 /* Expect: <body class="project-page" style="--project-bg: url('images/echos-of-lie.png');"> */
 body.project-page {
-    background-color: #050711;            /* fallback so it's never white */
-    background-image: var(--project-bg);  /* page-specific image */
+    background-color: #050711;
+    background-image: var(--project-bg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-/* Hero with background image */
+/* HERO: true center + adaptive spacing all sides */
 .project-hero {
     position: relative;
-
-    /* Ensure the hero starts below the navbar */
     margin-top: var(--nav-h);
 
-    /* Your original sizing idea, but stable centering */
-    min-height: clamp(260px, 35vh, 500px);
+    /* height behavior (keep your look) */
+    min-height: clamp(260px, 35vh, 520px);
 
+    /* TRUE CENTER */
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* 🔥 Adaptive “breathing room” on all sides */
+    padding: clamp(12px, 4vw, 48px);
+
     text-align: center;
 
     background-image: var(--project-bg);
@@ -713,23 +650,21 @@ body.project-page {
     background-attachment: fixed;
 }
 
-/* ONE clean overlay definition (no duplicates) */
+/* OVERLAY: width controlled by hero padding, stays centered */
 .project-hero-overlay {
+    width: 100%;
+    max-width: 1000px;
+    padding: clamp(0.85rem, 2.5vw, 1.4rem);
+    border-radius: clamp(14px, 2vw, 24px);
+
     background: radial-gradient(circle at center,
         rgba(0, 0, 0, 0.25),
         rgba(0, 0, 0, 0.85));
-    padding: 0.9rem 1.2rem 0.7rem;
-    border-radius: 24px;
-
-    /* default: responsive but not huge */
-    width: min(90vw, 900px);
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 .project-hero-overlay h1 {
-    font-size: clamp(2.4rem, 4vw, 3.2rem);
-    letter-spacing: 6px;
+    font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+    letter-spacing: clamp(3px, 1.2vw, 6px);
     margin-bottom: 0.6rem;
 }
 
@@ -781,20 +716,16 @@ body.project-page {
     text-decoration: none;
 }
 
-.back-link:hover {
-    text-decoration: underline;
-}
+.back-link:hover { text-decoration: underline; }
 
-/* clickable project cards */
+/* Clickable project cards */
 .project-link {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-/* ===========================
-   EXPRESSION IMAGE BLOCK
-   =========================== */
+/* Expression image block */
 .expression-image-block {
     width: 100%;
     margin: 1rem 0 2rem;
@@ -806,12 +737,12 @@ body.project-page {
     width: 100%;
     max-width: 1600px;
     height: auto;
-    border-radius: 0px;
+    border-radius: 0;
     display: block;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
 }
 
-/* ===== PROJECT PAGE: VIDEO SECTION ===== */
+/* Video section */
 .project-video-section iframe,
 .project-video-section video {
     width: 100%;
@@ -822,24 +753,15 @@ body.project-page {
     border-radius: 16px;
 }
 
-
-/* ============================
-   PROJECT GLASS CONTAINER
-   (fixed bug: braces + flow)
-   ============================ */
-
+/* Glass container */
 .project-glass {
     position: relative;
     z-index: 1;
 
-    /* outer padding from screen edges */
-    width: calc(100% - 40px); /* 20px gap on each side */
+    width: calc(100% - 40px);
     max-width: 2000px;
 
-    /* below navbar, some bottom space */
     margin: calc(var(--nav-h) + 20px) auto 40px;
-
-    /* inner padding around all content */
     padding: 30px 30px 50px;
 
     background: rgba(1, 0, 0, 0.82);
@@ -848,85 +770,9 @@ body.project-page {
 }
 
 
-/* ============================
-   RESPONSIVE TWEAKS
-   ============================ */
-
-@media (max-width: 900px) {
-    .home-content h1 {
-        font-size: 2.8rem;
-        letter-spacing: 6px;
-    }
-
-    .home-content h2 {
-        font-size: 1.2rem;
-        letter-spacing: 4px;
-    }
-
-    .text-box {
-        padding: 0 20px;
-        margin-top: -80px;
-    }
-
-    .games-section {
-        padding-bottom: 80px;
-    }
-
-    /* fixed bg breaks on phones */
-    body.project-page,
-    .project-hero {
-        background-attachment: scroll;
-    }
-
-    .project-hero {
-        min-height: 260px;
-        margin-top: var(--nav-h);
-    }
-
-    /* IMPORTANT: overlay sizing only here (no duplicate global rules) */
-    .project-hero-overlay {
-    padding: 1rem 1.1rem 0.85rem;
-    width: calc(100% - 24px);   /* almost full width */
-    max-width: 900px;          /* don’t cap it smaller */
-    border-radius: 18px;
-  }
-
-    .project-hero-overlay h1 {
-        letter-spacing: 4px;
-    }
-
-    /* You referenced .video-wrapper in your old file, keep harmless support */
-    .video-wrapper {
-        padding: 20px;
-    }
-
-    .video-wrapper video {
-        width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
-    .home-content h1 {
-        font-size: 2.2rem;
-        letter-spacing: 4px;
-    }
-
-    .games-title {
-        font-size: 2.2rem;
-        letter-spacing: 4px;
-    }
-
-   .project-hero-overlay {
-    width: calc(100% - 16px);  /* even closer to edges */
-    border-radius: 16px;
-    padding: 0.95rem 1rem 0.8rem;
-  }
-}
-
-
-/* ============================
-   PROJECT PAGE ACCORDION
-   ============================ */
+/* =========================================================
+   8) PROJECT PAGE ACCORDION
+   ========================================================= */
 
 .project-accordion-section {
     margin: 2rem auto 2.5rem;
@@ -946,7 +792,6 @@ body.project-page {
     margin: 0 auto;
 }
 
-/* each item card */
 .accordion-item {
     background: rgba(10, 15, 25, 0.9);
     border-radius: 10px;
@@ -962,7 +807,6 @@ body.project-page {
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
 }
 
-/* clickable header row */
 .accordion-header {
     width: 100%;
     padding: 0.9rem 1.2rem;
@@ -998,7 +842,6 @@ body.project-page {
     line-height: 1.25;
 }
 
-/* plus icon on the right */
 .accordion-toggle-icon {
     font-size: 1.4rem;
     line-height: 1;
@@ -1006,7 +849,6 @@ body.project-page {
     transition: transform 0.2s ease-out;
 }
 
-/* content area */
 .accordion-content {
     text-align: center !important;
     max-height: 0;
@@ -1023,7 +865,6 @@ body.project-page {
     text-align: left;
 }
 
-/* optional image styling inside content */
 .accordion-image {
     width: 100%;
     max-width: 640px;
@@ -1033,9 +874,8 @@ body.project-page {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
 }
 
-/* open state */
 .accordion-item.open .accordion-content {
-    max-height: 2000px; /* safer than 500px for future content */
+    max-height: 2000px;
     padding-top: 0.4rem;
     padding-bottom: 1.2rem;
 }
@@ -1044,14 +884,47 @@ body.project-page {
     transform: rotate(45deg);
 }
 
-@media (max-width: 600px) {
-    .accordion-header {
-        padding: 0.8rem 0.9rem;
+
+/* =========================================================
+   9) RESPONSIVE (ALL AT BOTTOM)
+   ========================================================= */
+
+@media (max-width: 900px) {
+    /* Home typography */
+    .home-content h1 { font-size: 2.8rem; letter-spacing: 6px; }
+    .home-content h2 { font-size: 1.2rem; letter-spacing: 4px; }
+
+    /* Home text box tweak */
+    .text-box {
+        padding: 0 20px;
+        margin-top: -80px;
     }
 
-    .accordion-title {
-        font-size: 0.9rem;
+    .games-section { padding-bottom: 80px; }
+
+    /* fixed background breaks on many phones */
+    body.project-page,
+    .project-hero {
+        background-attachment: scroll;
+    }
+
+    /* still centered; just slightly less overall height if needed */
+    .project-hero {
+        min-height: 260px;
     }
 }
 
+@media (max-width: 600px) {
+    .home-content h1 { font-size: 2.2rem; letter-spacing: 4px; }
+    .games-title { font-size: 2.2rem; letter-spacing: 4px; }
 
+    /* Contact sizing */
+    .contact-title { font-size: 1.7rem; letter-spacing: 4px; }
+    .contact-email { font-size: 0.9rem; padding: 0.4rem 1.1rem; }
+    .contact-socials a { width: 42px; height: 42px; }
+    .contact-socials a i { font-size: 1.2rem; }
+
+    /* Accordion spacing */
+    .accordion-header { padding: 0.8rem 0.9rem; }
+    .accordion-title { font-size: 0.9rem; }
+}
