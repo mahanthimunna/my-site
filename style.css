@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 :root {
     --bg-color: #1f242d;
     --bg-color-2: #0b1017;
@@ -804,8 +808,17 @@ body.project-page {
         padding-bottom: 80px;
     }
 
+    .project-hero {
+        background-attachment: scroll;   /* fixed bg breaks on phones */
+        height: auto;
+        min-height: 260px;
+        padding-top: 90px;               /* navbar (70px) + spacing */
+    }
+
     .project-hero-overlay {
-        padding: 2rem 1.25rem;
+        padding: 1rem 1rem 0.75rem;      /* 🔥 smaller, controlled */
+        width: min(92vw, 900px);
+        border-radius: 18px;
     }
 
     .video-wrapper {
@@ -847,6 +860,14 @@ body.project-page {
     */
     border-radius: 5px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 600px) {
+    .project-glass {
+        width: calc(100% - 24px);  /* tighter phone spacing */
+        margin: 86px auto 24px;    /* still below navbar */
+        padding: 18px 14px 28px;   /* smaller inner padding */
+    }
 }
 
 /* ================== PROJECT PAGE ACCORDION ================== */
@@ -903,6 +924,7 @@ body.project-page {
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    min-width: 0; /* 🔥 allows text wrapping */
 }
 
 .accordion-header i {
@@ -914,6 +936,11 @@ body.project-page {
     font-size: 0.98rem;
     letter-spacing: 1px;
     text-align: left;
+
+    white-space: normal;        /* 🔥 wrap text */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.25;
 }
 
 /* plus icon on the right */
@@ -971,6 +998,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
