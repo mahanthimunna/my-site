@@ -664,7 +664,8 @@ body.project-page {
 .project-hero {
     position: relative;
     height: clamp(260px, 35vh, 500px);  /* smaller + consistent across screens */
-    padding-top: 25px; /* ensures hero starts BELOW navbar */
+    padding-top: 0; /* ensures hero starts BELOW navbar */
+    margin-top: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -812,7 +813,8 @@ body.project-page {
         background-attachment: scroll;   /* fixed bg breaks on phones */
         height: auto;
         min-height: 260px;
-        padding-top: 90px;               /* navbar (70px) + spacing */
+        padding-top: 0;               /* navbar (70px) + spacing */
+        margin-top: 90px;
     }
 
     .project-hero-overlay {
@@ -998,6 +1000,7 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
+
 
 
 
