@@ -1,3 +1,7 @@
+/* ============================
+   GLOBAL / RESET
+   ============================ */
+
 html, body {
     overflow-x: hidden;
 }
@@ -7,6 +11,9 @@ html, body {
     --bg-color-2: #0b1017;
     --text-color: #ffffff;
     --accent: #3434c3;
+
+    /* Keep navbar height in one place */
+    --nav-h: 70px;
 }
 
 /* GLOBAL RESET */
@@ -28,13 +35,29 @@ body {
     color: var(--text-color);
 }
 
-/* NAVBAR */
+/* Media elements safety */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* nicer focus for keyboard nav */
+:focus-visible {
+    outline: 2px solid #7df0ff;
+    outline-offset: 3px;
+}
+
+
+/* ============================
+   NAVBAR
+   ============================ */
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    height: var(--nav-h);
     padding: 0 7%;
     display: flex;
     align-items: center;
@@ -77,11 +100,14 @@ body {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* ========== HOME PAGE (INDEX) ========== */
+
+/* ============================
+   HOME PAGE (INDEX)
+   ============================ */
 
 .home {
     position: relative;
-    padding-top: 70px;
+    padding-top: var(--nav-h);
     padding-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -183,7 +209,10 @@ body {
     width: 100%;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
 
+    /* Keeping your original behavior (overlap look),
+       but this is the part that can be fragile on extreme screens. */
     margin-top: clamp(-325px, -20vw, -60px);
+
     position: relative;
     z-index: 5;
 
@@ -225,14 +254,14 @@ body {
 }
 
 /* SCROLL OFFSET FOR ANCHORS */
-#about {
-    scroll-margin-top: 70px;
-}
-#projects {
-    scroll-margin-top: 90px;
-}
+#about { scroll-margin-top: var(--nav-h); }
+#projects { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
-/* MY-GAMES SECTION */
+
+/* ============================
+   MY-GAMES SECTION
+   ============================ */
+
 .games-section {
     padding: 40px 8% 110px;
     margin-top: 0px !important;
@@ -286,6 +315,7 @@ body {
             transform 0.25s ease-out,
             box-shadow 0.25s ease-out,
             background 0.25s ease-out;
+    will-change: transform;
 }
 
 /* subtle glowing frame */
@@ -391,7 +421,10 @@ body {
     color: #7df0ff;
 }
 
-/* ========== CONTACT / FOOTER SECTION ========== */
+
+/* ============================
+   CONTACT / FOOTER
+   ============================ */
 
 .contact-section {
     padding: 60px 8% 35px;
@@ -431,8 +464,8 @@ body {
     background: rgba(5, 12, 22, 0.85);
     box-shadow: 0 0 18px rgba(125, 240, 255, 0.25);
     transition: transform 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    background 0.18s ease-out;
+                box-shadow 0.18s ease-out,
+                background 0.18s ease-out;
 }
 
 .contact-email:hover {
@@ -464,8 +497,8 @@ body {
             0 0 18px rgba(0, 0, 0, 0.85);
     text-decoration: none;
     transition: transform 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    border-color 0.18s ease-out;
+                box-shadow 0.18s ease-out,
+                border-color 0.18s ease-out;
 }
 
 .contact-socials a i {
@@ -511,7 +544,10 @@ body {
     }
 }
 
-/* ========== FULL SCREEN STAR EXPLOSION LOADER ========== */
+
+/* ============================
+   FULL SCREEN STAR EXPLOSION LOADER
+   ============================ */
 
 #loader {
     position: fixed;
@@ -554,14 +590,8 @@ body {
     pointer-events: none;
 }
 
-.wave-1 {
-    animation: waveExpand 2.5s ease-out infinite;
-}
-
-.wave-2 {
-    animation: waveExpand 2.5s ease-out infinite;
-    animation-delay: 1s;
-}
+.wave-1 { animation: waveExpand 2.5s ease-out infinite; }
+.wave-2 { animation: waveExpand 2.5s ease-out infinite; animation-delay: 1s; }
 
 /* PARTICLES */
 .star-particles span {
@@ -599,9 +629,7 @@ body {
         transform: scale(1);
         opacity: 0;
     }
-    100% {
-        opacity: 0;
-    }
+    100% { opacity: 0; }
 }
 
 /* core pulse */
@@ -648,7 +676,10 @@ body.page-ready .text-box {
     animation-play-state: running;
 }
 
-/* ========== PROJECT DETAIL PAGES (ECHOS OF LIE) ========== */
+
+/* ============================
+   PROJECT DETAIL PAGES
+   ============================ */
 
 /* Expect: <body class="project-page" style="--project-bg: url('images/echos-of-lie.png');"> */
 body.project-page {
@@ -660,12 +691,16 @@ body.project-page {
     background-attachment: fixed;
 }
 
-/* Hero with fixed background image */
+/* Hero with background image */
 .project-hero {
     position: relative;
-    height: clamp(260px, 35vh, 500px);  /* smaller + consistent across screens */
-    padding-top: 0; /* ensures hero starts BELOW navbar */
-    margin-top: 90px;
+
+    /* Ensure the hero starts below the navbar */
+    margin-top: var(--nav-h);
+
+    /* Your original sizing idea, but stable centering */
+    min-height: clamp(260px, 35vh, 500px);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -678,15 +713,18 @@ body.project-page {
     background-attachment: fixed;
 }
 
-/* dark glass overlay for text */
+/* ONE clean overlay definition (no duplicates) */
 .project-hero-overlay {
     background: radial-gradient(circle at center,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.85));
-    padding: 0.5rem 1rem 0.2rem;
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.85));
+    padding: 0.9rem 1.2rem 0.7rem;
     border-radius: 24px;
+
+    /* default: responsive but not huge */
+    width: min(90vw, 900px);
     max-width: 900px;
-    width: 90%;
+    margin: 0 auto;
 }
 
 .project-hero-overlay h1 {
@@ -717,7 +755,7 @@ body.project-page {
     border: 1px solid rgba(140, 210, 255, 0.9);
 }
 
-/* Scrollable content below the hero */
+/* Main content below hero */
 .project-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -766,7 +804,7 @@ body.project-page {
 
 .expression-image-block img {
     width: 100%;
-    max-width: 1600px;  /* 🔹 FINAL SIZE (small & centered) */
+    max-width: 1600px;
     height: auto;
     border-radius: 0px;
     display: block;
@@ -774,12 +812,10 @@ body.project-page {
 }
 
 /* ===== PROJECT PAGE: VIDEO SECTION ===== */
-
-/* Make gameplay video large again */
 .project-video-section iframe,
 .project-video-section video {
     width: 100%;
-    max-width: 1200px;   /* 🔥 Adjust size here */
+    max-width: 1200px;
     aspect-ratio: 16 / 9;
     display: block;
     margin: 0 auto;
@@ -787,7 +823,34 @@ body.project-page {
 }
 
 
-/* ========== RESPONSIVE TWEAKS ========== */
+/* ============================
+   PROJECT GLASS CONTAINER
+   (fixed bug: braces + flow)
+   ============================ */
+
+.project-glass {
+    position: relative;
+    z-index: 1;
+
+    /* outer padding from screen edges */
+    width: calc(100% - 40px); /* 20px gap on each side */
+    max-width: 2000px;
+
+    /* below navbar, some bottom space */
+    margin: calc(var(--nav-h) + 20px) auto 40px;
+
+    /* inner padding around all content */
+    padding: 30px 30px 50px;
+
+    background: rgba(1, 0, 0, 0.82);
+    border-radius: 5px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ============================
+   RESPONSIVE TWEAKS
+   ============================ */
 
 @media (max-width: 900px) {
     .home-content h1 {
@@ -809,21 +872,30 @@ body.project-page {
         padding-bottom: 80px;
     }
 
+    /* fixed bg breaks on phones */
+    body.project-page,
     .project-hero {
-        background-attachment: scroll;   /* fixed bg breaks on phones */
-        height: auto;
-        min-height: 260px;
-        padding-top: 0;               /* navbar (70px) + spacing */
-        margin-top: 90px;
+        background-attachment: scroll;
     }
 
+    .project-hero {
+        min-height: 260px;
+        margin-top: var(--nav-h);
+    }
+
+    /* IMPORTANT: overlay sizing only here (no duplicate global rules) */
     .project-hero-overlay {
-        padding: 1rem 1rem 0.75rem;      /* 🔥 smaller, controlled */
-        width: min(92vw, 900px);
-        max-width: 900px;
+        padding: 0.8rem 0.9rem 0.65rem;
+        width: min(82vw, 520px);
+        max-width: 520px;
         border-radius: 22px;
     }
 
+    .project-hero-overlay h1 {
+        letter-spacing: 4px;
+    }
+
+    /* You referenced .video-wrapper in your old file, keep harmless support */
     .video-wrapper {
         padding: 20px;
     }
@@ -845,34 +917,10 @@ body.project-page {
     }
 }
 
-.project-glass {
-    position: relative;
-    z-index: 1;
 
-    /* outer padding from screen edges */
-    width: calc(100% - 40px); /* 20px gap on each side */
-    max-width: 2000px;
-    margin: 90px auto 40px;                /* below navbar, some bottom space */
-
-    /* inner padding around all content */
-    padding: 30px 30px 50px;
-
-    background: rgba(1, 0, 0, 0.82);
-    /*backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    */
-    border-radius: 5px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
-}
-
-    .project-hero-overlay {
-    width: min(15vw, 420px);
-    max-width: 420px;
-    padding: 0.8rem 0.8rem 0.65rem;
-}
-}
-
-/* ================== PROJECT PAGE ACCORDION ================== */
+/* ============================
+   PROJECT PAGE ACCORDION
+   ============================ */
 
 .project-accordion-section {
     margin: 2rem auto 2.5rem;
@@ -926,7 +974,7 @@ body.project-page {
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    min-width: 0; /* 🔥 allows text wrapping */
+    min-width: 0;
 }
 
 .accordion-header i {
@@ -938,8 +986,7 @@ body.project-page {
     font-size: 0.98rem;
     letter-spacing: 1px;
     text-align: left;
-
-    white-space: normal;        /* 🔥 wrap text */
+    white-space: normal;
     overflow-wrap: anywhere;
     word-break: break-word;
     line-height: 1.25;
@@ -974,7 +1021,7 @@ body.project-page {
 .accordion-image {
     width: 100%;
     max-width: 640px;
-    display: block;                     /* lets margin auto work */
+    display: block;
     margin: 0 auto 1.2rem !important;
     border-radius: 8px;
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
@@ -982,13 +1029,13 @@ body.project-page {
 
 /* open state */
 .accordion-item.open .accordion-content {
-    max-height: 500px; /* big enough; adjust if you add more content */
+    max-height: 2000px; /* safer than 500px for future content */
     padding-top: 0.4rem;
     padding-bottom: 1.2rem;
 }
 
 .accordion-item.open .accordion-toggle-icon {
-    transform: rotate(45deg); /* plus turns into an 'x' style */
+    transform: rotate(45deg);
 }
 
 @media (max-width: 600px) {
@@ -1000,15 +1047,3 @@ body.project-page {
         font-size: 0.9rem;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
