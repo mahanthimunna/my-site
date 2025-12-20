@@ -653,7 +653,7 @@ body.project-page {
 /* OVERLAY: width controlled by hero padding, stays centered */
 .project-hero-overlay {
     width: 100%;
-    max-width: 1000px;
+    max-width: clamp(1000px, 75vw, 1500px);
     padding: clamp(0.85rem, 2.5vw, 1.4rem);
     border-radius: clamp(14px, 2vw, 24px);
 
@@ -928,3 +928,4 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
