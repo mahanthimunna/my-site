@@ -654,8 +654,15 @@ body.project-page {
 .project-hero-overlay {
     width: 100%;
     max-width: clamp(1000px, 75vw, 1500px);
-    padding: clamp(0.85rem, 2.5vw, 1.4rem);
+
+    padding: clamp(1.2rem, 3vw, 2.5rem);
     border-radius: clamp(14px, 2vw, 24px);
+
+    min-height: clamp(180px, 22vh, 300px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     background: radial-gradient(circle at center,
         rgba(0, 0, 0, 0.25),
@@ -928,4 +935,5 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
