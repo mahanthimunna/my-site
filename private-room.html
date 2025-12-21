@@ -99,82 +99,101 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Loader fade-out (THIS is what hides the loading screen)
+    window.addEventListener("load", () => {
+        document.getElementById("loader")?.classList.add("fade-out");
+        document.body.classList.add("page-ready");
+    });
+
+    // Accordion
+    document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const item = header.parentElement;
+            const content = item.querySelector(".accordion-content");
+            const isOpen = item.classList.contains("open");
+
+            document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove("open");
+                    openItem.querySelector(".accordion-content").style.maxHeight = 0;
+                }
+            });
+
+            if (!isOpen) {
+                item.classList.add("open");
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                item.classList.remove("open");
+                content.style.maxHeight = 0;
+            }
+        });
+    });
+
+    // Keep already-open accordions sized correctly
+    document.querySelectorAll(".accordion-item.open .accordion-content")
+        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+
     // ============================
     // Back-to-Games Auto Typewriter FX (Premium Loop)
     // ============================
     const backFX = document.querySelector(".back-link.backfx");
-    if (!backFX) return;
+    if (backFX) {
+        const textEl = backFX.querySelector(".backfx-text");
+        const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
 
-    const textEl = backFX.querySelector(".backfx-text");
-    const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
+        let timer = null;
 
-    let timer = null;
+        // Premium timings (slow + intentional)
+        const BASE_TYPE_MS = 150;     // main typing speed
+        const RANDOM_JITTER = 80;     // human variation
+        const FULL_HOLD_MS = 1800;    // pause after full text
+        const RESTART_DELAY_MS = 900; // pause before restarting
 
-    /* Premium timings (slow + intentional) */
-    const BASE_TYPE_MS = 150;     // main typing speed
-    const RANDOM_JITTER = 80;     // human variation
-    const FULL_HOLD_MS = 1800;    // pause after full text
-    const RESTART_DELAY_MS = 900; // pause before restarting
-
-    function clearTimers() {
-        clearTimeout(timer);
-        timer = null;
-    }
-
-    function startLoop() {
-        if (!textEl) return;
-
-        backFX.classList.add("is-typing");
-
-        let i = 0;
-        textEl.textContent = "";
-
-        const typeNext = () => {
-            // Add next character
-            i++;
-            textEl.textContent = original.slice(0, i);
-
-            // Finished typing
-            if (i >= original.length) {
-                timer = setTimeout(() => {
-                    // Reset to empty (no erase animation = premium)
-                    textEl.textContent = "";
-                    i = 0;
-
-                    timer = setTimeout(typeNext, RESTART_DELAY_MS);
-                }, FULL_HOLD_MS);
-                return;
-            }
-
-            // Natural delay (slower on spaces / punctuation)
-            const ch = original[i - 1];
-            const extra =
-                (ch === " " ? 80 : 0) +
-                (",.;:!?)".includes(ch) ? 160 : 0);
-
-            const delay =
-                BASE_TYPE_MS +
-                Math.floor(Math.random() * RANDOM_JITTER) +
-                extra;
-
-            timer = setTimeout(typeNext, delay);
-        };
-
-        typeNext();
-    }
-
-    // Start automatically
-    startLoop();
-
-    // Safety: pause animation when tab is hidden
-    document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            clearTimers();
-        } else {
-            clearTimers();
-            startLoop();
+        function clearTimers() {
+            clearTimeout(timer);
+            timer = null;
         }
-    });
+
+        function startLoop() {
+            if (!textEl) return;
+
+            backFX.classList.add("is-typing");
+
+            let i = 0;
+            textEl.textContent = "";
+
+            const typeNext = () => {
+                i++;
+                textEl.textContent = original.slice(0, i);
+
+                if (i >= original.length) {
+                    timer = setTimeout(() => {
+                        textEl.textContent = "";
+                        i = 0;
+                        timer = setTimeout(typeNext, RESTART_DELAY_MS);
+                    }, FULL_HOLD_MS);
+                    return;
+                }
+
+                const ch = original[i - 1];
+                const extra =
+                    (ch === " " ? 80 : 0) +
+                    (",.;:!?)".includes(ch) ? 160 : 0);
+
+                const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
+                timer = setTimeout(typeNext, delay);
+            };
+
+            typeNext();
+        }
+
+        startLoop();
+
+        document.addEventListener("visibilitychange", () => {
+            clearTimers();
+            if (!document.hidden) startLoop();
+        });
+    }
 
 });
 </script>
