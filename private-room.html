@@ -86,12 +86,10 @@
 </section>
 
 <!-- Back to main page -->
-<a href="index.html#projects" class="exit-brackets">
-  EXIT SCENE
-  <span class="br br-tl"></span>
-  <span class="br br-tr"></span>
-  <span class="br br-bl"></span>
-  <span class="br br-br"></span>
+<a class="back-link backfx" href="index.html#projects" aria-label="Back to Games">
+  <span class="backfx-arrow" aria-hidden="true">←</span>
+  <span class="backfx-text" data-text="Back to Games">Back to Games</span>
+  <span class="backfx-caret" aria-hidden="true"></span>
 </a>
     
 </main>
@@ -131,6 +129,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".accordion-item.open .accordion-content")
         .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+
+    // ============================
+// Back-to-Games Typewriter FX
+// ============================
+const backFX = document.querySelector(".back-link.backfx");
+if (backFX) {
+    const textEl = backFX.querySelector(".backfx-text");
+    const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
+
+    let raf = 0;
+    let timer = 0;
+    let running = false;
+
+    // Typewriter params (tweak these if you want)
+    const TYPE_MS = 38;     // typing speed
+    const ERASE_MS = 26;    // deleting speed
+    const HOLD_MS = 650;    // pause when fully typed
+    const HOLD2_MS = 320;   // pause when erased
+
+    function stop() {
+        running = false;
+        backFX.classList.remove("is-typing");
+
+        cancelAnimationFrame(raf);
+        raf = 0;
+
+        clearTimeout(timer);
+        timer = 0;
+
+        if (textEl) textEl.textContent = original; // snap back
+    }
+
+    function loopTypewriter() {
+        if (!textEl) return;
+
+        running = true;
+        backFX.classList.add("is-typing");
+
+        let i = 0;
+        let dir = +1; // +1 typing, -1 erasing
+
+        const tick = () => {
+            if (!running) return;
+
+            // Update visible substring
+            textEl.textContent = original.slice(0, i);
+
+            if (dir === +1) {
+                if (i >= original.length) {
+                    // hold at full text
+                    timer = setTimeout(() => { dir = -1; raf = requestAnimationFrame(tick); }, HOLD_MS);
+                    return;
+                }
+                i++;
+                timer = setTimeout(() => { raf = requestAnimationFrame(tick); }, TYPE_MS);
+            } else {
+                if (i <= 0) {
+                    // hold at empty then restart typing
+                    timer = setTimeout(() => { dir = +1; raf = requestAnimationFrame(tick); }, HOLD2_MS);
+                    return;
+                }
+                i--;
+                timer = setTimeout(() => { raf = requestAnimationFrame(tick); }, ERASE_MS);
+            }
+        };
+
+        tick();
+    }
+
+    backFX.addEventListener("mouseenter", () => {
+        stop();          // ensure clean start
+        loopTypewriter();
+    });
+
+    backFX.addEventListener("mouseleave", () => {
+        stop();          // stop + restore original
+    });
+
+    // Safety: if page is hidden (tab switch), stop animations
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stop();
+    });
+}
+
 
 });
 </script>
