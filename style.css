@@ -757,7 +757,7 @@ body.project-page {
     aspect-ratio: 16 / 9;
     display: block;
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 0;
 }
 
 /* Glass container */
@@ -886,7 +886,7 @@ body.project-page {
     max-width: 640px;
     display: block;
     margin: 0 auto 1.2rem !important;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
 }
 
@@ -944,6 +944,7 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
