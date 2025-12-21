@@ -133,95 +133,95 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".accordion-item.open .accordion-content")
         .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
 
-    // ============================
-    // Back-to-Games Typewriter FX
-    // ============================
-    const backFX = document.querySelector(".back-link.backfx");
-    if (backFX) {
-        const textEl = backFX.querySelector(".backfx-text");
-        const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
+// ============================
+// Back-to-Games Typewriter FX (Premium: type once, pause, restart)
+// ============================
+const backFX = document.querySelector(".back-link.backfx");
+if (backFX) {
+    const textEl = backFX.querySelector(".backfx-text");
+    const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
 
-        let raf = 0;
-        let timer = 0;
-        let running = false;
+    let timer = 0;
+    let running = false;
 
-        // tweak if you want
-        const TYPE_MS = 85;
-        const ERASE_MS = 55;
-        const HOLD_MS = 1200;
-        const HOLD2_MS = 650;
+    // Premium timings (slow + intentional)
+    const BASE_TYPE_MS = 120;      // main speed (bigger = slower)
+    const RANDOM_JITTER = 70;      // adds human variation
+    const FULL_HOLD_MS = 1400;     // pause when fully typed
+    const RESTART_HOLD_MS = 700;   // pause after reset before typing again
 
-        function stop() {
-            running = false;
-            backFX.classList.remove("is-typing");
+    function clearAll() {
+        running = false;
+        backFX.classList.remove("is-typing");
+        clearTimeout(timer);
+        timer = 0;
 
-            cancelAnimationFrame(raf);
-            raf = 0;
-
-            clearTimeout(timer);
-            timer = 0;
-
-            if (textEl) textEl.textContent = original; // back to normal
-        }
-
-        function loopTypewriter() {
-            if (!textEl) return;
-
-            running = true;
-            backFX.classList.add("is-typing");
-
-            let i = 0;
-            let dir = +1;
-
-            const tick = () => {
-                if (!running) return;
-
-                textEl.textContent = original.slice(0, i);
-
-                if (dir === +1) {
-                    if (i >= original.length) {
-                        timer = setTimeout(() => {
-                            dir = -1;
-                            raf = requestAnimationFrame(tick);
-                        }, HOLD_MS);
-                        return;
-                    }
-                    i++;
-                    timer = setTimeout(() => {
-                        raf = requestAnimationFrame(tick);
-                    }, TYPE_MS);
-                } else {
-                    if (i <= 0) {
-                        timer = setTimeout(() => {
-                            dir = +1;
-                            raf = requestAnimationFrame(tick);
-                        }, HOLD2_MS);
-                        return;
-                    }
-                    i--;
-                    timer = setTimeout(() => {
-                        raf = requestAnimationFrame(tick);
-                    }, ERASE_MS);
-                }
-            };
-
-            tick();
-        }
-
-        backFX.addEventListener("mouseenter", () => {
-            stop();          // clean restart
-            loopTypewriter();
-        });
-
-        backFX.addEventListener("mouseleave", () => {
-            stop();          // stop + restore original
-        });
-
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) stop();
-        });
+        // snap back to original label on unhover
+        if (textEl) textEl.textContent = original;
     }
 
+    function startPremiumLoop() {
+        if (!textEl) return;
+
+        running = true;
+        backFX.classList.add("is-typing");
+
+        let i = 0;
+
+        // start from empty to feel like a true "type" effect
+        textEl.textContent = "";
+
+        const typeNext = () => {
+            if (!running) return;
+
+            // Type one more character
+            i++;
+            textEl.textContent = original.slice(0, i);
+
+            // If finished typing, hold, then restart from empty
+            if (i >= original.length) {
+                timer = setTimeout(() => {
+                    if (!running) return;
+
+                    // Reset to empty (premium "restart", not erase)
+                    textEl.textContent = "";
+                    i = 0;
+
+                    timer = setTimeout(() => {
+                        typeNext();
+                    }, RESTART_HOLD_MS);
+
+                }, FULL_HOLD_MS);
+                return;
+            }
+
+            // Human-ish delay per character (slower on punctuation/spaces)
+            const ch = original[i - 1];
+            const extra =
+                (ch === " " ? 60 : 0) +
+                (",.;:!?)".includes(ch) ? 140 : 0);
+
+            const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
+
+            timer = setTimeout(typeNext, delay);
+        };
+
+        typeNext();
+    }
+
+    backFX.addEventListener("mouseenter", () => {
+        clearAll();        // ensure clean start
+        startPremiumLoop();
+    });
+
+    backFX.addEventListener("mouseleave", () => {
+        clearAll();        // stop + restore original text
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) clearAll();
+    });
+}
 });
 </script>
 </body>
