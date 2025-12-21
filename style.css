@@ -725,6 +725,106 @@ body.project-page {
 
 .back-link:hover { text-decoration: underline; }
 
+/* ==========================
+   BACK LINK FX (Typewriter)
+   ========================== */
+.back-link.backfx{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.4rem;
+
+    color: #7df0ff;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    position: relative;
+    padding: 0.35rem 0.2rem;
+
+    transform-origin: left center;
+    transition: transform 180ms ease, filter 180ms ease;
+}
+
+.back-link.backfx:hover{
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 10px rgba(125,240,255,0.35));
+}
+
+.backfx-arrow{
+    font-size: 1.05rem;
+    transform: translateY(-0.5px);
+    transition: transform 180ms ease;
+}
+
+.back-link.backfx:hover .backfx-arrow{
+    transform: translateX(-3px) translateY(-0.5px);
+}
+
+/* Sleek underline that "charges" on hover */
+.back-link.backfx::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+      rgba(125,240,255,0),
+      rgba(125,240,255,0.85),
+      rgba(125,240,255,0)
+    );
+
+    transform: scaleX(0.2);
+    opacity: 0.35;
+    transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.back-link.backfx:hover::after{
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Text + caret */
+.backfx-text{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.backfx-caret{
+    width: 10px;
+    height: 1.15em;
+    display: inline-block;
+    border-left: 2px solid rgba(125,240,255,0.95);
+    margin-left: 2px;
+    opacity: 0; /* hidden unless hovering */
+}
+
+/* caret blink while hovering */
+.back-link.backfx.is-typing .backfx-caret{
+    opacity: 1;
+    animation: backfxBlink 650ms steps(1) infinite;
+}
+
+@keyframes backfxBlink{
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+    .back-link.backfx,
+    .back-link.backfx:hover{
+        transition: none;
+        transform: none;
+        filter: none;
+    }
+    .back-link.backfx.is-typing .backfx-caret{
+        animation: none;
+        opacity: 1;
+    }
+}
+
 /* Clickable project cards */
 .project-link {
     text-decoration: none;
@@ -945,3 +1045,4 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
