@@ -945,3 +945,70 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
+.exit-scene {
+    position: relative;
+    display: inline-block;
+    margin-top: 3rem;
+
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #7df0ff;
+    text-decoration: none;
+
+    opacity: 0.75;
+    transition: opacity 0.25s ease;
+}
+
+/* underline */
+.exit-scene::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #7df0ff,
+        transparent
+    );
+    transition: width 0.4s ease;
+}
+
+/* scan line */
+.exit-scene::before {
+    content: "";
+    position: absolute;
+    inset: -6px -12px;
+    background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(125, 240, 255, 0.18),
+        transparent 60%
+    );
+    opacity: 0;
+    transform: translateX(-35%);
+}
+
+/* hover */
+.exit-scene:hover {
+    opacity: 1;
+}
+
+.exit-scene:hover::after {
+    width: 100%;
+}
+
+.exit-scene:hover::before {
+    opacity: 1;
+    animation: exitScan 0.8s ease-out;
+}
+
+/* scan animation */
+@keyframes exitScan {
+    from { transform: translateX(-35%); }
+    to   { transform: translateX(35%); }
+}
