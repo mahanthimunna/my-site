@@ -946,30 +946,154 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-.back-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 50px;
+/* Cool "Back" link with glow + particles */
+.back-arrow{
+  --glow: rgba(255,255,255,0.55);
 
-    color: #bbb;
-    font-size: 0.95rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 
-    transition: color 0.3s ease;
+  margin-top: 50px;
+  padding: 10px 14px;
+
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+
+  border-radius: 999px;
+
+  transition: color .25s ease, transform .25s ease, filter .25s ease;
 }
 
-.back-arrow .arrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+/* Soft glassy glow plate behind */
+.back-arrow::before{
+  content:"";
+  position:absolute;
+  inset:-6px -10px;
+  border-radius: 999px;
+
+  background: radial-gradient(circle at 30% 50%,
+    rgba(255,255,255,0.10),
+    rgba(255,255,255,0.03) 55%,
+    transparent 75%);
+
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity .25s ease, transform .25s ease;
+  pointer-events: none;
 }
 
-.back-arrow:hover {
-    color: #fff;
+/* Thin neon outline ring */
+.back-arrow::after{
+  content:"";
+  position:absolute;
+  inset:-2px -6px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
 }
 
-.back-arrow:hover .arrow {
-    transform: translateX(-8px);
+.back-arrow .arrow{
+  font-size: 1.2rem;
+  opacity: 0.9;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.back-arrow .text{
+  position: relative;
+  top: 1px; /* tiny optical alignment */
+}
+
+/* Particle layer (3 floating dots) */
+.back-arrow .spark{
+  position:absolute;
+  inset:-18px -24px;
+  pointer-events:none;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.back-arrow .spark::before,
+.back-arrow .spark::after{
+  content:"";
+  position:absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.65);
+  box-shadow:
+    0 0 10px var(--glow),
+    0 0 18px rgba(255,255,255,0.25);
+  animation: floatDot 2.6s ease-in-out infinite;
+}
+
+/* dot 1 */
+.back-arrow .spark::before{
+  left: 18%;
+  top: 55%;
+}
+
+/* dot 2 */
+.back-arrow .spark::after{
+  left: 78%;
+  top: 30%;
+  animation-delay: .35s;
+}
+
+/* dot 3 via background gradients */
+.back-arrow .spark{
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.6) 0 45%, transparent 55%) 62% 78% / 6px 6px no-repeat;
+  filter: drop-shadow(0 0 10px var(--glow));
+}
+
+/* Hover effects */
+.back-arrow:hover{
+  color: #fff;
+  transform: translateX(-4px);
+  filter: drop-shadow(0 0 14px rgba(255,255,255,0.12));
+}
+
+.back-arrow:hover::before{
+  opacity: 1;
+  transform: scale(1);
+}
+
+.back-arrow:hover::after{
+  opacity: 1;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.10),
+    0 0 18px rgba(255,255,255,0.18);
+}
+
+.back-arrow:hover .arrow{
+  transform: translateX(-8px);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.22));
+}
+
+.back-arrow:hover .spark{
+  opacity: 1;
+}
+
+/* Subtle floating motion */
+@keyframes floatDot{
+  0%,100%{ transform: translate(0,0); opacity: .55; }
+  50%{ transform: translate(0,-8px); opacity: 1; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .back-arrow, .back-arrow *{
+    animation: none !important;
+    transition: none !important;
+  }
 }
