@@ -946,17 +946,14 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-/* Cool "Back" link with glow + particles */
-.back-arrow{
-  --glow: rgba(255,255,255,0.55);
-
+/* Base (clean, no underline, no pill) */
+.back-orbit{
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 12px;
 
   margin-top: 50px;
-  padding: 10px 14px;
 
   color: rgba(255,255,255,0.78);
   text-decoration: none;
@@ -965,135 +962,160 @@ body.project-page {
   text-transform: uppercase;
   font-size: 0.95rem;
 
-  border-radius: 999px;
-
-  transition: color .25s ease, transform .25s ease, filter .25s ease;
+  padding: 6px 0;           /* no background */
 }
 
-/* Soft glassy glow plate behind */
-.back-arrow::before{
-  content:"";
-  position:absolute;
-  inset:-6px -10px;
-  border-radius: 999px;
-
-  background: radial-gradient(circle at 30% 50%,
-    rgba(255,255,255,0.10),
-    rgba(255,255,255,0.03) 55%,
-    transparent 75%);
-
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity .25s ease, transform .25s ease;
-  pointer-events: none;
-}
-
-/* Thin neon outline ring */
-.back-arrow::after{
-  content:"";
-  position:absolute;
-  inset:-2px -6px;
-  border-radius: 999px;
-
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-  opacity: 0;
-  transition: opacity .25s ease;
-  pointer-events: none;
-}
-
-.back-arrow .arrow{
+.back-orbit .arrow{
   font-size: 1.2rem;
   opacity: 0.9;
-  transition: transform .25s ease, filter .25s ease;
+  transition: transform .25s ease, color .25s ease;
 }
 
-.back-arrow .text{
-  position: relative;
-  top: 1px; /* tiny optical alignment */
+.back-orbit:hover{
+  color: #fff;
 }
 
-/* Particle layer (3 floating dots) */
-.back-arrow .spark{
+.back-orbit:hover .arrow{
+  transform: translateX(-8px);
+}
+
+/* The “snake threads” (3 thin spirals) */
+.back-orbit::before,
+.back-orbit::after{
+  content:"";
   position:absolute;
-  inset:-18px -24px;
+  left: 24px;               /* start after the arrow */
+  right: -10px;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
   pointer-events:none;
   opacity: 0;
   transition: opacity .25s ease;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.16));
 }
 
-.back-arrow .spark::before,
-.back-arrow .spark::after{
+/* Spiral thread #1 */
+.back-orbit::before{
+  /* a thin, broken conic “thread” that looks like a looping stroke */
+  height: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0.00) 0 18deg,
+      rgba(255,255,255,0.55) 18deg 21deg,
+      rgba(255,255,255,0.00) 21deg 40deg
+    );
+
+  /* Make it a ring-like stroke area */
+  -webkit-mask: radial-gradient(circle,
+    transparent 58%,
+    #000 59% 61%,
+    transparent 62%);
+  mask: radial-gradient(circle,
+    transparent 58%,
+    #000 59% 61%,
+    transparent 62%);
+
+  border-radius: 0; /* no pill */
+  animation: orbitSpin 1.35s linear infinite;
+}
+
+/* Spiral thread #2 */
+.back-orbit::after{
+  height: 46px;
+
+  background:
+    repeating-conic-gradient(
+      from 60deg,
+      rgba(255,255,255,0.00) 0 26deg,
+      rgba(255,255,255,0.45) 26deg 28deg,
+      rgba(255,255,255,0.00) 28deg 54deg
+    );
+
+  -webkit-mask: radial-gradient(circle,
+    transparent 63%,
+    #000 64% 65%,
+    transparent 66%);
+  mask: radial-gradient(circle,
+    transparent 63%,
+    #000 64% 65%,
+    transparent 66%);
+
+  animation: orbitSpinReverse 2.1s linear infinite;
+}
+
+/* Extra “snake” using a child pseudo-element on the text */
+.back-orbit .text{
+  position: relative;
+}
+
+.back-orbit .text::after{
   content:"";
   position:absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.65);
-  box-shadow:
-    0 0 10px var(--glow),
-    0 0 18px rgba(255,255,255,0.25);
-  animation: floatDot 2.6s ease-in-out infinite;
-}
+  left: -14px;
+  right: -16px;
+  top: 50%;
+  height: 40px;
+  transform: translateY(-50%);
+  pointer-events:none;
 
-/* dot 1 */
-.back-arrow .spark::before{
-  left: 18%;
-  top: 55%;
-}
+  opacity: 0;
+  transition: opacity .25s ease;
 
-/* dot 2 */
-.back-arrow .spark::after{
-  left: 78%;
-  top: 30%;
-  animation-delay: .35s;
-}
-
-/* dot 3 via background gradients */
-.back-arrow .spark{
   background:
-    radial-gradient(circle, rgba(255,255,255,0.6) 0 45%, transparent 55%) 62% 78% / 6px 6px no-repeat;
-  filter: drop-shadow(0 0 10px var(--glow));
+    repeating-conic-gradient(
+      from 140deg,
+      rgba(255,255,255,0.00) 0 22deg,
+      rgba(255,255,255,0.35) 22deg 24deg,
+      rgba(255,255,255,0.00) 24deg 52deg
+    );
+
+  -webkit-mask: radial-gradient(circle,
+    transparent 55%,
+    #000 56% 57%,
+    transparent 58%);
+  mask: radial-gradient(circle,
+    transparent 55%,
+    #000 56% 57%,
+    transparent 58%);
+
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.14));
+  animation: orbitWobble 1.8s ease-in-out infinite;
 }
 
-/* Hover effects */
-.back-arrow:hover{
-  color: #fff;
-  transform: translateX(-4px);
-  filter: drop-shadow(0 0 14px rgba(255,255,255,0.12));
-}
-
-.back-arrow:hover::before{
-  opacity: 1;
-  transform: scale(1);
-}
-
-.back-arrow:hover::after{
-  opacity: 1;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.10),
-    0 0 18px rgba(255,255,255,0.18);
-}
-
-.back-arrow:hover .arrow{
-  transform: translateX(-8px);
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.22));
-}
-
-.back-arrow:hover .spark{
+/* Show the snakes only on hover */
+.back-orbit:hover::before,
+.back-orbit:hover::after,
+.back-orbit:hover .text::after{
   opacity: 1;
 }
 
-/* Subtle floating motion */
-@keyframes floatDot{
-  0%,100%{ transform: translate(0,0); opacity: .55; }
-  50%{ transform: translate(0,-8px); opacity: 1; }
+/* Animations (slightly different so it feels “random”) */
+@keyframes orbitSpin{
+  from{ transform: translateY(-50%) rotate(0deg); }
+  to  { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes orbitSpinReverse{
+  from{ transform: translateY(-50%) rotate(360deg); }
+  to  { transform: translateY(-50%) rotate(0deg); }
+}
+
+@keyframes orbitWobble{
+  0%,100%{ transform: translateY(-50%) rotate(0deg) scaleX(1); opacity: 0.0; }
+  10%{ opacity: 1; }
+  50%{ transform: translateY(-50%) rotate(18deg) scaleX(0.98); }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .back-arrow, .back-arrow *{
+  .back-orbit::before,
+  .back-orbit::after,
+  .back-orbit .text::after{
     animation: none !important;
-    transition: none !important;
   }
 }
