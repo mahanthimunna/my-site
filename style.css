@@ -946,67 +946,42 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-.exit-glitch{
-  position: relative;
-  display: inline-block;
-  margin-top: 3rem;
+.exit-brackets{
+  position:relative;
+  display:inline-block;
+  margin-top:3rem;
 
   color:#7df0ff;
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:6px;
   font-size:0.95rem;
-
   opacity:.85;
-  transform: translateZ(0);
+
+  padding: 6px 10px;
 }
 
-.exit-glitch::before,
-.exit-glitch::after{
-  content: attr(data-text);
+.exit-brackets .br{
   position:absolute;
-  left:0; top:0;
-  width:100%;
-  pointer-events:none;
+  width:10px;
+  height:10px;
   opacity:0;
+  transition: opacity .18s ease, transform .22s ease;
+  pointer-events:none;
 }
 
-.exit-glitch::before{
-  transform: translateX(-2px);
-  clip-path: inset(0 0 55% 0);
-  text-shadow: 2px 0 rgba(125,240,255,.35);
-}
+/* corners (only lines, not a box) */
+.exit-brackets .br-tl{ left:-6px; top:-6px; border-left:1px solid rgba(125,240,255,.9); border-top:1px solid rgba(125,240,255,.9); transform: translate(6px,6px); }
+.exit-brackets .br-tr{ right:-6px; top:-6px; border-right:1px solid rgba(125,240,255,.9); border-top:1px solid rgba(125,240,255,.9); transform: translate(-6px,6px); }
+.exit-brackets .br-bl{ left:-6px; bottom:-6px; border-left:1px solid rgba(125,240,255,.9); border-bottom:1px solid rgba(125,240,255,.9); transform: translate(6px,-6px); }
+.exit-brackets .br-br{ right:-6px; bottom:-6px; border-right:1px solid rgba(125,240,255,.9); border-bottom:1px solid rgba(125,240,255,.9); transform: translate(-6px,-6px); }
 
-.exit-glitch::after{
-  transform: translateX(2px);
-  clip-path: inset(45% 0 0 0);
-  text-shadow: -2px 0 rgba(180,120,255,.35);
-}
-
-.exit-glitch:hover{
+.exit-brackets:hover{
   opacity:1;
+  text-shadow: 0 0 14px rgba(125,240,255,.35);
 }
 
-.exit-glitch:hover::before{
+.exit-brackets:hover .br{
   opacity:1;
-  animation: glitchTop .55s steps(2,end);
-}
-
-.exit-glitch:hover::after{
-  opacity:1;
-  animation: glitchBot .55s steps(2,end);
-}
-
-@keyframes glitchTop{
-  0%{ transform: translateX(-2px); clip-path: inset(0 0 55% 0); }
-  25%{ transform: translateX(3px);  clip-path: inset(0 0 65% 0); }
-  55%{ transform: translateX(-4px); clip-path: inset(0 0 40% 0); }
-  100%{ transform: translateX(-2px); clip-path: inset(0 0 55% 0); }
-}
-
-@keyframes glitchBot{
-  0%{ transform: translateX(2px);  clip-path: inset(45% 0 0 0); }
-  30%{ transform: translateX(-3px); clip-path: inset(55% 0 0 0); }
-  60%{ transform: translateX(4px);  clip-path: inset(35% 0 0 0); }
-  100%{ transform: translateX(2px); clip-path: inset(45% 0 0 0); }
+  transform: translate(0,0);
 }
