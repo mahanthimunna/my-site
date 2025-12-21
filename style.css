@@ -946,51 +946,42 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-.exit-wipe{
+.exit-brackets{
   position:relative;
   display:inline-block;
   margin-top:3rem;
 
+  color:#7df0ff;
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:6px;
   font-size:0.95rem;
-  color:#7df0ff;
-  opacity:.8;
+  opacity:.85;
 
   padding: 6px 10px;
-  overflow:hidden;
 }
 
-.exit-wipe span{
-  position:relative;
-  z-index:2;
-  transition: opacity .2s ease;
-}
-
-.exit-wipe::before{
-  content:"";
+.exit-brackets .br{
   position:absolute;
-  top:-40%;
-  left:-120%;
-  width:70%;
-  height:180%;
-  background: linear-gradient(90deg, transparent, rgba(125,240,255,.35), transparent);
-  transform: skewX(-18deg);
+  width:10px;
+  height:10px;
   opacity:0;
+  transition: opacity .18s ease, transform .22s ease;
+  pointer-events:none;
 }
 
-.exit-wipe:hover{
+/* corners (only lines, not a box) */
+.exit-brackets .br-tl{ left:-6px; top:-6px; border-left:1px solid rgba(125,240,255,.9); border-top:1px solid rgba(125,240,255,.9); transform: translate(6px,6px); }
+.exit-brackets .br-tr{ right:-6px; top:-6px; border-right:1px solid rgba(125,240,255,.9); border-top:1px solid rgba(125,240,255,.9); transform: translate(-6px,6px); }
+.exit-brackets .br-bl{ left:-6px; bottom:-6px; border-left:1px solid rgba(125,240,255,.9); border-bottom:1px solid rgba(125,240,255,.9); transform: translate(6px,-6px); }
+.exit-brackets .br-br{ right:-6px; bottom:-6px; border-right:1px solid rgba(125,240,255,.9); border-bottom:1px solid rgba(125,240,255,.9); transform: translate(-6px,-6px); }
+
+.exit-brackets:hover{
   opacity:1;
-  text-shadow: 0 0 18px rgba(125,240,255,.28);
+  text-shadow: 0 0 14px rgba(125,240,255,.35);
 }
 
-.exit-wipe:hover::before{
+.exit-brackets:hover .br{
   opacity:1;
-  animation: wipePass .75s ease-out;
-}
-
-@keyframes wipePass{
-  from{ left:-120%; }
-  to{ left:140%; }
+  transform: translate(0,0);
 }
