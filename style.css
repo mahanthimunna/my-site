@@ -946,32 +946,30 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-.back-menu {
-    display: inline-block;
+.back-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     margin-top: 50px;
-    padding: 16px 36px;
 
-    font-size: 1rem;
-    letter-spacing: 1.5px;
-    color: #aaa;
+    color: #bbb;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     text-decoration: none;
 
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
-
-    transition: 
-        color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.25s ease;
+    transition: color 0.3s ease;
 }
 
-.back-menu:hover {
+.back-arrow .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-arrow:hover {
     color: #fff;
-    transform: translateY(-2px);
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,0.3),
-        0 0 18px rgba(255,255,255,0.25);
 }
 
-
+.back-arrow:hover .arrow {
+    transform: translateX(-8px);
+}
