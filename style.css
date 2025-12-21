@@ -801,14 +801,18 @@ body.project-page {
 }
 
 /* caret blink while hovering */
+/* caret blink – slow, premium */
 .back-link.backfx.is-typing .backfx-caret{
     opacity: 1;
-    animation: backfxBlink 650ms steps(1) infinite;
+    animation: backfxBlink 1.6s ease-in-out infinite;
 }
 
 @keyframes backfxBlink{
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
+    0%   { opacity: 1; }
+    35%  { opacity: 1; }
+    50%  { opacity: 0; }
+    85%  { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Respect reduced motion */
@@ -1045,4 +1049,5 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
