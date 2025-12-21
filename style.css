@@ -946,77 +946,67 @@ body.project-page {
     .accordion-title { font-size: 0.9rem; }
 }
 
-.back-portal {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+.exit-glitch{
+  position: relative;
+  display: inline-block;
+  margin-top: 3rem;
 
-    margin-top: 2.5rem;
+  color:#7df0ff;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:6px;
+  font-size:0.95rem;
 
-    color: #7df0ff;
-    font-size: 0.95rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    opacity: 0.85;
-    transition: opacity 0.25s ease;
+  opacity:.85;
+  transform: translateZ(0);
 }
 
-/* arrow motion */
-.back-portal .arrow {
-    display: inline-block;
-    transition: transform 0.25s ease;
+.exit-glitch::before,
+.exit-glitch::after{
+  content: attr(data-text);
+  position:absolute;
+  left:0; top:0;
+  width:100%;
+  pointer-events:none;
+  opacity:0;
 }
 
-/* animated underline */
-.back-portal::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #7df0ff, transparent);
-    transition: width 0.35s ease;
+.exit-glitch::before{
+  transform: translateX(-2px);
+  clip-path: inset(0 0 55% 0);
+  text-shadow: 2px 0 rgba(125,240,255,.35);
 }
 
-/* scanning energy line */
-.back-portal::before {
-    content: "";
-    position: absolute;
-    inset: -6px -10px;
-    background: linear-gradient(
-        120deg,
-        transparent 40%,
-        rgba(125, 240, 255, 0.15),
-        transparent 60%
-    );
-    opacity: 0;
-    transform: translateX(-30%);
+.exit-glitch::after{
+  transform: translateX(2px);
+  clip-path: inset(45% 0 0 0);
+  text-shadow: -2px 0 rgba(180,120,255,.35);
 }
 
-/* hover effects */
-.back-portal:hover {
-    opacity: 1;
+.exit-glitch:hover{
+  opacity:1;
 }
 
-.back-portal:hover .arrow {
-    transform: translateX(-4px);
+.exit-glitch:hover::before{
+  opacity:1;
+  animation: glitchTop .55s steps(2,end);
 }
 
-.back-portal:hover::after {
-    width: 100%;
+.exit-glitch:hover::after{
+  opacity:1;
+  animation: glitchBot .55s steps(2,end);
 }
 
-.back-portal:hover::before {
-    opacity: 1;
-    animation: scanPass 0.8s ease-out;
+@keyframes glitchTop{
+  0%{ transform: translateX(-2px); clip-path: inset(0 0 55% 0); }
+  25%{ transform: translateX(3px);  clip-path: inset(0 0 65% 0); }
+  55%{ transform: translateX(-4px); clip-path: inset(0 0 40% 0); }
+  100%{ transform: translateX(-2px); clip-path: inset(0 0 55% 0); }
 }
 
-/* scan animation */
-@keyframes scanPass {
-    from { transform: translateX(-30%); }
-    to   { transform: translateX(30%); }
+@keyframes glitchBot{
+  0%{ transform: translateX(2px);  clip-path: inset(45% 0 0 0); }
+  30%{ transform: translateX(-3px); clip-path: inset(55% 0 0 0); }
+  60%{ transform: translateX(4px);  clip-path: inset(35% 0 0 0); }
+  100%{ transform: translateX(2px); clip-path: inset(45% 0 0 0); }
 }
