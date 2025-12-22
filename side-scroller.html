@@ -51,6 +51,13 @@
 
 <!-- VIDEO -->
 <section class="project-video-section">
+    <!-- 🔹 EXPRESSION HEADING -->
+            <h2 class="section-title">EXPRESSION</h2>
+
+    <!-- 🔹 EXPRESSION IMAGE -->
+            <div class="expression-image-block">
+                <img src="images/side-scroller.png" alt="Expression Image">
+            </div>
     <h2 class="section-title">GAMEPLAY VIDEO</h2>
     <iframe
         src=""
@@ -66,20 +73,32 @@
 
     <div class="accordion">
 
-        <!-- EMPTY ITEM -->
+        <!-- ITEM 1 -->
         <div class="accordion-item open">
             <button class="accordion-header">
                 <div class="accordion-left">
-                    <i class="bx bx-game"></i>
+                    <i class="bx bx-transfer-alt"></i>
                     <span class="accordion-title">
-                        SYSTEM OVERVIEW
+                        DASH SYSTEM
                     </span>
                 </div>
                 <span class="accordion-toggle-icon">+</span>
             </button>
-
             <div class="accordion-content">
-                <!-- ADD CONTENT LATER -->
+                <p>
+                    For the dash mechanic, I created this Blueprint in the 
+                    SideScroller character to allow the player to quickly 
+                    move forward with a burst of speed. When the dash key is 
+                    pressed, it checks if the dash is available, then adds 
+                    forward velocity based on the player’s facing direction. 
+                    I also used a line trace to detect collisions so the player 
+                    doesn’t pass through obstacles. A particle effect is spawned 
+                    during the dash for visual feedback, and a delay node controls 
+                    both the dash duration and cooldown. Once the delay finishes, 
+                    the dash becomes available again, making the movement smooth 
+                    and responsive.
+                </p>
+                <img src="images/Dash_00_00.png" alt="FSM Blueprint" class="accordion-image">            </div>
             </div>
         </div>
 
