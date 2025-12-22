@@ -714,15 +714,15 @@ body.project-page {
 ================================ */
 
 .project-content > section {
-    max-width: 1100px;              /* Controls box width */
-    margin: 0 auto 2.5rem;          /* Center + spacing between sections */
+    max-width: 950px;                /* smaller box width */
+    margin: 0 auto 2.5rem;
 
-    padding: 1.8rem 2.5rem;         /* LEFT & RIGHT padding */
-    
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1.8rem 1.6rem;          /* reduce LEFT/RIGHT padding only */
+
+    border: 1px solid rgba(255, 255, 255, 0.12); /* SAME border thickness */
     border-radius: 8px;
 
-    background: rgba(0, 0, 0, 0.35); /* Subtle glass feel */
+    background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
 }
 
@@ -736,7 +736,8 @@ body.project-page {
 /* Paragraph & list text */
 .project-content > section p,
 .project-content > section ul {
-    text-align: center;
+    text-align: justify;             /* stretched text */
+    text-align-last: center;         /* clean centered ending */
     line-height: 1.6;
 }
 
@@ -1094,6 +1095,7 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
