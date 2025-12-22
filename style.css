@@ -708,50 +708,40 @@ body.project-page {
     margin-bottom: 2.5rem;
 }
 
-/* ================================
-   PROJECT INFO SECTIONS (BOXED)
+ ================================
+ /* =========================================
+   DEADLY SCRIPT ONLY – INFO BOXES (FIRST 4 SECTIONS)
    Overview | My Role | Key Systems | Tech & Tools
-================================ */
+========================================= */
 
-.project-content > section {
-    max-width: 650px;                /* smaller box width */
+body.project-deadly-script .project-content > section:nth-of-type(-n+4) {
+    max-width: 650px;
     margin: 0 auto 2.5rem;
 
-    padding: 1.8rem 1.6rem;          /* reduce LEFT/RIGHT padding only */
+    padding: 1.8rem 1.6rem; /* reduce left/right only */
 
-    border: 1px solid rgba(255, 255, 255, 0.12); /* SAME border thickness */
+    border: 1px solid rgba(255, 255, 255, 0.12); /* same thickness */
     border-radius: 8px;
 
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
 }
 
-/* Headings inside sections */
-.project-content > section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-    letter-spacing: 1.5px;
-}
-
-/* Paragraph & list text */
-.project-content > section p,
-.project-content > section ul {
-    text-align: justify;             /* stretched text */
-    text-align-last: center;         /* clean centered ending */
+body.project-deadly-script .project-content > section:nth-of-type(-n+4) p,
+body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
+    text-align: justify;
+    text-align-last: center;
     line-height: 1.6;
 }
 
-/* Lists look centered but readable */
-.project-content > section ul {
+body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     list-style-position: inside;
     padding: 0;
 }
 
-/* Mobile refinement */
 @media (max-width: 768px) {
-    .project-content > section {
-        max-width: 85%;
-        padding: 1.4rem 0.9rem;
+    body.project-deadly-script .project-content > section:nth-of-type(-n+4) {
+        padding: 1.4rem 1.2rem;
     }
 }
 
@@ -1096,6 +1086,7 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
