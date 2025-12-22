@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>The Deadly Script – Mahanthi Kannapalli</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>The Deadly Script – Mahanthi Kannapalli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<div id="loader">
+<body class="project-page" style="--project-bg: url('images/text-based-game.png');">
+
+  <!-- LOADER -->
+  <div id="loader">
     <div class="star-core"></div>
 
     <!-- Shockwaves -->
@@ -17,145 +20,188 @@
 
     <!-- Many particles -->
     <div class="star-particles">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
-</div>
-<body class="project-page" style="--project-bg: url('images/text-based-game.png');">
+  </div>
 
-
-<!-- NAVBAR -->
-<nav class="navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar">
     <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
-</nav>
+  </nav>
 
-<!-- HERO WITH FIXED BACKGROUND -->
-<header class="project-hero">
+  <!-- HERO WITH FIXED BACKGROUND -->
+  <header class="project-hero">
     <div class="project-hero-overlay">
-        <h1>THE DEADLY SCRIPT</h1>
-        <p>Branching text-based mystery built in Unity with a focus on systems-driven narrative.</p>
+      <h1>THE DEADLY SCRIPT</h1>
+      <p>Branching text-based mystery built in Unity with a focus on systems-driven narrative.</p>
 
-        <div class="project-hero-tags">
-            <span>Unity</span>
-            <span>C#</span>
-            <span>Narrative Systems</span>
-            <span>UI / UX</span>
-        </div>
+      <div class="project-hero-tags">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>Narrative Systems</span>
+        <span>UI / UX</span>
+      </div>
     </div>
-</header>
+  </header>
 
-<!-- MAIN CONTENT -->
-<main class="project-content">
+  <!-- MAIN CONTENT -->
+  <main class="project-content">
+
     <section>
-        <h2>Overview</h2>
-        <p>
-            The Deadly Script is a 2D text-driven mystery game where the story branches
-            based on player choices, timing, and hidden state variables. The focus was on
-            building a flexible system for dialogue, choices, and conditional outcomes rather
-            than scripting every path manually.
-        </p>
+      <h2>Overview</h2>
+      <p>
+        The Deadly Script is a 2D text-driven mystery game where the story branches
+        based on player choices, timing, and hidden state variables. The focus was on
+        building a flexible system for dialogue, choices, and conditional outcomes rather
+        than scripting every path manually.
+      </p>
     </section>
 
     <section>
-        <h2>My Role</h2>
-        <ul>
-            <li>Implemented the entire gameplay and narrative logic in Unity using C#.</li>
-            <li>Built the dialogue system, choice handling, and state tracking backend.</li>
-            <li>Designed and coded the typewriter text effect and responsive UI transitions.</li>
-            <li>Collaborated on pacing and narrative beats to match the underlying systems.</li>
-        </ul>
+      <h2>My Role</h2>
+      <ul>
+        <li>Implemented the entire gameplay and narrative logic in Unity using C#.</li>
+        <li>Built the dialogue system, choice handling, and state tracking backend.</li>
+        <li>Designed and coded the typewriter text effect and responsive UI transitions.</li>
+        <li>Collaborated on pacing and narrative beats to match the underlying systems.</li>
+      </ul>
     </section>
 
     <section>
-        <h2>Key Systems</h2>
-        <ul>
-            <li>
-                <strong>Dialogue Engine:</strong> Data-driven system to define lines, speakers,
-                branches, and conditions in a structured format.
-            </li>
-            <li>
-                <strong>Choice &amp; State Tracking:</strong> Player decisions update internal
-                variables that influence later scenes, outcomes, and available options.
-            </li>
-            <li>
-                <strong>Typewriter &amp; UI Feedback:</strong> Timed text reveal, emphasis effects,
-                and subtle animations to keep a text-heavy experience engaging.
-            </li>
-            <li>
-                <strong>Tools Mindset:</strong> Organized code so new scenes and branches can be
-                added quickly without rewriting core logic.
-            </li>
-        </ul>
+      <h2>Key Systems</h2>
+      <ul>
+        <li>
+          <strong>Dialogue Engine:</strong> Data-driven system to define lines, speakers,
+          branches, and conditions in a structured format.
+        </li>
+        <li>
+          <strong>Choice &amp; State Tracking:</strong> Player decisions update internal
+          variables that influence later scenes, outcomes, and available options.
+        </li>
+        <li>
+          <strong>Typewriter &amp; UI Feedback:</strong> Timed text reveal, emphasis effects,
+          and subtle animations to keep a text-heavy experience engaging.
+        </li>
+        <li>
+          <strong>Tools Mindset:</strong> Organized code so new scenes and branches can be
+          added quickly without rewriting core logic.
+        </li>
+      </ul>
     </section>
 
     <section>
-        <h2>Tech &amp; Tools</h2>
-        <p>
-            Unity, C#, ScriptableObjects or custom data structures for dialogue, UI Toolkit / Canvas,
-            coroutine-based timing, and event-driven architecture for game state changes.
-        </p>
+      <h2>Tech &amp; Tools</h2>
+      <p>
+        Unity, C#, ScriptableObjects or custom data structures for dialogue, UI Toolkit / Canvas,
+        coroutine-based timing, and event-driven architecture for game state changes.
+      </p>
     </section>
+
+    <!-- =========================
+         VIDEO PLACEHOLDER (ADD BELOW DESCRIPTION)
+         You said you'll add video below it later.
+         Paste your video section here when ready.
+         ========================= -->
+    <!--
+    <section class="project-video-section">
+      <h2 class="section-title">GAMEPLAY VIDEO</h2>
+
+      <iframe
+        src="YOUR_YOUTUBE_EMBED_LINK_HERE"
+        title="The Deadly Script – Gameplay"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </section>
+    -->
+
+    <!-- =========================
+         DROPDOWN TAGS PLACEHOLDER (ADD BELOW VIDEO LATER)
+         You said you'll add dropdown tags below video later.
+         ========================= -->
+    <!--
+    <section class="project-accordion-section">
+      <h2 class="section-title">SYSTEMS &amp; RESPONSIBILITIES</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-left">
+              <i class='bx bx-code-alt'></i>
+              <span class="accordion-title">PLACEHOLDER DROPDOWN</span>
+            </span>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+
+          <div class="accordion-content">
+            <p>Add your text/images here later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
 
     <!-- Back to main page -->
-<!-- Back to main page -->
-<a class="back-link backfx" href="index.html#projects" aria-label="RETURN TO THE GAME VAULT">
-  <span class="backfx-arrow" aria-hidden="true">←</span>
-  <span class="backfx-text" data-text="RETURN TO THE GAME VAULT">RETURN TO THE GAME VAULT</span>
-  <span class="backfx-caret" aria-hidden="true"></span>
-</a>
+    <a class="back-link backfx" href="index.html#projects" aria-label="RETURN TO THE GAME VAULT">
+      <span class="backfx-arrow" aria-hidden="true">←</span>
+      <span class="backfx-text" data-text="RETURN TO THE GAME VAULT">RETURN TO THE GAME VAULT</span>
+      <span class="backfx-caret" aria-hidden="true"></span>
+    </a>
 
-</main>
+  </main>
 
-<!-- SCRIPTS -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-    // Loader fade-out (THIS is what hides the loading screen)
-    window.addEventListener("load", () => {
+      // Loader fade-out (THIS is what hides the loading screen)
+      window.addEventListener("load", () => {
         document.getElementById("loader")?.classList.add("fade-out");
         document.body.classList.add("page-ready");
-    });
+      });
 
-    // Accordion
-    document.querySelectorAll(".accordion-header").forEach(header => {
+      // Accordion
+      document.querySelectorAll(".accordion-header").forEach(header => {
         header.addEventListener("click", () => {
-            const item = header.parentElement;
-            const content = item.querySelector(".accordion-content");
-            const isOpen = item.classList.contains("open");
+          const item = header.parentElement;
+          const content = item.querySelector(".accordion-content");
+          const isOpen = item.classList.contains("open");
 
-            document.querySelectorAll(".accordion-item.open").forEach(openItem => {
-                if (openItem !== item) {
-                    openItem.classList.remove("open");
-                    openItem.querySelector(".accordion-content").style.maxHeight = 0;
-                }
-            });
-
-            if (!isOpen) {
-                item.classList.add("open");
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                item.classList.remove("open");
-                content.style.maxHeight = 0;
+          document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+            if (openItem !== item) {
+              openItem.classList.remove("open");
+              openItem.querySelector(".accordion-content").style.maxHeight = 0;
             }
-        });
-    });
+          });
 
-    // Keep already-open accordions sized correctly
-    document.querySelectorAll(".accordion-item.open .accordion-content")
+          if (!isOpen) {
+            item.classList.add("open");
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            item.classList.remove("open");
+            content.style.maxHeight = 0;
+          }
+        });
+      });
+
+      // Keep already-open accordions sized correctly
+      document.querySelectorAll(".accordion-item.open .accordion-content")
         .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
 
-    // ============================
-    // Back-to-Games Auto Typewriter FX (Premium Loop)
-    // ============================
-    const backFX = document.querySelector(".back-link.backfx");
-    if (backFX) {
+      // ============================
+      // Back-to-Games Auto Typewriter FX (Premium Loop)
+      // ============================
+      const backFX = document.querySelector(".back-link.backfx");
+      if (backFX) {
         const textEl = backFX.querySelector(".backfx-text");
         const original = textEl?.dataset.text || textEl?.textContent || "Back to Games";
 
@@ -168,55 +214,53 @@ document.addEventListener("DOMContentLoaded", function () {
         const RESTART_DELAY_MS = 900; // pause before restarting
 
         function clearTimers() {
-            clearTimeout(timer);
-            timer = null;
+          clearTimeout(timer);
+          timer = null;
         }
 
         function startLoop() {
-            if (!textEl) return;
+          if (!textEl) return;
 
-            backFX.classList.add("is-typing");
+          backFX.classList.add("is-typing");
 
-            let i = 0;
-            textEl.textContent = "";
+          let i = 0;
+          textEl.textContent = "";
 
-            const typeNext = () => {
-                i++;
-                textEl.textContent = original.slice(0, i);
+          const typeNext = () => {
+            i++;
+            textEl.textContent = original.slice(0, i);
 
-                if (i >= original.length) {
-                    timer = setTimeout(() => {
-                        textEl.textContent = "";
-                        i = 0;
-                        timer = setTimeout(typeNext, RESTART_DELAY_MS);
-                    }, FULL_HOLD_MS);
-                    return;
-                }
+            if (i >= original.length) {
+              timer = setTimeout(() => {
+                textEl.textContent = "";
+                i = 0;
+                timer = setTimeout(typeNext, RESTART_DELAY_MS);
+              }, FULL_HOLD_MS);
+              return;
+            }
 
-                const ch = original[i - 1];
-                const extra =
-                    (ch === " " ? 80 : 0) +
-                    (",.;:!?)".includes(ch) ? 160 : 0);
+            const ch = original[i - 1];
+            const extra =
+              (ch === " " ? 80 : 0) +
+              (",.;:!?)".includes(ch) ? 160 : 0);
 
-                const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
-                timer = setTimeout(typeNext, delay);
-            };
+            const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
+            timer = setTimeout(typeNext, delay);
+          };
 
-            typeNext();
+          typeNext();
         }
 
         startLoop();
 
         document.addEventListener("visibilitychange", () => {
-            clearTimers();
-            if (!document.hidden) startLoop();
+          clearTimers();
+          if (!document.hidden) startLoop();
         });
-    }
+      }
 
-});
-</script>
+    });
+  </script>
+
 </body>
 </html>
-
-
-
