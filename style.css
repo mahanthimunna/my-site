@@ -714,7 +714,7 @@ body.project-page {
 ================================ */
 
 .project-content > section {
-    max-width: 950px;                /* smaller box width */
+    max-width: 780px;                /* smaller box width */
     margin: 0 auto 2.5rem;
 
     padding: 1.8rem 1.6rem;          /* reduce LEFT/RIGHT padding only */
@@ -750,7 +750,8 @@ body.project-page {
 /* Mobile refinement */
 @media (max-width: 768px) {
     .project-content > section {
-        padding: 1.4rem 1.4rem;
+        max-width: 92%;
+        padding: 1.4rem 0.9rem;
     }
 }
 
@@ -1095,6 +1096,7 @@ body.project-page {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
