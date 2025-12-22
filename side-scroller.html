@@ -60,7 +60,7 @@
             </div>
     <h2 class="section-title">GAMEPLAY VIDEO</h2>
     <iframe
-        src=""
+        src="www.gyoutube.com/mmmunnnadfj.00"
         title="Side Scroller Gameplay"
         frameborder="0"
         allowfullscreen
@@ -101,34 +101,37 @@
                 <img src="images/Dash_00.png" alt="FSM Blueprint" class="accordion-image">            </div>
             </div>
         </div>
-<!-- ITEM 2 -->
-<div class="accordion-item">
-<button class="accordion-header">
-<div class="accordion-left">
-<i class="bx bx-transfer-alt"></i>
-<span class="accordion-title">HIGH JUMP AND RECEIVE ATTACK LOGIC</span>
-</div>
-<span class="accordion-toggle-icon">+</span>
-</button>
-<div class="accordion-content">
-<p>
-    In this setup, I designed two separate functionalities 
-    inside my character blueprint. The first section, High Jump, 
-    handles the input action that lets the player perform a stronger 
-    jump when the condition is met. When the input is pressed, it checks 
-    if the player can perform a high jump and sets the “Can High Jump”
-    boolean accordingly, applying additional power for an enhanced jump height.
-    The second section, Receive Attack, focuses on the player’s reaction when 
-    hit by an enemy. I created a custom event called Push Back that calculates 
-    a directional force using the mesh’s forward and up vectors. These 
-    vectors are multiplied and combined to form a launch direction, which 
-    is then passed into the Launch Character node to push the player backward 
-    realistically, simulating a hit impact. This adds both dynamic response 
-    and feedback to the combat system.
-</p>
-<img src="images/HJumpandAttackL.png" class="accordion-image" alt="">
-</div>
-</div>
+
+        <!-- ITEM 2 -->
+        <div class="accordion-item open">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-transfer-alt"></i>
+                    <span class="accordion-title">
+                        HIGH JUMP AND RECEIVE ATTACK LOGIC
+                    </span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>
+                    In this setup, I designed two separate functionalities 
+                    inside my character blueprint. The first section, High Jump, 
+                    handles the input action that lets the player perform a stronger 
+                    jump when the condition is met. When the input is pressed, it checks 
+                    if the player can perform a high jump and sets the “Can High Jump”
+                    boolean accordingly, applying additional power for an enhanced jump height.
+                    The second section, Receive Attack, focuses on the player’s reaction when 
+                    hit by an enemy. I created a custom event called Push Back that calculates 
+                    a directional force using the mesh’s forward and up vectors. These 
+                    vectors are multiplied and combined to form a launch direction, which 
+                    is then passed into the Launch Character node to push the player backward 
+                    realistically, simulating a hit impact. This adds both dynamic response 
+                    and feedback to the combat system.
+                </p>
+                <img src="images/HJumpandAttackL.png" alt="FSM Blueprint" class="accordion-image">            </div>
+            </div>
+        </div>
 
                 <!-- ITEM 3 -->
                 <div class="accordion-item">
