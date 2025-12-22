@@ -39,170 +39,331 @@
     </ul>
 </nav>
 
-<!-- ================== PAGE CONTAINER ================== -->
+<!-- ================== PAGE WRAPPER ================== -->
 <div class="project-glass">
 
-    <!-- ================== HERO ================== -->
-    <header class="project-hero">
-        <div class="project-hero-overlay">
-            <h1>Dynamic Attack Rate</h1>
-            <p>Dynamic combat prototype – Unreal Engine 5</p>
+<!-- ================== HERO ================== -->
+<header class="project-hero">
+    <div class="project-hero-overlay">
+        <h1>Dynamic Attack Rate</h1>
+        <p>Dynamic combat prototype – Unreal Engine 5</p>
 
-            <div class="project-hero-tags">
-                <span>Unreal 5</span>
-                <span>Blueprints</span>
-                <span>Combat Systems</span>
-            </div>
+        <div class="project-hero-tags">
+            <span>Unreal 5</span>
+            <span>Blueprints</span>
+            <span>Combat Systems</span>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- ================== CONTENT ================== -->
-    <main class="project-content">
+<!-- ================== CONTENT ================== -->
+<main class="project-content">
 
-        <!-- ===== GAMEPLAY SECTION ===== -->
-        <section class="project-video-section">
-            <h2 class="section-title">EXPRESSION</h2>
+<!-- ================== VIDEO SECTION ================== -->
+<section class="project-video-section">
+    <h2 class="section-title">EXPRESSION</h2>
 
-            <div class="expression-image-block">
-                <img src="images/dynamic-attack-rate.png" alt="Expression Image">
-            </div>
+    <div class="expression-image-block">
+        <img src="images/dynamic-attack-rate.png" alt="Expression Image">
+    </div>
 
-            <h2 class="section-title">GAMEPLAY VIDEO</h2>
+    <h2 class="section-title">GAMEPLAY VIDEO</h2>
 
-            <video
-                id="gameplayVideo"
-                muted
-                controls
-                playsinline
-                preload="metadata"
-            >
-                <source src="videos/echos-gameplay.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </section>
+    <video
+        id="gameplayVideo"
+        muted
+        controls
+        playsinline
+        preload="metadata"
+    >
+        <source src="videos/echos-gameplay.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
 
-        <!-- ===== ACCORDION SECTION ===== -->
-        <section class="project-accordion-section">
-            <h2 class="section-title">SYSTEMS & RESPONSIBILITIES</h2>
+<!-- ================== ACCORDION SECTION ================== -->
+<section class="project-accordion-section">
+<h2 class="section-title">SYSTEMS & RESPONSIBILITIES</h2>
 
-            <div class="accordion">
+<div class="accordion">
 
-                <!-- ACCORDION ITEMS (UNCHANGED CONTENT) -->
-                <!-- Item blocks preserved exactly as you wrote them -->
-                <!-- (All accordion items remain identical to your original file) -->
-
-                <!-- ⬅️ Your accordion items are unchanged here for brevity -->
-                <!-- They are structurally valid and correctly nested -->
-
-            </div>
-        </section>
-
-        <!-- ================== BACK LINK ================== -->
-        <a class="back-link backfx" href="index.html#projects" aria-label="RETURN TO THE GAME VAULT">
-            <span class="backfx-arrow" aria-hidden="true">←</span>
-            <span class="backfx-text" data-text="RETURN TO THE GAME VAULT">
-                RETURN TO THE GAME VAULT
-            </span>
-            <span class="backfx-caret" aria-hidden="true"></span>
-        </a>
-
-    </main>
+<!-- ITEM 1 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">
+Player Attack Rate Function — Blueprint Implementation
+</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+This Blueprint function calculates the player’s Dynamic Attack Rate by iterating
+through stored combat data for each enemy. It performs multiple summations —
+including weighted attack impact (WiHi), penalty modifiers (PjMj), and temporal
+decay factors (T and G) — to produce a balanced metric reflecting real-time
+combat performance.
+</p>
+<img src="images/DARBPImplementation.png" class="accordion-image" alt="">
+</div>
 </div>
 
-<!-- ================== SCRIPTS ================== -->
+<!-- ITEM 2 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Summation of Wi (Weighted Hits)</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Calculates the total contribution of each successful attack weighted by importance,
+using exponential decay to reduce the influence of older actions.
+</p>
+<img src="images/SumofWi.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 3 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Summation of WiHi and PjMj</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Computes the weighted impact of successful hits (WiHi) and accumulated penalties
+for missed attacks (PjMj), both processed with time-based decay.
+</p>
+<img src="images/SumofWiHiandPjMj.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 4 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Summation of T and G</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Handles temporal spacing and global gameplay gap modifiers to stabilize the
+dynamic formula and maintain fairness.
+</p>
+<img src="images/SumofTandG.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 5 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Final Output (Attack Rate Calculation)</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Combines all calculated parameters into a normalized Attack Rate output that
+drives combat performance and ability unlocks.
+</p>
+<img src="images/FinalOutput.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 6 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Enemy Attack Data Structure and Map Setup</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Defines EnemyAttackData structures and maps to track per-enemy combat history,
+ensuring accurate and isolated calculations.
+</p>
+<img src="images/DSandMapSetup_01.png" class="accordion-image" alt="">
+<img src="images/DSandMapSetup_02.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 7 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Damage Calculation Blueprint</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Handles hit detection, damage application, attack data logging, and feedback
+triggering for responsive combat interactions.
+</p>
+<img src="images/DamageCalBP.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 8 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Finisher Attack Blueprint Implementation</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Executes cinematic finisher attacks using root motion, targeting logic,
+state locking, and data resets.
+</p>
+<img src="images/FinisherAttackBP.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 9 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Equip and Unequip Weapon System</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Mouse-wheel driven weapon equip and sheath system with animation and socket
+attachment handling.
+</p>
+<img src="images/EquipandUnequip.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 10 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">Target System Component Setup</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Modular targeting component handling enemy locking, switching, and camera focus.
+</p>
+<img src="images/TargetandCompSetup_01.png" class="accordion-image" alt="">
+<img src="images/TargetandCompSetup_02.png" class="accordion-image" alt="">
+</div>
+</div>
+
+<!-- ITEM 11 -->
+<div class="accordion-item">
+<button class="accordion-header">
+<div class="accordion-left">
+<i class="bx bx-transfer-alt"></i>
+<span class="accordion-title">
+Attack Montage Setup and Animation Blueprint Integration
+</span>
+</div>
+<span class="accordion-toggle-icon">+</span>
+</button>
+<div class="accordion-content">
+<p>
+Integrates attack montages with animation notifies for damage timing,
+combo control, and finisher activation.
+</p>
+<img src="images/ABP_01.png" class="accordion-image" alt="">
+<img src="images/ABP_02.png" class="accordion-image" alt="">
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================== BACK LINK ================== -->
+<a class="back-link backfx" href="index.html#projects">
+<span class="backfx-arrow">←</span>
+<span class="backfx-text" data-text="RETURN TO THE GAME VAULT">
+RETURN TO THE GAME VAULT
+</span>
+<span class="backfx-caret"></span>
+</a>
+
+</main>
+</div>
+
+<!-- ================== SCRIPT ================== -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* Loader */
-    window.addEventListener("load", () => {
-        document.getElementById("loader")?.classList.add("fade-out");
-        document.body.classList.add("page-ready");
-    });
+window.addEventListener("load", () => {
+document.getElementById("loader")?.classList.add("fade-out");
+document.body.classList.add("page-ready");
+});
 
-    /* Accordion */
-    document.querySelectorAll(".accordion-header").forEach(header => {
-        header.addEventListener("click", () => {
-            const item = header.parentElement;
-            const content = item.querySelector(".accordion-content");
-            const isOpen = item.classList.contains("open");
+document.querySelectorAll(".accordion-header").forEach(header => {
+header.addEventListener("click", () => {
+const item = header.parentElement;
+const content = item.querySelector(".accordion-content");
+const isOpen = item.classList.contains("open");
 
-            document.querySelectorAll(".accordion-item.open").forEach(openItem => {
-                if (openItem !== item) {
-                    openItem.classList.remove("open");
-                    openItem.querySelector(".accordion-content").style.maxHeight = 0;
-                }
-            });
+document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+if (openItem !== item) {
+openItem.classList.remove("open");
+openItem.querySelector(".accordion-content").style.maxHeight = 0;
+}
+});
 
-            if (!isOpen) {
-                item.classList.add("open");
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                item.classList.remove("open");
-                content.style.maxHeight = 0;
-            }
-        });
-    });
+if (!isOpen) {
+item.classList.add("open");
+content.style.maxHeight = content.scrollHeight + "px";
+} else {
+item.classList.remove("open");
+content.style.maxHeight = 0;
+}
+});
+});
 
-    document.querySelectorAll(".accordion-item.open .accordion-content")
-        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+const backFX = document.querySelector(".back-link.backfx");
+if (backFX) {
+const textEl = backFX.querySelector(".backfx-text");
+const original = textEl.dataset.text;
+let timer = null;
 
-    /* Back Link Typewriter */
-    const backFX = document.querySelector(".back-link.backfx");
-    if (backFX) {
-        const textEl = backFX.querySelector(".backfx-text");
-        const original = textEl?.dataset.text || textEl?.textContent;
+function startLoop() {
+let i = 0;
+textEl.textContent = "";
 
-        let timer = null;
-        const BASE_TYPE_MS = 150;
-        const RANDOM_JITTER = 80;
-        const FULL_HOLD_MS = 1800;
-        const RESTART_DELAY_MS = 900;
-
-        function clearTimers() {
-            clearTimeout(timer);
-            timer = null;
-        }
-
-        function startLoop() {
-            if (!textEl) return;
-
-            let i = 0;
-            textEl.textContent = "";
-
-            const typeNext = () => {
-                i++;
-                textEl.textContent = original.slice(0, i);
-
-                if (i >= original.length) {
-                    timer = setTimeout(() => {
-                        textEl.textContent = "";
-                        i = 0;
-                        timer = setTimeout(typeNext, RESTART_DELAY_MS);
-                    }, FULL_HOLD_MS);
-                    return;
-                }
-
-                const ch = original[i - 1];
-                const extra =
-                    (ch === " " ? 80 : 0) +
-                    (",.;:!?)".includes(ch) ? 160 : 0);
-
-                timer = setTimeout(
-                    typeNext,
-                    BASE_TYPE_MS + Math.random() * RANDOM_JITTER + extra
-                );
-            };
-
-            typeNext();
-        }
-
-        startLoop();
-
-        document.addEventListener("visibilitychange", () => {
-            clearTimers();
-            if (!document.hidden) startLoop();
-        });
-    }
+function typeNext() {
+i++;
+textEl.textContent = original.slice(0, i);
+if (i >= original.length) {
+setTimeout(() => startLoop(), 2500);
+return;
+}
+setTimeout(typeNext, 150 + Math.random() * 80);
+}
+typeNext();
+}
+startLoop();
+}
 
 });
 </script>
