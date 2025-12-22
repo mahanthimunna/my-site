@@ -708,7 +708,7 @@ body.project-page {
     margin-bottom: 2.5rem;
 }
 
- ================================
+ 
  /* =========================================
    DEADLY SCRIPT ONLY – INFO BOXES (FIRST 4 SECTIONS)
    Overview | My Role | Key Systems | Tech & Tools
@@ -1086,6 +1086,7 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
