@@ -47,6 +47,7 @@ img, video, iframe {
 
 /* Scroll offset for anchors */
 #about { scroll-margin-top: var(--nav-h); }
+#systems { scroll-margin-top: calc(var(--nav-h) + 20px); }
 #projects { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
 
@@ -1173,6 +1174,7 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
 
 
