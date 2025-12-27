@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prim’s Maze Generation System | Mahanthi Portfolio</title>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="project-page" style="--project-bg: url('images/maze-system-bg.png');">
+  <!-- NAVBAR -->
+  <nav class="navbar" style="animation-play-state: running; opacity: 1; transform: translateY(0);">
+    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#systems">Systems</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="project-hero">
+    <div class="project-hero-overlay">
+      <h1>Procedural Maze Generation (Prim’s Algorithm)</h1>
+      <p>
+        A procedural level-layout system that generates structured, solvable mazes using graph-based logic.
+      </p>
+
+      <div class="project-hero-tags">
+        <span>Procedural Generation</span>
+        <span>Algorithms</span>
+        <span>Level Design Systems</span>
+      </div>
+
+      <a class="back-link backfx" href="index.html#systems">
+        <span class="backfx-arrow">←</span>
+        <span class="backfx-text">Back to Systems</span>
+        <span class="backfx-caret"></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN GLASS CONTENT -->
+  <main class="project-glass">
+
+    <!-- VIDEO -->
+    <section class="project-video-section">
+      <h2 class="section-title">DEMO VIDEO</h2>
+
+      <!-- Replace src with your hosted video path OR YouTube iframe -->
+      <video controls preload="metadata">
+        <source src="videos/MahanthiK_TechStudy01_Game734.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- ACCORDION -->
+    <section class="project-accordion-section">
+      <h2 class="section-title">SYSTEM BREAKDOWN</h2>
+
+      <div class="accordion">
+
+        <!-- Overview -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-layer'></i>
+              <span class="accordion-title">Overview</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              This system generates maze-like layouts using Prim’s algorithm logic, producing a connected structure
+              that can be used for puzzle paths, dungeon corridors, or exploration spaces. The goal is a repeatable
+              generator that supports level design iteration and replayability.
+            </p>
+          </div>
+        </div>
+
+        <!-- How it works -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-git-branch'></i>
+              <span class="accordion-title">How the Algorithm Works (High-Level)</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              The maze can be treated like a grid/graph. Prim’s algorithm approach expands the maze by gradually
+              adding new cells/edges from a frontier, ensuring the final structure stays connected and forms a clean
+              “maze” topology. This supports solvable paths and controlled complexity.
+            </p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-slider-alt'></i>
+              <span class="accordion-title">Controls & Parameters</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Common tuning inputs you can expose:
+              grid size, seed, corridor width, complexity/branching bias, start/end placement rules, and optional
+              constraints (e.g., guaranteed main path length, rooms insertion, or dead-end trimming).
+            </p>
+          </div>
+        </div>
+
+        <!-- What I built -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-code-alt'></i>
+              <span class="accordion-title">What I Implemented</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Implemented the procedural generation logic, generated the layout output, and validated connectivity.
+              Focused on clean system flow so it can be reused for multiple level contexts.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Accordion script -->
+  <script>
+    document.querySelectorAll(".accordion-header").forEach(header => {
+      header.addEventListener("click", () => {
+        const item = header.parentElement;
+        item.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
