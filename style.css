@@ -85,18 +85,18 @@ img, video, iframe {
     font-weight: 600;
 }
 
-.navbar ul {
+.nav-links {
     list-style: none;
     display: flex;
     gap: 2rem;
 }
 
-.navbar ul li a {
+.nav-links li a {
     color: #cbd5f5;
     text-decoration: none;
 }
 
-.navbar ul li a:hover {
+.nav-links li a:hover {
     color: #ffffff;
 }
 
@@ -1307,8 +1307,8 @@ body.nav-lock {
 @media (max-width: 820px) {
   .navbar { padding: 0 5%; }
 
-  .nav-links {
-    display: none;
+  .navbar .nav-links {
+    display: none !important;
   }
 
   .nav-toggle {
