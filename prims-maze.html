@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Prim’s Maze Generation – Mahanthi Kannapalli</title>
+    <title>Camera Visibility Scoring – Mahanthi Kannapalli</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="project-page" style="--project-bg: url('images/maze-system-bg.png');">
+<body class="project-page" style="--project-bg: url('images/camera-system-bg.png');">
 
 <!-- LOADER (EXACT Private Room) -->
 <div id="loader">
@@ -21,13 +21,12 @@
     </div>
 </div>
 
-<!-- NAVBAR (EXACT Private Room) -->
+<!-- NAVBAR (match Private Room) -->
 <nav class="navbar">
     <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#systems">Systems</a></li>
         <li><a href="index.html#contact">Contact</a></li>
     </ul>
 </nav>
@@ -35,110 +34,198 @@
 <!-- GLASS WRAPPER -->
 <div class="project-glass">
 
-<!-- HERO -->
-<header class="project-hero">
-    <div class="project-hero-overlay">
-        <h1>Prim’s Maze Generation</h1>
-        <p>Procedural Maze Layout System Using Graph Expansion Logic</p>
+    <!-- HERO -->
+    <header class="project-hero">
+        <div class="project-hero-overlay">
+            <h1>Camera Visibility Scoring</h1>
+            <p>Camera Capture + Evaluation System that Scores Photos by Target Visibility</p>
 
-        <div class="project-hero-tags">
-            <span>Procedural Generation</span>
-            <span>Algorithms</span>
-            <span>Level Design Systems</span>
-        </div>
-    </div>
-</header>
-
-<!-- CONTENT -->
-<main class="project-content">
-
-<!-- VIDEO -->
-<section class="project-video-section">
-    <h2 class="section-title">DEMO VIDEO</h2>
-
-    <video controls preload="metadata">
-        <source src="videos/MahanthiK_TechStudy01_Game734.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
-</section>
-
-<!-- ACCORDION -->
-<section class="project-accordion-section">
-    <h2 class="section-title">SYSTEMS & RESPONSIBILITIES</h2>
-
-    <div class="accordion">
-
-        <!-- OVERVIEW -->
-        <div class="accordion-item open">
-            <button class="accordion-header">
-                <div class="accordion-left">
-                    <i class="bx bx-layer"></i>
-                    <span class="accordion-title">OVERVIEW</span>
-                </div>
-                <span class="accordion-toggle-icon">+</span>
-            </button>
-
-            <div class="accordion-content">
-                <p>
-                    This system generates maze-like layouts using Prim’s algorithm logic,
-                    producing a fully connected and solvable structure suitable for
-                    puzzle paths, dungeon corridors, or exploration spaces.
-                </p>
+            <div class="project-hero-tags">
+                <span>Camera Systems</span>
+                <span>Visibility Scoring</span>
+                <span>Gameplay Evaluation</span>
             </div>
         </div>
+    </header>
 
-        <!-- CORE LOGIC -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <div class="accordion-left">
-                    <i class="bx bx-git-branch"></i>
-                    <span class="accordion-title">CORE LOGIC</span>
+    <!-- CONTENT -->
+    <main class="project-content">
+
+        <!-- VIDEO -->
+        <section class="project-video-section">
+            <h2 class="section-title">DEMO VIDEO</h2>
+
+            <video controls preload="metadata">
+                <source src="videos/MahanthiK_TechStudy02_Game734.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- ACCORDION -->
+        <section class="project-accordion-section">
+            <h2 class="section-title">SYSTEMS & RESPONSIBILITIES</h2>
+
+            <div class="accordion">
+
+                <div class="accordion-item open">
+                    <button class="accordion-header" type="button">
+                        <div class="accordion-left">
+                            <i class='bx bx-camera'></i>
+                            <span class="accordion-title">OVERVIEW</span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            This system captures an image using an in-game camera and generates a score that represents how well
+                            the target toy appears in the frame. The score can be used for gameplay rewards, photo missions,
+                            or objective “photo quality” evaluation.
+                        </p>
+                    </div>
                 </div>
-                <span class="accordion-toggle-icon">+</span>
-            </button>
 
-            <div class="accordion-content">
-                <p>
-                    The maze is treated as a grid-based graph.
-                    Starting from a seed cell, the algorithm expands by selecting
-                    frontier edges and carving passages while maintaining global connectivity.
-                </p>
-            </div>
-        </div>
-
-        <!-- PARAMETERS -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <div class="accordion-left">
-                    <i class="bx bx-slider-alt"></i>
-                    <span class="accordion-title">PARAMETERS / CONTROLS</span>
+                <div class="accordion-item">
+                    <button class="accordion-header" type="button">
+                        <div class="accordion-left">
+                            <i class='bx bx-bullseye'></i>
+                            <span class="accordion-title">SCORING GOAL</span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            The score increases when more of the toy is clearly visible, and decreases when the toy is partially visible,
+                            out of frame, or occluded by obstacles. This rewards good framing instead of “spam capture.”
+                        </p>
+                    </div>
                 </div>
-                <span class="accordion-toggle-icon">+</span>
-            </button>
 
-            <div class="accordion-content">
-                <p>
-                    Grid size, random seed, corridor thickness, branching bias,
-                    start/end rules, and optional constraints such as dead-end trimming
-                    or guaranteed main paths.
-                </p>
-            </div>
-        </div>
-
-        <!-- IMPLEMENTATION -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <div class="accordion-left">
-                    <i class="bx bx-code-alt"></i>
-                    <span class="accordion-title">IMPLEMENTATION</span>
+                <div class="accordion-item">
+                    <button class="accordion-header" type="button">
+                        <div class="accordion-left">
+                            <i class='bx bx-grid-alt'></i>
+                            <span class="accordion-title">KEY COMPONENTS</span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Camera capture, target identification, visibility/coverage estimation, occlusion handling,
+                            and a final scoring function that maps visibility to points.
+                        </p>
+                    </div>
                 </div>
-                <span class="accordion-toggle-icon">+</span>
-            </button>
 
-            <div class="accordion-content">
-                <p>
-                    Implemented procedural logic, validated maze connectivity,
-                    and structured the system for reuse in multiple level contexts.
-                    Focused on clean data flow and predictable generation.
-                </p>
+                <div class="accordion-item">
+                    <button class="accordion-header" type="button">
+                        <div class="accordion-left">
+                            <i class='bx bx-wrench'></i>
+                            <span class="accordion-title">USE CASES</span>
+                        </div>
+                        <span class="accordion-toggle-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>
+                            Photo-mode challenges, “capture the target” quests, wildlife photography scoring, stealth camera gadgets,
+                            or any mechanic where camera framing and clear visibility should be rewarded.
+                        </p>
+                    </div>
+                </div>
+
             </div>
+        </section>
+
+        <!-- BACK LINK (same placement style as Private Room) -->
+        <a class="back-link backfx" href="index.html#systems" aria-label="RETURN TO THE SYSTEM VAULT">
+            <span class="backfx-arrow">←</span>
+            <span class="backfx-text" data-text="RETURN TO THE SYSTEM VAULT">RETURN TO THE SYSTEM VAULT</span>
+            <span class="backfx-caret"></span>
+        </a>
+
+    </main>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ---- LOADER (robust) ----
+    const loader = document.getElementById("loader");
+
+    function hideLoader() {
+        if (!loader) return;
+        loader.classList.add("fade-out");
+        document.body.classList.add("page-ready");
+    }
+
+    // normal: when everything is loaded
+    window.addEventListener("load", hideLoader);
+
+    // failsafe: even if load event is delayed by media/network
+    setTimeout(hideLoader, 3500);
+
+    // ---- ACCORDION (Private Room behavior) ----
+    document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const item = header.parentElement;
+            const content = item.querySelector(".accordion-content");
+            const isOpen = item.classList.contains("open");
+
+            document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove("open");
+                    const c = openItem.querySelector(".accordion-content");
+                    if (c) c.style.maxHeight = 0;
+                }
+            });
+
+            if (!isOpen) {
+                item.classList.add("open");
+                if (content) content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                item.classList.remove("open");
+                if (content) content.style.maxHeight = 0;
+            }
+        });
+    });
+
+    // keep default-open expanded
+    document.querySelectorAll(".accordion-item.open .accordion-content")
+        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+
+    // ---- Back link typing loop ----
+    const backFX = document.querySelector(".back-link.backfx");
+    if (backFX) {
+        const textEl = backFX.querySelector(".backfx-text");
+        const original = textEl?.dataset.text || textEl?.textContent || "Back";
+
+        let timer = null;
+        function loop() {
+            let i = 0;
+            if (!textEl) return;
+            textEl.textContent = "";
+
+            const type = () => {
+                i++;
+                textEl.textContent = original.slice(0, i);
+
+                if (i >= original.length) {
+                    timer = setTimeout(loop, 2000);
+                    return;
+                }
+                timer = setTimeout(type, 140 + Math.random() * 80);
+            };
+            type();
+        }
+        loop();
+
+        document.addEventListener("visibilitychange", () => {
+            clearTimeout(timer);
+            if (!document.hidden) loop();
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>
