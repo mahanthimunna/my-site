@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camera Visibility Scoring System | Mahanthi Portfolio</title>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="project-page" style="--project-bg: url('images/camera-system-bg.png');">
+  <nav class="navbar" style="animation-play-state: running; opacity: 1; transform: translateY(0);">
+    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#systems">Systems</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="project-hero">
+    <div class="project-hero-overlay">
+      <h1>Camera-Based Visibility Scoring System</h1>
+      <p>
+        A camera capture + evaluation system that scores each image based on how much of the target toy is visible.
+      </p>
+
+      <div class="project-hero-tags">
+        <span>Camera Systems</span>
+        <span>Visibility Scoring</span>
+        <span>Gameplay Evaluation</span>
+      </div>
+
+      <a class="back-link backfx" href="index.html#systems">
+        <span class="backfx-arrow">←</span>
+        <span class="backfx-text">Back to Systems</span>
+        <span class="backfx-caret"></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="project-glass">
+
+    <section class="project-video-section">
+      <h2 class="section-title">DEMO VIDEO</h2>
+
+      <!-- Replace src with your hosted video path OR YouTube iframe -->
+      <video controls preload="metadata">
+        <source src="videos/MahanthiK_TechStudy02_Game734.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="project-accordion-section">
+      <h2 class="section-title">SYSTEM BREAKDOWN</h2>
+
+      <div class="accordion">
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-camera'></i>
+              <span class="accordion-title">Overview</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              This system captures an image using an in-game camera and generates a score that represents how well
+              the target toy appears in the frame. The score can be used for gameplay rewards, photo missions,
+              or objective “photo quality” evaluation.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-bullseye'></i>
+              <span class="accordion-title">Scoring Goal</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              The score increases when more of the toy is clearly visible in the camera output, and decreases when the
+              toy is partially visible, out of frame, or occluded by obstacles. This encourages better composition and
+              positioning instead of “spam capture.”
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-grid-alt'></i>
+              <span class="accordion-title">Key Components</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Typical building blocks include: camera capture, target identification, visibility/coverage estimation,
+              occlusion handling, and a final scoring function that maps visibility to points.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <div class="accordion-left">
+              <i class='bx bx-wrench'></i>
+              <span class="accordion-title">Use Cases</span>
+            </div>
+            <span class="accordion-toggle-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Photo-mode challenges, “capture the target” quests, wildlife photography scoring, stealth camera gadgets,
+              or any mechanic where camera framing and clear visibility should be rewarded.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.querySelectorAll(".accordion-header").forEach(header => {
+      header.addEventListener("click", () => {
+        const item = header.parentElement;
+        item.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
