@@ -1,259 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prim’s Maze Generation System | Mahanthi Portfolio</title>
+    <meta charset="UTF-8" />
+    <title>Prim’s Maze Generation – Mahanthi Kannapalli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="project-page" style="--project-bg: url('images/maze-system-bg.png');">
 
-  <!-- LOADER (same as Private Room) -->
-  <div id="loader">
+<!-- LOADER (EXACT Private Room) -->
+<div id="loader">
     <div class="star-core"></div>
     <div class="star-wave wave-1"></div>
     <div class="star-wave wave-2"></div>
     <div class="star-particles">
-      <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
     </div>
-  </div>
+</div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
+<!-- NAVBAR (EXACT Private Room) -->
+<nav class="navbar">
     <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="index.html#systems">Systems</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <!-- GLASS WRAPPER (Private Room style) -->
-  <div class="project-glass">
+<!-- GLASS WRAPPER -->
+<div class="project-glass">
 
-    <!-- HERO -->
-    <header class="project-hero">
-      <div class="project-hero-overlay">
-        <h1>Procedural Maze Generation (Prim’s Algorithm)</h1>
-        <p>
-          A procedural level-layout system that generates structured, solvable mazes using graph-based logic.
-        </p>
+<!-- HERO -->
+<header class="project-hero">
+    <div class="project-hero-overlay">
+        <h1>Prim’s Maze Generation</h1>
+        <p>Procedural Maze Layout System Using Graph Expansion Logic</p>
 
         <div class="project-hero-tags">
-          <span>Procedural Generation</span>
-          <span>Algorithms</span>
-          <span>Level Design Systems</span>
+            <span>Procedural Generation</span>
+            <span>Algorithms</span>
+            <span>Level Design Systems</span>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<main class="project-content">
+
+<!-- VIDEO -->
+<section class="project-video-section">
+    <h2 class="section-title">DEMO VIDEO</h2>
+
+    <video controls preload="metadata">
+        <source src="videos/MahanthiK_TechStudy01_Game734.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+<!-- ACCORDION -->
+<section class="project-accordion-section">
+    <h2 class="section-title">SYSTEMS & RESPONSIBILITIES</h2>
+
+    <div class="accordion">
+
+        <!-- OVERVIEW -->
+        <div class="accordion-item open">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-layer"></i>
+                    <span class="accordion-title">OVERVIEW</span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
+            </button>
+
+            <div class="accordion-content">
+                <p>
+                    This system generates maze-like layouts using Prim’s algorithm logic,
+                    producing a fully connected and solvable structure suitable for
+                    puzzle paths, dungeon corridors, or exploration spaces.
+                </p>
+            </div>
         </div>
 
-        <a class="back-link backfx" href="index.html#systems" aria-label="Back to Systems">
-          <span class="backfx-arrow" aria-hidden="true">←</span>
-          <span class="backfx-text" data-text="Back to Systems">Back to Systems</span>
-          <span class="backfx-caret" aria-hidden="true"></span>
-        </a>
-      </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main class="project-content">
-
-      <!-- VIDEO -->
-      <section class="project-video-section">
-        <h2 class="section-title">DEMO VIDEO</h2>
-
-        <video controls preload="metadata">
-          <source src="videos/MahanthiK_TechStudy01_Game734.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </section>
-
-      <!-- ACCORDION -->
-      <section class="project-accordion-section">
-        <h2 class="section-title">SYSTEM BREAKDOWN</h2>
-
-        <div class="accordion">
-
-          <!-- Overview -->
-          <div class="accordion-item open">
-            <button class="accordion-header" type="button">
-              <div class="accordion-left">
-                <i class='bx bx-layer'></i>
-                <span class="accordion-title">Overview</span>
-              </div>
-              <span class="accordion-toggle-icon">+</span>
+        <!-- CORE LOGIC -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-git-branch"></i>
+                    <span class="accordion-title">CORE LOGIC</span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
             </button>
-            <div class="accordion-content">
-              <p>
-                This system generates maze-like layouts using Prim’s algorithm logic, producing a connected structure
-                that can be used for puzzle paths, dungeon corridors, or exploration spaces. The goal is a repeatable
-                generator that supports level design iteration and replayability.
-              </p>
-            </div>
-          </div>
 
-          <!-- How it works -->
-          <div class="accordion-item">
-            <button class="accordion-header" type="button">
-              <div class="accordion-left">
-                <i class='bx bx-git-branch'></i>
-                <span class="accordion-title">How the Algorithm Works (High-Level)</span>
-              </div>
-              <span class="accordion-toggle-icon">+</span>
-            </button>
             <div class="accordion-content">
-              <p>
-                The maze can be treated like a grid/graph. Prim’s algorithm approach expands the maze by gradually
-                adding new cells/edges from a frontier, ensuring the final structure stays connected and forms a clean
-                “maze” topology. This supports solvable paths and controlled complexity.
-              </p>
+                <p>
+                    The maze is treated as a grid-based graph.
+                    Starting from a seed cell, the algorithm expands by selecting
+                    frontier edges and carving passages while maintaining global connectivity.
+                </p>
             </div>
-          </div>
-
-          <!-- Controls -->
-          <div class="accordion-item">
-            <button class="accordion-header" type="button">
-              <div class="accordion-left">
-                <i class='bx bx-slider-alt'></i>
-                <span class="accordion-title">Controls & Parameters</span>
-              </div>
-              <span class="accordion-toggle-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Common tuning inputs you can expose:
-                grid size, seed, corridor width, complexity/branching bias, start/end placement rules, and optional
-                constraints (e.g., guaranteed main path length, rooms insertion, or dead-end trimming).
-              </p>
-            </div>
-          </div>
-
-          <!-- What I built -->
-          <div class="accordion-item">
-            <button class="accordion-header" type="button">
-              <div class="accordion-left">
-                <i class='bx bx-code-alt'></i>
-                <span class="accordion-title">What I Implemented</span>
-              </div>
-              <span class="accordion-toggle-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Implemented the procedural generation logic, generated the layout output, and validated connectivity.
-                Focused on clean system flow so it can be reused for multiple level contexts.
-              </p>
-            </div>
-          </div>
-
         </div>
-      </section>
 
-    </main>
-  </div>
+        <!-- PARAMETERS -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-slider-alt"></i>
+                    <span class="accordion-title">PARAMETERS / CONTROLS</span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
+            </button>
 
-  <!-- SCRIPTS (loader + smooth accordion + backfx typing loop) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
+            <div class="accordion-content">
+                <p>
+                    Grid size, random seed, corridor thickness, branching bias,
+                    start/end rules, and optional constraints such as dead-end trimming
+                    or guaranteed main paths.
+                </p>
+            </div>
+        </div>
 
-      // Loader fade-out
-      window.addEventListener("load", () => {
-        document.getElementById("loader")?.classList.add("fade-out");
-        document.body.classList.add("page-ready");
-      });
+        <!-- IMPLEMENTATION -->
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <div class="accordion-left">
+                    <i class="bx bx-code-alt"></i>
+                    <span class="accordion-title">IMPLEMENTATION</span>
+                </div>
+                <span class="accordion-toggle-icon">+</span>
+            </button>
 
-      // Accordion (only one open at a time, smooth height)
-      document.querySelectorAll(".accordion-header").forEach(header => {
-        header.addEventListener("click", () => {
-          const item = header.parentElement;
-          const content = item.querySelector(".accordion-content");
-          const isOpen = item.classList.contains("open");
-
-          document.querySelectorAll(".accordion-item.open").forEach(openItem => {
-            if (openItem !== item) {
-              openItem.classList.remove("open");
-              const c = openItem.querySelector(".accordion-content");
-              if (c) c.style.maxHeight = 0;
-            }
-          });
-
-          if (!isOpen) {
-            item.classList.add("open");
-            if (content) content.style.maxHeight = content.scrollHeight + "px";
-          } else {
-            item.classList.remove("open");
-            if (content) content.style.maxHeight = 0;
-          }
-        });
-      });
-
-      // Ensure default open accordion renders correctly
-      document.querySelectorAll(".accordion-item.open .accordion-content")
-        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
-
-      // Back-link Auto Typewriter FX (Premium Loop)
-      const backFX = document.querySelector(".back-link.backfx");
-      if (backFX) {
-        const textEl = backFX.querySelector(".backfx-text");
-        const original = textEl?.dataset.text || textEl?.textContent || "Back";
-
-        let timer = null;
-
-        const BASE_TYPE_MS = 150;
-        const RANDOM_JITTER = 80;
-        const FULL_HOLD_MS = 1800;
-        const RESTART_DELAY_MS = 900;
-
-        function clearTimers() {
-          clearTimeout(timer);
-          timer = null;
-        }
-
-        function startLoop() {
-          if (!textEl) return;
-
-          backFX.classList.add("is-typing");
-
-          let i = 0;
-          textEl.textContent = "";
-
-          const typeNext = () => {
-            i++;
-            textEl.textContent = original.slice(0, i);
-
-            if (i >= original.length) {
-              timer = setTimeout(() => {
-                textEl.textContent = "";
-                i = 0;
-                timer = setTimeout(typeNext, RESTART_DELAY_MS);
-              }, FULL_HOLD_MS);
-              return;
-            }
-
-            const ch = original[i - 1];
-            const extra =
-              (ch === " " ? 80 : 0) +
-              (",.;:!?)".includes(ch) ? 160 : 0);
-
-            const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
-            timer = setTimeout(typeNext, delay);
-          };
-
-          typeNext();
-        }
-
-        startLoop();
-
-        document.addEventListener("visibilitychange", () => {
-          clearTimers();
-          if (!document.hidden) startLoop();
-        });
-      }
-
-    });
-  </script>
-
-</body>
-</html>
+            <div class="accordion-content">
+                <p>
+                    Implemented procedural logic, validated maze connectivity,
+                    and structured the system for reuse in multiple level contexts.
+                    Focused on clean data flow and predictable generation.
+                </p>
+            </div>
