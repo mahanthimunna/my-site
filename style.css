@@ -771,124 +771,7 @@ body.project-page{
   }
 }
 
-/* ===== Unique “circuit” hamburger ===== */
-.nav-toggle{
-  display:none;
-  position:relative;
-  width:52px;
-  height:52px;
-  border-radius:16px;
-  cursor:pointer;
-  overflow:hidden;
-
-  border:1px solid rgba(120,190,255,0.35);
-  background: linear-gradient(145deg, rgba(15,25,40,0.85), rgba(5,10,20,0.92));
-  box-shadow: inset 0 0 18px rgba(120,190,255,0.14), 0 0 18px rgba(40,120,255,0.22);
-}
-
-.nav-toggle::before{
-  content:"";
-  position:absolute;
-  inset:2px;
-  border-radius:14px;
-  border:1px solid rgba(120,190,255,0.35);
-  pointer-events:none;
-}
-
-/* 3 “circuit lines” */
-.nav-toggle span{
-  position:absolute;
-  left:50%;
-  width:26px;
-  height:2px;
-  border-radius:999px;
-
-  background: linear-gradient(90deg, rgba(125,211,255,1), rgba(179,229,255,1));
-  box-shadow: 0 0 10px rgba(120,190,255,0.75);
-
-  transform: translateX(-50%);
-  transition: transform 260ms ease, opacity 220ms ease, width 220ms ease, top 260ms ease;
-}
-
-/* place lines */
-.nav-toggle span:nth-child(1){ top: 17px; width: 20px; }
-.nav-toggle span:nth-child(2){ top: 25px; width: 28px; }
-.nav-toggle span:nth-child(3){ top: 33px; width: 22px; }
-
-/* add “circuit nodes” (little dots) */
-.nav-toggle span::after{
-  content:"";
-  position:absolute;
-  right:-6px;
-  top:50%;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  transform: translateY(-50%);
-  background: rgba(125,240,255,0.95);
-  box-shadow: 0 0 10px rgba(125,240,255,0.65);
-}
-
-/* OPEN STATE — morph into an X */
-body.nav-open .nav-toggle span:nth-child(1){
-  top: 25px;
-  width: 28px;
-  transform: translateX(-50%) rotate(45deg);
-}
-body.nav-open .nav-toggle span:nth-child(2){
-  opacity: 0;
-}
-body.nav-open .nav-toggle span:nth-child(3){
-  top: 25px;
-  width: 28px;
-  transform: translateX(-50%) rotate(-45deg);
-}
-
-/* ===== Overlay + Slide-in menu ===== */
-.nav-overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(2px);
-  z-index: 9; /* under navbar (10), above page */
-}
-
-.mobile-menu{
-  position: fixed;
-  top: 0;
-  right: 0;
-
-  width: min(82vw, 340px);
-  height: 100vh;
-
-  padding: calc(var(--nav-h) + 18px) 18px 18px;
-
-  background: rgba(8, 12, 20, 0.92);
-  border-left: 1px solid rgba(120,190,255,0.28);
-  box-shadow: -20px 0 50px rgba(0,0,0,0.65);
-
-  z-index: 11; /* above navbar */
-  transform: translateX(110%);
-  transition: transform 260ms ease;
-}
-
-body.nav-open .mobile-menu{
-  transform: translateX(0);
-}
-
-body.nav-lock{
-  overflow: hidden;
-}
-
-/* Close button (clean, no weird square) */
-.menu-close{
-  position: absolute;
-  top: 14px;
-  right: 14px;
-
-  width: 44px;
-  height: 44px;
-
+/
   border-radius: 14px;
   border: 1px solid rgba(120,190,255,0.35);
   background: rgba(15,25,40,0.6);
@@ -932,5 +815,101 @@ body.nav-lock{
   .nav-overlay,
   .mobile-menu{
     display:none !important;
+  }
+}
+
+/* =========================================================
+   JOYSTICK-STYLE NAV TOGGLE (UNIQUE)
+   ========================================================= */
+
+.nav-toggle{
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(145deg,
+    rgba(12,18,30,0.95),
+    rgba(6,10,18,0.95)
+  );
+
+  border: 1px solid rgba(120,190,255,0.35);
+  box-shadow:
+    inset 0 0 18px rgba(120,190,255,0.15),
+    0 0 22px rgba(60,140,255,0.25);
+
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.nav-toggle:hover{
+  box-shadow:
+    inset 0 0 22px rgba(160,220,255,0.25),
+    0 0 30px rgba(100,200,255,0.35);
+}
+
+/* === joystick stick === */
+.nav-toggle .stick{
+  position: absolute;
+  width: 6px;
+  height: 18px;
+  background: linear-gradient(
+    to bottom,
+    #e6f6ff,
+    #6bcfff
+  );
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(120,200,255,0.8);
+  transform-origin: center bottom;
+  transition: transform 260ms ease, opacity 200ms ease;
+}
+
+/* === joystick buttons === */
+.nav-toggle .btn{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #bff8ff, #4fd3ff);
+  box-shadow: 0 0 10px rgba(125,240,255,0.8);
+  transition: transform 260ms ease, opacity 200ms ease;
+}
+
+/* place buttons diagonally */
+.nav-toggle .btn-a{
+  transform: translate(10px, -6px);
+}
+
+.nav-toggle .btn-b{
+  transform: translate(-10px, 6px);
+}
+
+/* =========================================================
+   OPEN STATE → morph joystick into X
+   ========================================================= */
+
+body.nav-open .nav-toggle .stick{
+  transform: rotate(45deg) scaleY(1.2);
+}
+
+body.nav-open .nav-toggle .btn-a{
+  transform: rotate(-45deg) scale(1.1);
+}
+
+body.nav-open .nav-toggle .btn-b{
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* =========================================================
+   MOBILE VISIBILITY
+   ========================================================= */
+
+@media (max-width: 820px){
+  .nav-toggle{
+    display: inline-flex;
   }
 }
