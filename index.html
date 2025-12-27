@@ -49,8 +49,6 @@
 
   <!-- Mobile slide panel -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
-
     <a class="mobile-link" href="#about">About</a>
     <a class="mobile-link" href="#projects">Projects</a>
     <a class="mobile-link" href="#systems">Systems</a>
@@ -433,8 +431,6 @@
         isOpen ? closeMenu() : openMenu();
       });
 
-      closeBtn?.addEventListener("click", closeMenu);
-
       // Close when clicking a link
       panel.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
@@ -446,3 +442,4 @@
   </script>
 </body>
 </html>
+
