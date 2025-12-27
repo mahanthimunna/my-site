@@ -30,13 +30,35 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#systems">Systems</a></li>
-        <li><a href="#contact">Contact</a></li> <!-- contact placeholder -->
-    </ul>
+  <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
+
+  <!-- Desktop links -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- Mobile hamburger -->
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Mobile overlay (click to close) -->
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+
+  <!-- Mobile slide panel -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="menu-close" type="button" aria-label="Close menu">×</button>
+
+    <a class="mobile-link" href="#about">About</a>
+    <a class="mobile-link" href="#projects">Projects</a>
+    <a class="mobile-link" href="#systems">Systems</a>
+    <a class="mobile-link" href="#contact">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO / ABOUT SECTION -->
@@ -455,8 +477,54 @@
         }, 3000);
     });
 </script>
+
+<script>
+  (function () {
+    const toggle = document.querySelector(".nav-toggle");
+    const menu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("navOverlay");
+    const closeBtn = document.querySelector(".menu-close");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    if (!toggle || !menu || !overlay) return;
+
+    function openMenu() {
+      document.body.classList.add("nav-open", "nav-lock");
+      overlay.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      menu.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMenu() {
+      document.body.classList.remove("nav-open", "nav-lock");
+      overlay.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      menu.setAttribute("aria-hidden", "true");
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpen = document.body.classList.contains("nav-open");
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener("click", closeMenu);
+    closeBtn && closeBtn.addEventListener("click", closeMenu);
+
+    mobileLinks.forEach(a => a.addEventListener("click", closeMenu));
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // Close if resized to desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 820) closeMenu();
+    });
+  })();
+</script>
 </body>
 </html>
+
 
 
 
