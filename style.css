@@ -1175,12 +1175,143 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-title { font-size: 0.9rem; }
 }
 
+/* =========================================================
+   10) MOBILE NAV (HAMBURGER + SLIDE MENU)
+   ========================================================= */
 
+/* rename: your navbar ul becomes .nav-links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
 
+/* Hamburger button hidden on desktop */
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(120, 170, 255, 0.35);
+  background: rgba(10, 20, 32, 0.55);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+}
 
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #cbd5f5;
+  border-radius: 999px;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
 
+/* Overlay behind menu */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+  z-index: 9998;
+}
 
+/* Slide panel */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(82vw, 340px);
+  background: rgba(11, 16, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(120, 170, 255, 0.25);
+  box-shadow: -20px 0 50px rgba(0,0,0,0.6);
+  z-index: 9999;
 
+  transform: translateX(110%);
+  transition: transform 260ms ease;
+  padding: calc(var(--nav-h) * 0.65) 18px 20px;
 
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
+.mobile-menu .menu-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 170, 255, 0.25);
+  background: rgba(10, 20, 32, 0.45);
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
 
+.mobile-link {
+  text-decoration: none;
+  color: #e5ecff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 170, 255, 0.18);
+  background: rgba(5, 10, 18, 0.55);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.mobile-link:hover {
+  transform: translateX(-2px);
+  border-color: rgba(140, 210, 255, 0.75);
+  box-shadow: 0 0 0 1px rgba(140, 210, 255, 0.35),
+              0 0 22px rgba(90, 170, 255, 0.25);
+}
+
+/* OPEN STATE */
+body.nav-open .mobile-menu {
+  transform: translateX(0);
+}
+
+body.nav-open .nav-overlay {
+  display: block;
+}
+
+/* Animate hamburger into X (optional premium touch) */
+body.nav-open .nav-toggle span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+body.nav-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+body.nav-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Prevent body scroll when menu open */
+body.nav-lock {
+  overflow: hidden;
+}
+
+/* RESPONSIVE SWITCH: hide desktop links, show hamburger */
+@media (max-width: 820px) {
+  .navbar { padding: 0 5%; }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
