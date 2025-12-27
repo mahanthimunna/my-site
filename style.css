@@ -652,21 +652,6 @@ body.page-ready .text-box { animation-play-state: running; }
   pointer-events:none;
 }
 
-/* 🎮 overlay */
-.nav-toggle::after{
-  content:"🎮";
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size: 18px;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 10px rgba(125,240,255,0.35));
-  pointer-events:none;
-  transition: opacity 220ms ease, transform 220ms ease;
-}
-
 /* The 3 “circuit lines” */
 .nav-toggle span{
   position:absolute;
@@ -793,3 +778,4 @@ body.nav-open{
     justify-content:center;
   }
                               }
+
