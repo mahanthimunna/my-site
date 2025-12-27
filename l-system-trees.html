@@ -2,16 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>L-System Tree Generation | Mahanthi Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="project-page" style="--project-bg: url('images/lsystem-bg.png');">
-  <nav class="navbar" style="animation-play-state: running; opacity: 1; transform: translateY(0);">
+
+  <!-- LOADER (same as Private Room) -->
+  <div id="loader">
+    <div class="star-core"></div>
+    <div class="star-wave wave-1"></div>
+    <div class="star-wave wave-2"></div>
+    <div class="star-particles">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
     <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
     <ul>
       <li><a href="index.html#about">About</a></li>
@@ -21,104 +32,204 @@
     </ul>
   </nav>
 
-  <header class="project-hero">
-    <div class="project-hero-overlay">
-      <h1>Procedural Tree Generation (L-Systems)</h1>
-      <p>
-        A procedural 3D tree generator using L-system grammar expansion and spatial transformations.
-      </p>
+  <!-- GLASS WRAPPER (same layout pattern as Private Room) -->
+  <div class="project-glass">
 
-      <div class="project-hero-tags">
-        <span>Procedural Modeling</span>
-        <span>L-Systems</span>
-        <span>3D Generation</span>
+    <!-- HERO -->
+    <header class="project-hero">
+      <div class="project-hero-overlay">
+        <h1>Procedural Tree Generation (L-Systems)</h1>
+        <p>A procedural 3D tree generator using L-system grammar expansion and spatial transformations.</p>
+
+        <div class="project-hero-tags">
+          <span>Procedural Modeling</span>
+          <span>L-Systems</span>
+          <span>3D Generation</span>
+        </div>
+
+        <!-- Back link (same backfx style your CSS supports) -->
+        <a class="back-link backfx" href="index.html#systems" aria-label="Back to Systems">
+          <span class="backfx-arrow" aria-hidden="true">←</span>
+          <span class="backfx-text" data-text="Back to Systems">Back to Systems</span>
+          <span class="backfx-caret" aria-hidden="true"></span>
+        </a>
       </div>
+    </header>
 
-      <a class="back-link backfx" href="index.html#systems">
-        <span class="backfx-arrow">←</span>
-        <span class="backfx-text">Back to Systems</span>
-        <span class="backfx-caret"></span>
-      </a>
-    </div>
-  </header>
+    <!-- MAIN CONTENT -->
+    <main class="project-content">
 
-  <main class="project-glass">
+      <!-- VIDEO -->
+      <section class="project-video-section">
+        <h2 class="section-title">DEMO VIDEO</h2>
 
-    <section class="project-video-section">
-      <h2 class="section-title">DEMO VIDEO</h2>
+        <!-- Keep video OR replace with YouTube iframe -->
+        <video controls preload="metadata">
+          <source src="videos/MahanthiK_TechStudy03_Game734.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
 
-      <!-- Replace src with your hosted video path OR YouTube iframe -->
-      <video controls preload="metadata">
-        <source src="videos/MahanthiK_TechStudy03_Game734.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
+      <!-- ACCORDION -->
+      <section class="project-accordion-section">
+        <h2 class="section-title">SYSTEM BREAKDOWN</h2>
 
-    <section class="project-accordion-section">
-      <h2 class="section-title">SYSTEM BREAKDOWN</h2>
+        <div class="accordion">
 
-      <div class="accordion">
-
-        <div class="accordion-item">
-          <button class="accordion-header" type="button">
-            <div class="accordion-left">
-              <i class='bx bx-leaf'></i>
-              <span class="accordion-title">Overview</span>
+          <div class="accordion-item open">
+            <button class="accordion-header" type="button">
+              <div class="accordion-left">
+                <i class='bx bx-leaf'></i>
+                <span class="accordion-title">Overview</span>
+              </div>
+              <span class="accordion-toggle-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <p>
+                This system generates 3D tree-like structures using L-system rule expansion (formal grammar) and applies
+                rotations/transforms to produce branching patterns. The result supports rapid variation for procedural scenes.
+              </p>
             </div>
-            <span class="accordion-toggle-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <p>
-              This system generates 3D tree-like structures using L-system rule expansion (formal grammar) and applies
-              rotations/transforms to produce branching patterns. The result supports rapid variation for procedural scenes.
-            </p>
           </div>
-        </div>
 
-        <div class="accordion-item">
-          <button class="accordion-header" type="button">
-            <div class="accordion-left">
-              <i class='bx bx-repeat'></i>
-              <span class="accordion-title">Core Logic</span>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-left">
+                <i class='bx bx-repeat'></i>
+                <span class="accordion-title">Core Logic</span>
+              </div>
+              <span class="accordion-toggle-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <p>
+                L-systems start from an axiom string and repeatedly apply rewrite rules for a chosen number of iterations.
+                The expanded output is interpreted as drawing/branching commands, creating a tree structure with controllable complexity.
+              </p>
             </div>
-            <span class="accordion-toggle-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <p>
-              L-systems start from an axiom string and repeatedly apply rewrite rules for a chosen number of iterations.
-              The expanded output is interpreted as drawing/branching commands, creating a tree structure with controllable complexity.
-            </p>
           </div>
-        </div>
 
-        <div class="accordion-item">
-          <button class="accordion-header" type="button">
-            <div class="accordion-left">
-              <i class='bx bx-slideshow'></i>
-              <span class="accordion-title">Parameters You Can Tune</span>
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <div class="accordion-left">
+                <i class='bx bx-slideshow'></i>
+                <span class="accordion-title">Parameters You Can Tune</span>
+              </div>
+              <span class="accordion-toggle-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <p>
+                Iteration count, branch angle, segment length, randomness, thickness scaling, and rule sets.
+                These parameters allow the generator to produce many tree silhouettes quickly.
+              </p>
             </div>
-            <span class="accordion-toggle-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <p>
-              Iteration count, branch angle, segment length, randomness, thickness scaling, and rule sets.
-              These parameters allow the generator to produce many tree silhouettes quickly.
-            </p>
           </div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
+    </main>
+  </div>
 
-  </main>
-
+  <!-- SCRIPTS (same behavior as Private Room: loader + single-open accordion + backfx typing loop) -->
   <script>
-    document.querySelectorAll(".accordion-header").forEach(header => {
-      header.addEventListener("click", () => {
-        const item = header.parentElement;
-        item.classList.toggle("open");
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // Loader fade-out
+      window.addEventListener("load", () => {
+        document.getElementById("loader")?.classList.add("fade-out");
+        document.body.classList.add("page-ready");
       });
+
+      // Accordion (only one open at a time)
+      document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+          const item = header.parentElement;
+          const content = item.querySelector(".accordion-content");
+          const isOpen = item.classList.contains("open");
+
+          document.querySelectorAll(".accordion-item.open").forEach(openItem => {
+            if (openItem !== item) {
+              openItem.classList.remove("open");
+              const c = openItem.querySelector(".accordion-content");
+              if (c) c.style.maxHeight = 0;
+            }
+          });
+
+          if (!isOpen) {
+            item.classList.add("open");
+            if (content) content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            item.classList.remove("open");
+            if (content) content.style.maxHeight = 0;
+          }
+        });
+      });
+
+      // Keep already-open accordions sized correctly on load
+      document.querySelectorAll(".accordion-item.open .accordion-content")
+        .forEach(c => c.style.maxHeight = c.scrollHeight + "px");
+
+      // Back-link Auto Typewriter FX (Premium Loop)
+      const backFX = document.querySelector(".back-link.backfx");
+      if (backFX) {
+        const textEl = backFX.querySelector(".backfx-text");
+        const original = textEl?.dataset.text || textEl?.textContent || "Back";
+
+        let timer = null;
+
+        const BASE_TYPE_MS = 150;
+        const RANDOM_JITTER = 80;
+        const FULL_HOLD_MS = 1800;
+        const RESTART_DELAY_MS = 900;
+
+        function clearTimers() {
+          clearTimeout(timer);
+          timer = null;
+        }
+
+        function startLoop() {
+          if (!textEl) return;
+
+          backFX.classList.add("is-typing");
+
+          let i = 0;
+          textEl.textContent = "";
+
+          const typeNext = () => {
+            i++;
+            textEl.textContent = original.slice(0, i);
+
+            if (i >= original.length) {
+              timer = setTimeout(() => {
+                textEl.textContent = "";
+                i = 0;
+                timer = setTimeout(typeNext, RESTART_DELAY_MS);
+              }, FULL_HOLD_MS);
+              return;
+            }
+
+            const ch = original[i - 1];
+            const extra =
+              (ch === " " ? 80 : 0) +
+              (",.;:!?)".includes(ch) ? 160 : 0);
+
+            const delay = BASE_TYPE_MS + Math.floor(Math.random() * RANDOM_JITTER) + extra;
+            timer = setTimeout(typeNext, delay);
+          };
+
+          typeNext();
+        }
+
+        startLoop();
+
+        document.addEventListener("visibilitychange", () => {
+          clearTimers();
+          if (!document.hidden) startLoop();
+        });
+      }
+
     });
   </script>
+
 </body>
 </html>
