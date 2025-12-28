@@ -131,13 +131,69 @@ img, video, iframe {
   padding: 0;
 }
 
+/* ===============================
+   UNIQUE NAV ICON: "NEON CIRCUIT"
+   (replaces the basic 3-line burger)
+   =============================== */
+
+.nav-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+/* the 3 circuit traces */
 .nav-toggle span {
+  position: relative;
   display: block;
-  width: 22px;
+
+  width: 26px;
   height: 2px;
-  background: #cbd5f5;
+
+  /* neon trace */
+  background: linear-gradient(90deg, rgba(140,210,255,0.15), rgba(140,210,255,0.95), rgba(140,210,255,0.15));
   border-radius: 999px;
+
+  /* glow */
+  box-shadow:
+    0 0 10px rgba(140, 210, 255, 0.35),
+    0 0 22px rgba(90, 170, 255, 0.25);
+
   transition: transform 220ms ease, opacity 220ms ease;
+}
+
+/* little circuit nodes at the ends of each line */
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+
+  background: radial-gradient(circle, #ffffff 0%, rgba(125,240,255,0.95) 35%, rgba(58,123,255,0.65) 70%, rgba(58,123,255,0.0) 100%);
+  box-shadow:
+    0 0 10px rgba(125, 240, 255, 0.45),
+    0 0 18px rgba(58, 123, 255, 0.35);
+}
+
+.nav-toggle span::before { left: -3px; }
+.nav-toggle span::after  { right: -3px; }
+
+/* subtle “scanline” shimmer inside the button */
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(120deg, transparent 40%, rgba(140,210,255,0.12) 50%, transparent 60%);
+  transform: translateX(-35%) rotate(0.0001deg);
+  transition: transform 320ms ease;
+  pointer-events: none;
+}
+
+.nav-toggle:hover::after {
+  transform: translateX(35%) rotate(0.0001deg);
 }
 
 /* Overlay behind menu */
@@ -1311,3 +1367,4 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
