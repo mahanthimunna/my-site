@@ -166,13 +166,24 @@ img, video, iframe {
     0 0 28px rgba(125,240,255,0.7);
 }
 
-/* Overlay behind menu */
+/* Overlay behind menu (FIXED) */
 .nav-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(2px);
   z-index: 9998;
+
+  /* ✅ IMPORTANT: hidden by default */
+  display: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+/* show overlay only when nav is open */
+body.nav-open .nav-overlay {
+  display: block;
+  opacity: 1;
 }
 
 /* Slide panel */
@@ -1337,4 +1348,5 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
 
