@@ -140,50 +140,13 @@ img, video, iframe {
   transition: transform 220ms ease, opacity 220ms ease;
 }
 
-.nav-toggle::before {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 10px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(125,240,255,0.35), transparent 60%),
-    linear-gradient(145deg, rgba(30,60,120,0.4), rgba(5,10,18,0.8));
-  box-shadow:
-    inset 0 0 0 1px rgba(125,240,255,0.35),
-    0 0 18px rgba(90,170,255,0.35);
-  z-index: 0;
-}
-
-.nav-toggle span {
-  position: relative;
-  z-index: 1;
-}
-
-/* Signal pulse on hover */
-.nav-toggle:hover::before {
-  box-shadow:
-    inset 0 0 0 1px rgba(160,230,255,0.75),
-    0 0 28px rgba(125,240,255,0.7);
-}
-
-/* Overlay behind menu (FIXED) */
+/* Overlay behind menu */
 .nav-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(2px);
   z-index: 9998;
-
-  /* ✅ IMPORTANT: hidden by default */
-  display: none;
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
-/* show overlay only when nav is open */
-body.nav-open .nav-overlay {
-  display: block;
-  opacity: 1;
 }
 
 /* Slide panel */
@@ -1348,5 +1311,3 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
-
-
