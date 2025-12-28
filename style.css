@@ -529,10 +529,17 @@ body.page-ready .text-box {
 }
 
 .systems-title {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: 8px;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.9rem, 6vw, 3rem);
+    letter-spacing: clamp(3px, 1.2vw, 8px);
+    line-height: 1.15;
+
+    text-align: center;
+    max-width: 92%;
+    margin: 0 auto 0.5rem;
+
+    /* prevents overflow on small screens */
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .systems-subtitle {
@@ -594,6 +601,12 @@ body.page-ready .text-box {
     font-size: 0.9rem;
     color: #c3c8e5;
     line-height: 1.4;
+}
+
+@media (max-width: 420px) {
+    .systems-title {
+        letter-spacing: 2px;
+    }
 }
 
 /* =========================================================
@@ -1383,4 +1396,5 @@ body.nav-open .nav-toggle{
     0 0 0 1px rgba(170, 240, 255, 0.45),
     0 18px 44px rgba(0,0,0,0.9);
 }
+
 
