@@ -61,22 +61,34 @@
 <!-- NAVBAR -->
 
 <nav class="navbar">
+  <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
 
-    <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
+  <!-- Desktop links -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 
-    <ul>
-
-        <li><a href="#about">About</a></li>
-
-        <li><a href="#projects">Projects</a></li>
-
-        <li><a href="#systems">Systems</a></li>
-
-        <li><a href="#contact">Contact</a></li> <!-- contact placeholder -->
-
-    </ul>
-
+  <!-- Mobile toggle -->
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile overlay -->
+<div class="nav-overlay" id="navOverlay" hidden></div>
+
+<!-- Mobile dropdown menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu" hidden>
+  <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
+
+  <a class="mobile-link" href="#about">About</a>
+  <a class="mobile-link" href="#projects">Projects</a>
+  <a class="mobile-link" href="#systems">Systems</a>
+  <a class="mobile-link" href="#contact">Contact</a>
+</div>
 
 
 
@@ -915,3 +927,4 @@
 </body>
 
 </html>
+
