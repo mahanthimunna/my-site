@@ -506,6 +506,26 @@
       });
     })();
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".nav-toggle");
+    const overlay = document.querySelector(".nav-overlay");
+    const closeBtn = document.querySelector(".menu-close");
+
+    const closeMenu = () => {
+        document.body.classList.remove("nav-open", "nav-lock");
+    };
+
+    toggle?.addEventListener("click", () => {
+        document.body.classList.toggle("nav-open");
+        document.body.classList.toggle("nav-lock");
+    });
+
+    overlay?.addEventListener("click", closeMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+});
+  </script>
 </body>
 </html>
+
 
