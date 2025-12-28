@@ -1168,168 +1168,176 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
 }
 
 /* =========================================================
-   NAVBAR MOBILE COLLAPSE (Desktop unchanged)
+   MOBILE NAV (Off-canvas like Hugo Peters) + Creative Icon
+   Desktop remains unchanged.
    ========================================================= */
 
-.nav-links { /* keep your existing ul styling on desktop */
-}
-
-/* Mobile toggle button (hidden on desktop by default) */
-.nav-toggle{
+/* Hide toggle on desktop */
+.nav-toggle {
     display: none;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    padding: 6px;
-    margin-left: 12px;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Neon ring container */
-.nav-toggle-box{
-    width: 46px;
-    height: 46px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
+/* Overlay (only used on mobile when open) */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    z-index: 9; /* below navbar (10), above page */
+}
 
-    background: radial-gradient(circle at 30% 30%, rgba(40, 70, 110, 0.45), rgba(5, 7, 17, 0.85));
-    border: 1px solid rgba(125, 240, 255, 0.55);
-
+/* Creative icon button base */
+.nav-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(120, 170, 255, 0.35);
+    border-radius: 14px;
+    background: radial-gradient(circle at 30% 20%, rgba(40, 80, 140, 0.35), rgba(5, 7, 17, 0.9));
     box-shadow:
         0 0 0 1px rgba(20, 30, 60, 0.9),
-        0 0 18px rgba(125, 240, 255, 0.22),
-        inset 0 0 18px rgba(20, 30, 60, 0.65);
-
-    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, filter 180ms ease;
-}
-
-.nav-toggle:hover .nav-toggle-box{
-    transform: translateY(-1px) scale(1.04);
-    border-color: rgba(140, 210, 255, 1);
-    box-shadow:
-        0 0 0 1px rgba(140, 210, 255, 0.8),
-        0 0 28px rgba(125, 240, 255, 0.45),
-        inset 0 0 20px rgba(20, 30, 60, 0.65);
-}
-
-/* Glitchy hamburger lines */
-.nav-toggle-lines{
+        0 10px 26px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    width: 20px;
-    height: 2px;
-    border-radius: 99px;
-    background: rgba(229, 236, 255, 0.95);
-    box-shadow: 0 0 14px rgba(125, 240, 255, 0.35);
-    transition: transform 200ms ease, background 200ms ease;
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.nav-toggle-lines::before,
-.nav-toggle-lines::after{
+.nav-toggle:hover {
+    transform: translateY(-1px);
+    border-color: rgba(140, 210, 255, 0.7);
+    box-shadow:
+        0 0 0 1px rgba(140, 210, 255, 0.55),
+        0 14px 34px rgba(0, 0, 0, 0.85);
+}
+
+/* “Scanner” glow sweep */
+.nav-toggle::before {
     content: "";
     position: absolute;
-    left: 0;
-    width: 20px;
-    height: 2px;
-    border-radius: 99px;
-    background: rgba(229, 236, 255, 0.85);
-    transition: transform 220ms ease, top 220ms ease, opacity 220ms ease;
+    inset: -60%;
+    background: linear-gradient(135deg,
+        rgba(125,240,255,0) 35%,
+        rgba(125,240,255,0.35) 50%,
+        rgba(125,240,255,0) 65%);
+    transform: rotate(20deg) translateX(-40%);
+    opacity: 0.0;
+    transition: opacity 220ms ease;
 }
 
-.nav-toggle-lines::before{ top: -7px; }
-.nav-toggle-lines::after { top:  7px; }
-
-/* When menu is open: morph into an "X" */
-.navbar.nav-open .nav-toggle-lines{
-    background: rgba(125, 240, 255, 0.95);
-    transform: rotate(45deg);
-}
-
-.navbar.nav-open .nav-toggle-lines::before{
-    top: 0;
-    transform: rotate(90deg);
+.nav-toggle:hover::before {
     opacity: 1;
+    animation: navSweep 1.15s ease-in-out infinite;
 }
 
-.navbar.nav-open .nav-toggle-lines::after{
-    top: 0;
+@keyframes navSweep {
+    0%   { transform: rotate(20deg) translateX(-55%); }
+    100% { transform: rotate(20deg) translateX(55%); }
+}
+
+/* The 3 bars */
+.nav-toggle-icon {
+    width: 22px;
+    height: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-toggle-icon span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(229, 236, 255, 0.95);
+    box-shadow: 0 0 10px rgba(125, 240, 255, 0.35);
+    transition: transform 220ms ease, top 220ms ease, opacity 220ms ease, width 220ms ease;
+}
+
+.nav-toggle-icon span:nth-child(1) { top: 0; width: 100%; }
+.nav-toggle-icon span:nth-child(2) { top: 7px; width: 78%; }
+.nav-toggle-icon span:nth-child(3) { top: 14px; width: 92%; }
+
+/* When menu open: morph into X (collapse icon) */
+body.nav-open .nav-toggle-icon span:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+    width: 100%;
+}
+body.nav-open .nav-toggle-icon span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-8px);
+}
+body.nav-open .nav-toggle-icon span:nth-child(3) {
+    top: 7px;
+    transform: rotate(-45deg);
+    width: 100%;
 }
 
-/* Mobile layout */
-@media (max-width: 820px){
-    .navbar{
+/* -------- Mobile layout only -------- */
+@media (max-width: 860px) {
+
+    /* show button on mobile */
+    .nav-toggle { display: inline-flex; }
+
+    /* keep logo left, toggle right */
+    .navbar {
         padding: 0 5%;
     }
 
-    /* show toggle on mobile */
-    .nav-toggle{
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
+    /* Turn your existing UL into an off-canvas drawer */
+    .navbar ul.nav-links {
+        position: fixed;
+        top: 0;
+        right: -360px;
+        height: 100vh;
+        width: min(78vw, 340px);
 
-    /* turn the UL into a dropdown panel */
-    .navbar ul.nav-links{
-        position: absolute;
-        top: calc(var(--nav-h) + 10px);
-        right: 5%;
-        left: 5%;
+        padding: calc(var(--nav-h) + 18px) 22px 22px;
 
-        display: grid;
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
 
-        padding: 14px;
-        margin: 0;
-
-        background: rgba(11, 16, 23, 0.86);
+        background: rgba(11, 16, 23, 0.92);
         backdrop-filter: blur(12px);
 
-        border: 1px solid rgba(120, 170, 255, 0.35);
-        border-radius: 16px;
+        border-left: 1px solid rgba(120, 170, 255, 0.25);
+        box-shadow: -30px 0 70px rgba(0, 0, 0, 0.75);
 
-        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-
-        /* collapsed state */
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        pointer-events: none;
-
-        transform: translateY(-10px);
-        transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
+        transition: right 260ms ease;
+        z-index: 10; /* same layer as navbar */
     }
 
-    /* open state */
-    .navbar.nav-open ul.nav-links{
-        max-height: 420px;
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .navbar ul.nav-links li{
+    .navbar ul.nav-links li a {
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 10px 10px;
+        border-radius: 10px;
         width: 100%;
+        display: inline-flex;
+        align-items: center;
+        transition: background 180ms ease, transform 180ms ease, color 180ms ease;
     }
 
-    .navbar ul.nav-links li a{
-        display: block;
-        width: 100%;
-        padding: 12px 12px;
-
-        border-radius: 12px;
-        background: rgba(10, 20, 32, 0.55);
-        border: 1px solid rgba(120, 170, 255, 0.22);
-
-        letter-spacing: 1px;
-        color: #cbd5f5;
-
-        transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-    }
-
-    .navbar ul.nav-links li a:hover{
-        transform: translateX(4px);
-        background: rgba(10, 24, 40, 0.78);
-        border-color: rgba(140, 210, 255, 0.55);
+    .navbar ul.nav-links li a:hover {
+        background: rgba(20, 35, 70, 0.55);
+        transform: translateX(-2px);
         color: #ffffff;
+    }
+
+    /* Open state */
+    body.nav-open .navbar ul.nav-links {
+        right: 0;
+    }
+
+    /* Prevent page scrolling when menu open */
+    body.nav-open {
+        overflow: hidden;
     }
 }
