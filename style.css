@@ -1167,3 +1167,169 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-title { font-size: 0.9rem; }
 }
 
+/* =========================================================
+   NAVBAR MOBILE COLLAPSE (Desktop unchanged)
+   ========================================================= */
+
+.nav-links { /* keep your existing ul styling on desktop */
+}
+
+/* Mobile toggle button (hidden on desktop by default) */
+.nav-toggle{
+    display: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 12px;
+}
+
+/* Neon ring container */
+.nav-toggle-box{
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+
+    background: radial-gradient(circle at 30% 30%, rgba(40, 70, 110, 0.45), rgba(5, 7, 17, 0.85));
+    border: 1px solid rgba(125, 240, 255, 0.55);
+
+    box-shadow:
+        0 0 0 1px rgba(20, 30, 60, 0.9),
+        0 0 18px rgba(125, 240, 255, 0.22),
+        inset 0 0 18px rgba(20, 30, 60, 0.65);
+
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, filter 180ms ease;
+}
+
+.nav-toggle:hover .nav-toggle-box{
+    transform: translateY(-1px) scale(1.04);
+    border-color: rgba(140, 210, 255, 1);
+    box-shadow:
+        0 0 0 1px rgba(140, 210, 255, 0.8),
+        0 0 28px rgba(125, 240, 255, 0.45),
+        inset 0 0 20px rgba(20, 30, 60, 0.65);
+}
+
+/* Glitchy hamburger lines */
+.nav-toggle-lines{
+    position: relative;
+    width: 20px;
+    height: 2px;
+    border-radius: 99px;
+    background: rgba(229, 236, 255, 0.95);
+    box-shadow: 0 0 14px rgba(125, 240, 255, 0.35);
+    transition: transform 200ms ease, background 200ms ease;
+}
+
+.nav-toggle-lines::before,
+.nav-toggle-lines::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    border-radius: 99px;
+    background: rgba(229, 236, 255, 0.85);
+    transition: transform 220ms ease, top 220ms ease, opacity 220ms ease;
+}
+
+.nav-toggle-lines::before{ top: -7px; }
+.nav-toggle-lines::after { top:  7px; }
+
+/* When menu is open: morph into an "X" */
+.navbar.nav-open .nav-toggle-lines{
+    background: rgba(125, 240, 255, 0.95);
+    transform: rotate(45deg);
+}
+
+.navbar.nav-open .nav-toggle-lines::before{
+    top: 0;
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.navbar.nav-open .nav-toggle-lines::after{
+    top: 0;
+    opacity: 0;
+}
+
+/* Mobile layout */
+@media (max-width: 820px){
+    .navbar{
+        padding: 0 5%;
+    }
+
+    /* show toggle on mobile */
+    .nav-toggle{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* turn the UL into a dropdown panel */
+    .navbar ul.nav-links{
+        position: absolute;
+        top: calc(var(--nav-h) + 10px);
+        right: 5%;
+        left: 5%;
+
+        display: grid;
+        gap: 10px;
+
+        padding: 14px;
+        margin: 0;
+
+        background: rgba(11, 16, 23, 0.86);
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(120, 170, 255, 0.35);
+        border-radius: 16px;
+
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+
+        /* collapsed state */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+
+        transform: translateY(-10px);
+        transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
+    }
+
+    /* open state */
+    .navbar.nav-open ul.nav-links{
+        max-height: 420px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .navbar ul.nav-links li{
+        width: 100%;
+    }
+
+    .navbar ul.nav-links li a{
+        display: block;
+        width: 100%;
+        padding: 12px 12px;
+
+        border-radius: 12px;
+        background: rgba(10, 20, 32, 0.55);
+        border: 1px solid rgba(120, 170, 255, 0.22);
+
+        letter-spacing: 1px;
+        color: #cbd5f5;
+
+        transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .navbar ul.nav-links li a:hover{
+        transform: translateX(4px);
+        background: rgba(10, 24, 40, 0.78);
+        border-color: rgba(140, 210, 255, 0.55);
+        color: #ffffff;
+    }
+}
