@@ -105,17 +105,17 @@ img, video, iframe {
 }
 
 /* =========================================================
-   10) MOBILE NAV (HAMBURGER + COLLAPSE DROPDOWN)
+   10) MOBILE NAV (HAMBURGER + SLIDE MENU)
    ========================================================= */
 
-/* Desktop links (same class you already use) */
+/* rename: your navbar ul becomes .nav-links */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 2rem;
 }
 
-/* Hamburger hidden on desktop */
+/* Hamburger button hidden on desktop */
 .nav-toggle {
   display: none;
   width: 46px;
@@ -123,27 +123,13 @@ img, video, iframe {
   border: 1px solid rgba(120, 170, 255, 0.35);
   background: rgba(10, 20, 32, 0.55);
   backdrop-filter: blur(10px);
-  border-radius: 14px;
+  border-radius: 12px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   gap: 6px;
   padding: 0;
-  position: relative;
-  overflow: hidden;
 }
-
-.nav-toggle::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background: radial-gradient(circle at 20% 20%, rgba(125,240,255,0.35), transparent 55%),
-              radial-gradient(circle at 80% 30%, rgba(123,92,255,0.30), transparent 60%);
-  opacity: 0;
-  transition: opacity 220ms ease;
-  pointer-events:none;
-}
-.nav-toggle:hover::before{ opacity: 1; }
 
 .nav-toggle span {
   display: block;
@@ -154,385 +140,112 @@ img, video, iframe {
   transition: transform 220ms ease, opacity 220ms ease;
 }
 
-/* Overlay behind dropdown */
-.nav-overlay{
+/* Overlay behind menu */
+.nav-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(2px);
-  z-index: 100001;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
+  z-index: 9998;
 }
 
-body.nav-open .nav-overlay{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* --- COLLAPSE PANEL (drops from navbar) --- */
-/* --- MOBILE SIDE DRAWER (ONLY MOBILE) --- */
-.mobile-menu{
+/* Slide panel */
+.mobile-menu {
   position: fixed;
   top: 0;
-  left: 0;
-
+  right: 0;
   height: 100vh;
-  width: min(82vw, 360px);
+  width: min(82vw, 340px);
+  background: rgba(11, 16, 23, 0.92);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(120, 170, 255, 0.25);
+  box-shadow: -20px 0 50px rgba(0,0,0,0.6);
+  z-index: 9999;
 
-  background: rgba(18, 22, 30, 0.92);
-  backdrop-filter: blur(14px);
+  transform: translateX(110%);
+  transition: transform 260ms ease;
+  padding: calc(var(--nav-h) * 0.65) 18px 20px;
 
-  border-right: 1px solid rgba(120, 170, 255, 0.22);
-  box-shadow: 24px 0 80px rgba(0,0,0,0.75);
-
-  z-index: 100002;
-
-  /* Start hidden off-screen */
-  transform: translateX(-105%);
-  opacity: 1;
-  pointer-events: none;
-
-  /* Layout */
-  padding: calc(var(--nav-h) + 22px) 18px 22px;
-
-  transition: transform 340ms cubic-bezier(.2,.9,.2,1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Unique “neon spine” edge */
-.mobile-menu::before{
-  content:"";
-  position:absolute;
-  top: 0;
-  bottom: 0;
-  right: -1px;
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    rgba(125,240,255,0),
-    rgba(125,240,255,0.9),
-    rgba(123,92,255,0.8),
-    rgba(125,240,255,0)
-  );
-  filter: blur(0.2px);
-  opacity: 0.9;
-}
-
-/* Subtle scanline texture */
-.mobile-menu::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: repeating-linear-gradient(
-    180deg,
-    rgba(255,255,255,0.05) 0px,
-    rgba(255,255,255,0.05) 1px,
-    rgba(255,255,255,0.00) 7px,
-    rgba(255,255,255,0.00) 12px
-  );
-  opacity: 0.10;
-  pointer-events:none;
-}
-
-/* OPEN STATE */
-body.nav-open .mobile-menu{
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* Neon edge “energy” */
-.mobile-menu::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg,
-    rgba(52,52,195,0.0),
-    rgba(125,240,255,0.55),
-    rgba(123,92,255,0.55),
-    rgba(52,52,195,0.0)
-  );
-  opacity: 0.55;
-  pointer-events:none;
-  filter: blur(10px);
-  mix-blend-mode: screen;
-}
-
-/* Subtle scanline shimmer */
-.mobile-menu::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius: inherit;
-  background:
-    repeating-linear-gradient(
-      180deg,
-      rgba(255,255,255,0.05) 0px,
-      rgba(255,255,255,0.05) 1px,
-      rgba(255,255,255,0.00) 6px,
-      rgba(255,255,255,0.00) 10px
-    );
-  opacity: 0.16;
-  pointer-events:none;
-  mask-image: radial-gradient(circle at 50% 0%, rgba(0,0,0,1), rgba(0,0,0,0.2) 65%, rgba(0,0,0,0) 100%);
-}
-
-/* Close button (top-right) */
-.mobile-menu .menu-close{
-  position: fixed;
+.mobile-menu .menu-close {
+  position: absolute;
   top: 12px;
   right: 14px;
-
-  width: 54px;
-  height: 54px;
-
-  border-radius: 16px;
-  border: 1px solid rgba(120, 170, 255, 0.18);
-  background: rgba(10, 20, 32, 0.35);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 170, 255, 0.25);
+  background: rgba(10, 20, 32, 0.45);
   color: #ffffff;
-
-  font-size: 34px;
+  font-size: 28px;
   line-height: 1;
   cursor: pointer;
-
-  z-index: 100003;
-
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.mobile-menu .menu-close:hover{
-  transform: scale(1.06);
-  border-color: rgba(140,210,255,0.75);
-  box-shadow: 0 0 0 1px rgba(140,210,255,0.2), 0 0 26px rgba(90,170,255,0.18);
-}
-
-.mobile-menu .menu-close:hover{
-  transform: scale(1.05);
-  border-color: rgba(140,210,255,0.8);
-  box-shadow: 0 0 0 1px rgba(140,210,255,0.25), 0 0 22px rgba(90,170,255,0.25);
-}
-
-/* Links inside dropdown */
-.mobile-link{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
+.mobile-link {
   text-decoration: none;
   color: #e5ecff;
-
-  padding: 14px 12px;
-  margin-top: 8px;
-
-  border-radius: 14px;
-  border: 1px solid rgba(120, 170, 255, 0.14);
-  background: rgba(5, 10, 18, 0.38);
-
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 0.95rem;
 
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(120, 170, 255, 0.18);
+  background: rgba(5, 10, 18, 0.55);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
-
-.mobile-link i{
-  font-size: 1.25rem;
-  color: rgba(125,240,255,0.9);
-  filter: drop-shadow(0 0 10px rgba(125,240,255,0.18));
-}
-
-.mobile-link span{
-  display: inline-block;
-}
-
-.mobile-link:hover{
-  transform: translateX(6px);
-  border-color: rgba(140,210,255,0.65);
-  box-shadow: 0 0 0 1px rgba(140,210,255,0.18), 0 0 22px rgba(90,170,255,0.16);
-  background: rgba(10, 24, 40, 0.55);
-}
-
-.mobile-link i{
-  font-size: 1.25rem;
-  color: rgba(125,240,255,0.9);
-  filter: drop-shadow(0 0 10px rgba(125,240,255,0.18));
-}
-
-.mobile-link span{
-  display: inline-block;
-}
-
-.mobile-link:hover{
-  transform: translateX(6px);
-  border-color: rgba(140,210,255,0.65);
-  box-shadow: 0 0 0 1px rgba(140,210,255,0.18), 0 0 22px rgba(90,170,255,0.16);
-  background: rgba(10, 24, 40, 0.55);
-}
-.mobile-link::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(125,240,255,0.18),
-    transparent
-  );
-  transform: translateX(-120%);
-  transition: transform 420ms ease;
-  pointer-events:none;
-}
-.mobile-link:hover::before{ transform: translateX(120%); }
 
 .mobile-link:hover {
-  transform: translateY(-2px);
+  transform: translateX(-2px);
   border-color: rgba(140, 210, 255, 0.75);
-  box-shadow:
-    0 0 0 1px rgba(140, 210, 255, 0.20),
-    0 0 26px rgba(90, 170, 255, 0.18);
+  box-shadow: 0 0 0 1px rgba(140, 210, 255, 0.35),
+              0 0 22px rgba(90, 170, 255, 0.25);
 }
 
 /* OPEN STATE */
 body.nav-open .mobile-menu {
-  opacity: 1;
-  pointer-events: auto;
-  filter: blur(0);
-  transform: translateX(-50%) translateY(0);
-  clip-path: inset(0 0 0 0 round 22px);
+  transform: translateX(0);
 }
 
-/* Hamburger morph into X */
-body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
-body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+body.nav-open .nav-overlay {
+  display: block;
+}
 
-/* Prevent body scroll when open */
-body.nav-lock { overflow: hidden; }
+/* Animate hamburger into X (optional premium touch) */
+body.nav-open .nav-toggle span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+body.nav-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+body.nav-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
-/* RESPONSIVE SWITCH */
+/* Prevent body scroll when menu open */
+body.nav-lock {
+  overflow: hidden;
+}
+
+/* RESPONSIVE SWITCH: hide desktop links, show hamburger */
 @media (max-width: 820px) {
   .navbar { padding: 0 5%; }
-  .nav-links { display: none; }
-  .nav-toggle { display: inline-flex; }
-}
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .mobile-menu,
-  .mobile-link,
-  .nav-toggle span {
-    transition: none !important;
+  .nav-links {
+    display: none;
   }
-}
 
-/* ================================
-   REACTOR TOGGLE (unique icon)
-   ================================ */
 
-.nav-toggle--reactor{
-  gap: 0;
-}
 
-/* Remove any old span-bar look */
-.nav-toggle--reactor span{
-  width: auto;
-  height: auto;
-  background: none;
-  border-radius: 0;
-}
 
-/* Reactor ring + core */
-.nav-toggle--reactor .reactor-ring{
-  position: absolute;
-  inset: 7px;
-  border-radius: 50%;
-  border: 1px solid rgba(125,240,255,0.35);
-  box-shadow:
-    0 0 0 1px rgba(123,92,255,0.15) inset,
-    0 0 18px rgba(125,240,255,0.12);
-  opacity: 0.9;
-}
 
-.nav-toggle--reactor .reactor-core{
-  position: absolute;
-  inset: 16px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%,
-    rgba(125,240,255,0.95),
-    rgba(58,123,255,0.55),
-    rgba(11,16,23,0.0) 70%);
-  filter: blur(0.2px);
-  opacity: 0.65;
-}
-
-/* Icon layers */
-.nav-toggle--reactor .nav-ico{
-  position: relative;
-  font-size: 1.35rem;
-  color: #e5ecff;
-  transition: transform 240ms ease, opacity 180ms ease, filter 240ms ease;
-  filter: drop-shadow(0 0 10px rgba(125,240,255,0.25));
-}
-
-.nav-toggle--reactor .nav-ico-x{
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.7) rotate(-20deg);
-}
-
-/* Subtle “reactor spin” on hover */
-.nav-toggle--reactor:hover .reactor-ring{
-  animation: reactorSpin 1.4s linear infinite;
-}
-.nav-toggle--reactor:hover .reactor-core{
-  animation: reactorPulse 1.6s ease-in-out infinite;
-}
-
-@keyframes reactorSpin{
-  to { transform: rotate(360deg); }
-}
-@keyframes reactorPulse{
-  0%,100% { opacity: 0.55; }
-  50%     { opacity: 0.9; }
-}
-
-/* OPEN STATE: grid icon -> X icon, ring intensifies */
-body.nav-open .nav-toggle--reactor .nav-ico{
-  transform: scale(0.92);
-  filter: drop-shadow(0 0 16px rgba(125,240,255,0.45));
-}
-
-body.nav-open .nav-toggle--reactor .nav-ico:not(.nav-ico-x){
-  opacity: 0;
-  transform: scale(0.7) rotate(20deg);
-}
-
-body.nav-open .nav-toggle--reactor .nav-ico-x{
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-body.nav-open .nav-toggle--reactor .reactor-ring{
-  border-color: rgba(140,210,255,0.85);
-  box-shadow:
-    0 0 0 1px rgba(140,210,255,0.25) inset,
-    0 0 26px rgba(90,170,255,0.25);
-  animation: reactorSpin 1.2s linear infinite;
-}
-
-body.nav-open .nav-toggle--reactor .reactor-core{
-  opacity: 0.95;
-  animation: reactorPulse 1.2s ease-in-out infinite;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .nav-toggle--reactor:hover .reactor-ring,
-  body.nav-open .nav-toggle--reactor .reactor-ring,
-  .nav-toggle--reactor:hover .reactor-core,
-  body.nav-open .nav-toggle--reactor .reactor-core{
-    animation: none !important;
+  .nav-toggle {
+    display: inline-flex;
   }
 }
 
@@ -1598,24 +1311,3 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
-
-@media (max-width: 820px) {
-  .navbar ul.nav-links {
-    display: none !important;
-  }
-  .navbar .nav-toggle {
-    display: inline-flex !important;
-  }
-}
-
-/* Optional safety: also collapse on small tablets */
-@media (max-width: 1024px) {
-  .navbar ul.nav-links {
-    display: none !important;
-  }
-  .navbar .nav-toggle {
-    display: inline-flex !important;
-  }
-}
-
-
