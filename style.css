@@ -1341,3 +1341,45 @@ body.nav-open .nav-toggle-icon span:nth-child(3) {
         overflow: hidden;
     }
 }
+
+/* Keep the hamburger/close button ALWAYS visible above overlay + drawer */
+.navbar{
+  position: fixed;          /* make sure navbar stays on top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+.nav-toggle{
+  position: relative;
+  z-index: 2100;            /* above drawer + overlay */
+}
+
+/* when menu is open, pin the close icon to the screen top-right */
+@media (max-width: 860px){
+  body.nav-open .nav-toggle{
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 2200;
+  }
+
+  /* overlay must be BELOW the close icon */
+  .nav-overlay{
+    z-index: 1900;
+  }
+
+  /* drawer below the close icon too */
+  .navbar ul.nav-links{
+    z-index: 2005;
+  }
+}
+
+/* Optional: make the X pop more on dark background */
+body.nav-open .nav-toggle{
+  border-color: rgba(170, 240, 255, 0.75);
+  box-shadow:
+    0 0 0 1px rgba(170, 240, 255, 0.45),
+    0 18px 44px rgba(0,0,0,0.9);
+}
