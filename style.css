@@ -105,7 +105,97 @@ img, video, iframe {
 }
 
 /* =========================================================
-   10) 11) { --x: 150px;  --y: 500px; }
+   3) LOADER (STAR EXPLOSION)
+   ========================================================= */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #03040a 0%, #000 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 99999;
+    transition: opacity 0.9s ease-out, visibility 0.9s ease-out;
+}
+
+#loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Star Core */
+.star-core {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, #7df0ff, #3a7bff);
+    box-shadow: 0 0 50px #7df0ff, 0 0 120px #3a7bff;
+    animation: corePulse 2s ease-in-out infinite;
+    z-index: 10;
+}
+
+/* Shockwaves */
+.star-wave {
+    position: absolute;
+    width: 120vmin;
+    height: 120vmin;
+    border-radius: 50%;
+    border: 2px solid rgba(140, 210, 255, 0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wave-1 { animation: waveExpand 2.5s ease-out infinite; }
+.wave-2 { animation: waveExpand 2.5s ease-out infinite; animation-delay: 1s; }
+
+/* Particles */
+.star-particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #bff8ff;
+    box-shadow: 0 0 12px #7df0ff, 0 0 24px rgba(80, 200, 255, 1);
+    opacity: 0;
+    animation: particleScatter 2s ease-out infinite;
+}
+
+@keyframes particleScatter {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0.4); }
+}
+
+@keyframes waveExpand {
+    0%   { transform: scale(0.2); opacity: 1; }
+    70%  { transform: scale(1); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes corePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px #7df0ff, 0 0 100px #3a7bff;
+    }
+    50% {
+        transform: scale(1.4);
+        box-shadow: 0 0 65px #a8f6ff, 0 0 150px #3a7bff;
+    }
+}
+
+/* Directions for each star */
+.star-particles span:nth-child(1)  { --x: 350px;  --y: 0; }
+.star-particles span:nth-child(2)  { --x: -350px; --y: 0; }
+.star-particles span:nth-child(3)  { --x: 0;      --y: 350px; }
+.star-particles span:nth-child(4)  { --x: 0;      --y: -350px; }
+.star-particles span:nth-child(5)  { --x: 260px;  --y: 260px; }
+.star-particles span:nth-child(6)  { --x: -260px; --y: 260px; }
+.star-particles span:nth-child(7)  { --x: 260px;  --y: -260px; }
+.star-particles span:nth-child(8)  { --x: -260px; --y: -260px; }
+.star-particles span:nth-child(9)  { --x: 500px;  --y: 120px; }
+.star-particles span:nth-child(10) { --x: -500px; --y: -150px; }
+.star-particles span:nth-child(11) { --x: 150px;  --y: 500px; }
 .star-particles span:nth-child(12) { --x: -150px; --y: -500px; }
 .star-particles span:nth-child(13) { --x: 420px;  --y: -220px; }
 .star-particles span:nth-child(14) { --x: -420px; --y: 200px; }
@@ -138,7 +228,7 @@ body.page-ready .text-box {
     background: radial-gradient(circle at top, #283144 0, var(--bg-color) 40%, var(--bg-color-2) 100%);
 }
 
-/* Bars animation */
+/* Bars animation 
 .bars-animation {
     position: absolute;
     inset: 0;
@@ -165,7 +255,7 @@ body.page-ready .text-box {
     0%, 100% { transform: translateY(0) scaleY(0.3); }
     50%      { transform: translateY(-50px) scaleY(1); }
 }
-
+*/
 /* Center container */
 .center-container {
     z-index: 2;
@@ -1076,3 +1166,4 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-header { padding: 0.8rem 0.9rem; }
     .accordion-title { font-size: 0.9rem; }
 }
+
