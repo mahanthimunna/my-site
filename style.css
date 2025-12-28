@@ -603,12 +603,6 @@ body.page-ready .text-box {
     line-height: 1.4;
 }
 
-@media (max-width: 420px) {
-    .systems-title {
-        letter-spacing: 2px;
-    }
-}
-
 /* =========================================================
    6) CONTACT / FOOTER
    ========================================================= */
@@ -1180,6 +1174,12 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     .accordion-title { font-size: 0.9rem; }
 }
 
+@media (max-width: 420px) {
+    .systems-title {
+        letter-spacing: 2px;
+    }
+}
+
 /* =========================================================
    MOBILE NAV (Off-canvas like Hugo Peters) + Creative Icon
    Desktop remains unchanged.
@@ -1396,5 +1396,6 @@ body.nav-open .nav-toggle{
     0 0 0 1px rgba(170, 240, 255, 0.45),
     0 18px 44px rgba(0,0,0,0.9);
 }
+
 
 
