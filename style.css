@@ -346,7 +346,116 @@ body.nav-lock { overflow: hidden; }
     transition: none !important;
   }
 }
-  
+
+/* ================================
+   REACTOR TOGGLE (unique icon)
+   ================================ */
+
+.nav-toggle--reactor{
+  gap: 0;
+}
+
+/* Remove any old span-bar look */
+.nav-toggle--reactor span{
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+}
+
+/* Reactor ring + core */
+.nav-toggle--reactor .reactor-ring{
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(125,240,255,0.35);
+  box-shadow:
+    0 0 0 1px rgba(123,92,255,0.15) inset,
+    0 0 18px rgba(125,240,255,0.12);
+  opacity: 0.9;
+}
+
+.nav-toggle--reactor .reactor-core{
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(125,240,255,0.95),
+    rgba(58,123,255,0.55),
+    rgba(11,16,23,0.0) 70%);
+  filter: blur(0.2px);
+  opacity: 0.65;
+}
+
+/* Icon layers */
+.nav-toggle--reactor .nav-ico{
+  position: relative;
+  font-size: 1.35rem;
+  color: #e5ecff;
+  transition: transform 240ms ease, opacity 180ms ease, filter 240ms ease;
+  filter: drop-shadow(0 0 10px rgba(125,240,255,0.25));
+}
+
+.nav-toggle--reactor .nav-ico-x{
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.7) rotate(-20deg);
+}
+
+/* Subtle “reactor spin” on hover */
+.nav-toggle--reactor:hover .reactor-ring{
+  animation: reactorSpin 1.4s linear infinite;
+}
+.nav-toggle--reactor:hover .reactor-core{
+  animation: reactorPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes reactorSpin{
+  to { transform: rotate(360deg); }
+}
+@keyframes reactorPulse{
+  0%,100% { opacity: 0.55; }
+  50%     { opacity: 0.9; }
+}
+
+/* OPEN STATE: grid icon -> X icon, ring intensifies */
+body.nav-open .nav-toggle--reactor .nav-ico{
+  transform: scale(0.92);
+  filter: drop-shadow(0 0 16px rgba(125,240,255,0.45));
+}
+
+body.nav-open .nav-toggle--reactor .nav-ico:not(.nav-ico-x){
+  opacity: 0;
+  transform: scale(0.7) rotate(20deg);
+}
+
+body.nav-open .nav-toggle--reactor .nav-ico-x{
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+body.nav-open .nav-toggle--reactor .reactor-ring{
+  border-color: rgba(140,210,255,0.85);
+  box-shadow:
+    0 0 0 1px rgba(140,210,255,0.25) inset,
+    0 0 26px rgba(90,170,255,0.25);
+  animation: reactorSpin 1.2s linear infinite;
+}
+
+body.nav-open .nav-toggle--reactor .reactor-core{
+  opacity: 0.95;
+  animation: reactorPulse 1.2s ease-in-out infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .nav-toggle--reactor:hover .reactor-ring,
+  body.nav-open .nav-toggle--reactor .reactor-ring,
+  .nav-toggle--reactor:hover .reactor-core,
+  body.nav-open .nav-toggle--reactor .reactor-core{
+    animation: none !important;
+  }
+}
 
 /* =========================================================
    3) LOADER (STAR EXPLOSION)
@@ -1429,3 +1538,4 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
     display: inline-flex !important;
   }
 }
+
