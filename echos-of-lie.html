@@ -460,8 +460,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+<script>
+  (function () {
+    const btn = document.querySelector(".nav-toggle");
+    const links = document.querySelector(".nav-links");
+    const overlay = document.querySelector(".nav-overlay");
+
+    if (!btn || !links || !overlay) return;
+
+    function openMenu() {
+      document.body.classList.add("nav-open");
+      btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "Close menu");
+      overlay.hidden = false;
+    }
+
+    function closeMenu() {
+      document.body.classList.remove("nav-open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Open menu");
+      overlay.hidden = true;
+    }
+
+    btn.addEventListener("click", () => {
+      document.body.classList.contains("nav-open") ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener("click", closeMenu);
+
+    // Close when clicking a link (mobile)
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+    // Close on Escape
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // If resized to desktop, ensure menu is reset
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860) closeMenu();
+    });
+  })();
+</script>
 </body>
 </html>
+
 
 
 
