@@ -1237,7 +1237,7 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
         0 14px 34px rgba(0, 0, 0, 0.85);
 }
 
-/* “Scanner” glow sweep */
+/* “Scanner” glow sweep 
 .nav-toggle::before {
     content: "";
     position: absolute;
@@ -1259,7 +1259,7 @@ body.project-deadly-script .project-content > section:nth-of-type(-n+4) ul {
 @keyframes navSweep {
     0%   { transform: rotate(20deg) translateX(-55%); }
     100% { transform: rotate(20deg) translateX(55%); }
-}
+} */
 
 /* The 3 bars */
 .nav-toggle-icon {
@@ -1406,6 +1406,7 @@ body.nav-open .nav-toggle{
     0 0 0 1px rgba(170, 240, 255, 0.45),
     0 18px 44px rgba(0,0,0,0.9);
 }
+
 
 
 
