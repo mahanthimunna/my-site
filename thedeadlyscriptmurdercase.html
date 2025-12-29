@@ -28,15 +28,49 @@
   </div>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="index.html" class="logo">MAHANTHI KANNAPALLI</a>
-    <ul>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="index.html#systems">Systems</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+<nav class="navbar" aria-label="Primary">
+    <a href="#" class="logo">MAHANTHI KANNAPALLI</a>
+
+    <!-- Mobile toggle (only shows on small screens) -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-toggle-icon" aria-hidden="true">
+            <span></span><span></span><span></span>
+        </span>
+    </button>
+
+    <ul class="nav-links">
+    <li>
+        <a href="#about">
+            <i class="bx bx-user"></i>
+            <span>About</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="#projects">
+            <i class="bx bx-briefcase-alt-2"></i>
+            <span>Projects</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="#systems">
+            <i class="bx bx-network-chart"></i>
+            <span>Systems</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="#contact">
+            <i class="bx bx-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </li>
     </ul>
-  </nav>
+</nav>
+
+<!-- Mobile overlay (click to close) -->
+<div class="nav-overlay" hidden></div>
 
   <!-- ================== GLASS WRAPPER (ALL CONTENT) ================== -->
 <div class="project-glass">
@@ -221,5 +255,6 @@ startLoop();
 
 </body>
 </html>
+
 
 
