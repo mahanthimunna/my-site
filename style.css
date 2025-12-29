@@ -93,6 +93,16 @@ img, video, iframe {
 .navbar ul li a {
     color: #cbd5f5;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.navbar ul li a i.bx {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transform: translateY(-0.5px); /* optical alignment */
 }
 
 .navbar ul li a:hover {
@@ -1396,6 +1406,7 @@ body.nav-open .nav-toggle{
     0 0 0 1px rgba(170, 240, 255, 0.45),
     0 18px 44px rgba(0,0,0,0.9);
 }
+
 
 
 
